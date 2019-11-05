@@ -1,0 +1,4 @@
+{
+    "prettier.arrowParens": "avoid",
+    "git.ignoreLimitWarning": true
+}
