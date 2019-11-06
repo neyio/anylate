@@ -12,6 +12,13 @@
             },
             {
                 "object": "block",
+                "type": "embed",
+                "data": {
+                    "url": "https://www.baidu.com"
+                }
+            },
+            {
+                "object": "block",
                 "type": "paragraph",
                 "nodes": [{
                     "object": "text",

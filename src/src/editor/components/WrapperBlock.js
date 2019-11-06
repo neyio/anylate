@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const WrapperBlock = ({ isSelected, wrapper, children }) => {
+const WrapperBlock = ({ visible, wrapper, children }) => {
 	useEffect(() => {
 		console.log('init');
 		return () => {
@@ -9,7 +9,7 @@ const WrapperBlock = ({ isSelected, wrapper, children }) => {
 	}, []);
 	return (
 		<div style={{ position: 'relative' }}>
-			{isSelected && wrapper}
+			{visible && wrapper}
 			{children}
 		</div>
 	);
@@ -38,9 +38,10 @@ export default (options = {}) => {
 	return {
 		renderBlock: (props, editor, next) => {
 			const children = next();
-			const { isSelected } = props;
+			const { isFocused } = props;
+			const { isExpanded } = editor.value.selection; //选区未展开
 			return (
-				<WrapperBlock isSelected={isSelected} wrapper={<Wrapper editor={editor} />}>
+				<WrapperBlock visible={isFocused && !isExpanded} wrapper={<Wrapper editor={editor} />}>
 					{children}
 				</WrapperBlock>
 			);
