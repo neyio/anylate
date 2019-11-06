@@ -4,18 +4,25 @@
         "object": "document",
         "nodes": [{
                 "object": "block",
-                "type": "title",
+                "type": "paragraph",
                 "nodes": [{
                     "object": "text",
-                    "text": "Enforce Your Layout!"
+                    "text": "In addition to simple image nodes, you can actually create complex embedded nodes. For example, this one contains an input element that lets you change the video being rendered!"
                 }]
+            },
+            {
+                "object": "block",
+                "type": "embed",
+                "data": {
+                    "url": "https://www.baidu.com"
+                }
             },
             {
                 "object": "block",
                 "type": "paragraph",
                 "nodes": [{
                     "object": "text",
-                    "text": "This example shows how to enforce your layout with schema-specific rules. This document will always have a title block at the top and at least one paragraph in the body. Try deleting them and see what happens!"
+                    "text": "Try it out! If you want another good video URL to try, go with: https://www.youtube.com/embed/6Ejga4kJUts"
                 }]
             }
         ]
