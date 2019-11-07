@@ -52,6 +52,19 @@ const onSpace = (event, editor, next) => {
 					.focus();
 				return;
 			}
+			case 'blockquote_start': {
+				event.preventDefault();
+				editor
+					.setBlocks('block-quote')
+					.moveFocusToStartOfNode(startBlock)
+					.delete();
+				return;
+			}
+			case 'blockquote_end': {
+				event.preventDefault();
+				editor.insertBlock('paragraph');
+				return;
+			}
 			default:
 				return next();
 		}
@@ -99,17 +112,35 @@ const onBackspace = (event, editor, next) => {
 const onEnter = (event, editor, next) => {
 	const { value } = editor;
 	const { selection } = value;
-	const { start, end, isExpanded } = selection;
+	const { isExpanded } = selection;
+	//排除选区
 	if (isExpanded) return next();
-
 	const { startBlock } = value;
-	if (start.offset === 0 && startBlock.text.length === 0) return onBackspace(event, editor, next);
-	if (end.offset !== startBlock.text.length) return next();
+	// 排除选区(废弃)
+	// const {start, end} = selection;
+	// if (start.offset === 0 && startBlock.text.length === 0) {
+	// 	return onBackspace(event, editor, next);
+	// }
+	// if (end.offset !== startBlock.text.length) {
+	// 	return next();
+	// }
 
-	if (startBlock.type !== 'heading' && startBlock.type !== 'block-quote') {
-		return next();
+	if (startBlock.type === 'block-quote') {
+		if (startBlock.text.endsWith('\n')) {
+			editor
+				.moveFocusBackward(2)
+				.delete()
+				.unwrapBlock('block-quote')
+				.insertBlock('paragraph'); // TODO:这里会额外会增加一个段落，如果尾部为回车，此时通过向下光标移出选区，则按向上键位无法进入选区。
+			return null;
+		}
+		event.preventDefault();
+		return editor.insertText('\n');
 	}
 
+	if (startBlock.type !== 'heading') {
+		return next();
+	}
 	event.preventDefault();
 	editor.splitBlock().setBlocks('paragraph');
 };
@@ -119,6 +150,16 @@ export default options => {
 			blocks: {
 				hr: {
 					isVoid: true
+				},
+				'block-quote': {
+					nodes: [
+						{
+							match: { object: 'text' }
+						},
+						{
+							match: { object: 'paragraph' }
+						}
+					]
 				}
 			}
 		},
