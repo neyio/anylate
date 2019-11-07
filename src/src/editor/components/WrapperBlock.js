@@ -16,12 +16,14 @@ const WrapperBlock = ({ visible, wrapper, children }) => {
 };
 
 const DemoWrapper = props => {
+	const { editor } = props;
 	return (
 		<button
 			contentEditable={false}
 			style={{ position: 'absolute', left: '-45px', top: '0px' }}
 			onClick={() => {
-				console.log('自行处理click事件', props.editor.value.startBlock.key);
+				console.log('自行处理click事件', editor.value.startBlock.key);
+				if (editor.value.startBlock.object) editor.setBlocks('paragraph');
 			}}
 		>
 			ICON

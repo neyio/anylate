@@ -2,6 +2,7 @@ import marked from 'marked';
 import React from 'react';
 import Heading from './Heading';
 import Hr from './Hr';
+import Paragraph from './Paragraph';
 // 考虑到webwork的异步特性，为了不产生对编辑器插件产生结构性破坏，暂时注释
 // import workerMaster from './WorkerMaster';
 const markDownToLexer = md => {
@@ -114,8 +115,18 @@ const onEnter = (event, editor, next) => {
 	const { selection } = value;
 	const { isExpanded } = selection;
 	//排除选区
-	if (isExpanded) return next();
-	const { startBlock } = value;
+	if (isExpanded) {
+		return next();
+	}
+
+	/**
+	 * 获取当前激活的mark，样例
+	 *	const inCodeMark = value.activeMarks.filter(i => i.type === 'code');
+	 *  if (inCodeMark && inCodeMark.length) {
+	 *	   editor.splitBlock().setMark('code');
+	 *	   return next();
+	 *  }
+	 **/
 	// 排除选区(废弃)
 	// const {start, end} = selection;
 	// if (start.offset === 0 && startBlock.text.length === 0) {
@@ -124,7 +135,7 @@ const onEnter = (event, editor, next) => {
 	// if (end.offset !== startBlock.text.length) {
 	// 	return next();
 	// }
-
+	const { startBlock } = value;
 	if (startBlock.type === 'block-quote') {
 		if (startBlock.text.endsWith('\n')) {
 			editor
@@ -144,22 +155,16 @@ const onEnter = (event, editor, next) => {
 	event.preventDefault();
 	editor.splitBlock().setBlocks('paragraph');
 };
+
 export default options => {
 	return {
 		schema: {
 			blocks: {
 				hr: {
-					isVoid: true
+					isVoid: true // 在真实dom中 hr容易被类似wrapperblock组件给包裹，导致选区无法被删除，加上isVoid保证不进入内部。 这个组件存在光标无法进入的问题，也就是点击组件，使得光标位置为组件本身，我们加了一个外边框表示该成员被选中了
 				},
 				'block-quote': {
-					nodes: [
-						{
-							match: { object: 'text' }
-						},
-						{
-							match: { object: 'paragraph' }
-						}
-					]
+					nodes: [{ match: { object: 'text' } }, { match: { object: 'paragraph' } }]
 				}
 			}
 		},
@@ -189,10 +194,19 @@ export default options => {
 					return <blockquote {...attributes}>{children}</blockquote>;
 				case 'bulleted-list':
 					return <ul {...attributes}>{children}</ul>;
+				case 'paragraph':
+					// 通过添加一个placeholderVisible的状态，控制是否增加一个css样式（当文本没有内容[slate中是不存在的，通过attr的相关属性模拟]来显示placeholder）
+					const { isFocused } = props;
+					const { isExpanded } = editor.value.selection;
+					return (
+						<Paragraph {...attributes} placeholderVisible={isFocused && !isExpanded}>
+							{children}
+						</Paragraph>
+					);
 				case 'list-item':
 					return <li {...attributes}>{children}</li>;
 				case 'hr':
-					return <Hr {...attributes} />;
+					return <Hr {...attributes} isSelected={props.isSelected} />;
 				default:
 					return next();
 			}

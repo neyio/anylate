@@ -25,6 +25,8 @@
     .markdown-section h2,
     .markdown-section h3,
     .markdown-section h4,
+    .markdown-section h5,
+    .markdown-section h6,
     .markdown-section strong {
       color: #2c3e50;
       font-weight: 600
@@ -53,18 +55,28 @@
     }
 
     .markdown-section h4 {
-      font-size: 1em;
+      font-size: 1.4em;
       margin: 0.3em 0;
     }
 
     .markdown-section h5 {
-      font-size: 1em;
+      font-size: 1.2em;
       margin: 0.2em 0;
     }
 
     .markdown-section h6 {
       color: #777;
-      font-size: 1em;
+      font-size: 1.1em;
+      margin: 0.2em 0;
+    }
+
+    .markdown-section .paragraph-with-placeholder [data-slate-leaf="true"]>[data-slate-length="0"][data-slate-zero-width="n"]::before {
+      content: "请输入CMD+D";
+      color: #333;
+      display: inline;
+      position: absolute;
+      left: 0;
+
     }
 
     .markdown-section figure,

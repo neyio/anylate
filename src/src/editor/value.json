@@ -4,10 +4,68 @@
         "object": "document",
         "nodes": [{
                 "object": "block",
-                "type": "paragraph",
+                "type": "heading",
+                "data": {
+                    "depth": 1
+                },
                 "nodes": [{
                     "object": "text",
-                    "text": "In addition to simple image nodes, you can actually create complex embedded nodes. For example, this one contains an input element that lets you change the video being rendered!"
+                    "text": "This is a Heading Depth 1 ."
+                }]
+            },
+            {
+                "object": "block",
+                "type": "heading",
+                "data": {
+                    "depth": 2
+                },
+                "nodes": [{
+                    "object": "text",
+                    "text": "This is a Heading Depth 2 ."
+                }]
+            },
+            {
+                "object": "block",
+                "type": "heading",
+                "data": {
+                    "depth": 3
+                },
+                "nodes": [{
+                    "object": "text",
+                    "text": "This is a Heading Depth 3 ."
+                }]
+            },
+            {
+                "object": "block",
+                "type": "heading",
+                "data": {
+                    "depth": 4
+                },
+                "nodes": [{
+                    "object": "text",
+                    "text": "This is a Heading Depth 4 ."
+                }]
+            },
+            {
+                "object": "block",
+                "type": "heading",
+                "data": {
+                    "depth": 5
+                },
+                "nodes": [{
+                    "object": "text",
+                    "text": "This is a Heading Depth 5 ."
+                }]
+            },
+            {
+                "object": "block",
+                "type": "heading",
+                "data": {
+                    "depth": 6
+                },
+                "nodes": [{
+                    "object": "text",
+                    "text": "This is a Heading Depth 6 ."
                 }]
             },
             {
@@ -15,8 +73,12 @@
                 "type": "paragraph",
                 "nodes": [{
                     "object": "text",
-                    "text": "Try it out! If you want another good video URL to try, go with: https://www.youtube.com/embed/6Ejga4kJUts"
+                    "text": "This is a paragraph."
                 }]
+            },
+            {
+                "object": "block",
+                "type": "hr"
             }, {
                 "object": "block",
                 "type": "block-quote",
