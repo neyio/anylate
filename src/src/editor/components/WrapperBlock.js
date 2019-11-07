@@ -23,7 +23,8 @@ const DemoWrapper = props => {
 			style={{ position: 'absolute', left: '-45px', top: '0px' }}
 			onClick={() => {
 				console.log('自行处理click事件', editor.value.startBlock.key);
-				if (editor.value.startBlock.object) editor.setBlocks('paragraph');
+				// if (editor.value.startBlock.object) editor.setBlocks('paragraph');
+				editor.wrapBlock('heading');
 			}}
 		>
 			ICON
@@ -40,13 +41,19 @@ export default (options = {}) => {
 	return {
 		renderBlock: (props, editor, next) => {
 			const children = next();
-			const { isFocused } = props;
+			const {
+				isFocused,
+				node: { type }
+			} = props;
 			const { isExpanded } = editor.value.selection; //选区未展开
-			return (
-				<WrapperBlock visible={isFocused && !isExpanded} wrapper={<Wrapper editor={editor} />}>
-					{children}
-				</WrapperBlock>
-			);
+			if (type !== 'list-item')
+				// 这地方是防止list-item
+				return (
+					<WrapperBlock visible={isFocused && !isExpanded} wrapper={<Wrapper editor={editor} />}>
+						{children}
+					</WrapperBlock>
+				);
+			return <>{children}</>;
 		}
 	};
 };

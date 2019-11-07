@@ -1,26 +1,24 @@
-import marked from 'marked';
 import React from 'react';
 import Heading from './Heading';
 import Hr from './Hr';
 import Paragraph from './Paragraph';
-// 考虑到webwork的异步特性，为了不产生对编辑器插件产生结构性破坏，暂时注释
-// import workerMaster from './WorkerMaster';
-const markDownToLexer = md => {
-	// if (Worker) {
-	// return (async (md, opts) => await workerMaster(md, { ...opts }))(md, options);
-	// }
-	return marked.lexer(md);
-};
+// import List from './List';
+import { markDownToLexer, whenTrueOrNext, chain } from './utils/index';
+import { testIfMatchListGrammer } from './utils/list';
 const onSpace = (event, editor, next) => {
 	const { value } = editor;
 	const { selection } = value;
 	if (selection.isExpanded) {
 		return next();
 	}
+
 	const { startBlock } = value;
 	const { text } = startBlock;
-	if (startBlock.type === 'heading') return next();
-	const textWithSpace = text.replace(/^(\s{0,3}#+)/, '$1 ');
+	if (startBlock.type === 'heading') {
+		return next();
+	}
+
+	const textWithSpace = text.replace(/^((?:\s{0,3}#+)|(?:\d{0,3}.))/, '$1 ');
 	const tokens = markDownToLexer(textWithSpace);
 	console.log('markdownLexer', tokens, 'textWithSpace', textWithSpace);
 
@@ -31,7 +29,7 @@ const onSpace = (event, editor, next) => {
 			return next();
 		}
 
-		//类型具有： "code" | "hr" | "html" | "table" | "text" | "space" | "heading" | "blockquote_start" | "blockquote_end" | "list_start" | "loose_item_start" | "list_item_start" | "list_item_end" | "list_end" | "paragraph"
+		// 类型具有： "code" | "hr" | "html" | "table" | "text" | "space" | "heading" | "blockquote_start" | "blockquote_end" | "list_start" | "loose_item_start" | "list_item_start" | "list_item_end" | "list_end" | "paragraph"
 
 		switch (type) {
 			case 'heading': {
@@ -95,8 +93,8 @@ const onBackspace = (event, editor, next) => {
 	if (startBlock.type === 'paragraph') return next();
 
 	event.preventDefault();
-	editor.setBlocks('paragraph');
 
+	editor.setBlocks('paragraph');
 	if (startBlock.type === 'list-item') {
 		editor.unwrapBlock('bulleted-list');
 	}
@@ -148,12 +146,18 @@ const onEnter = (event, editor, next) => {
 		event.preventDefault();
 		return editor.insertText('\n');
 	}
-
-	if (startBlock.type !== 'heading') {
-		return next();
+	if (startBlock.type === 'heading') {
+		event.preventDefault();
+		editor.splitBlock().setBlocks('paragraph');
 	}
-	event.preventDefault();
-	editor.splitBlock().setBlocks('paragraph');
+
+	const flow = chain(whenTrueOrNext(() => testIfMatchListGrammer(startBlock.text, { editor, event })));
+
+	if (!flow()) {
+		console.log('未捕获流程');
+		next();
+	}
+	return;
 };
 
 export default options => {
@@ -192,8 +196,10 @@ export default options => {
 					);
 				case 'block-quote':
 					return <blockquote {...attributes}>{children}</blockquote>;
-				case 'bulleted-list':
-					return <ul {...attributes}>{children}</ul>;
+
+				// case 'bulleted-list':
+				// 	return <List {...attributes}>{children}</List>;
+
 				case 'paragraph':
 					// 通过添加一个placeholderVisible的状态，控制是否增加一个css样式（当文本没有内容[slate中是不存在的，通过attr的相关属性模拟]来显示placeholder）
 					const { isFocused } = props;
@@ -203,6 +209,10 @@ export default options => {
 							{children}
 						</Paragraph>
 					);
+				case 'bulleted-list':
+					return <ul {...attributes}>{children}</ul>;
+				case 'numbered-list':
+					return <ol {...attributes}>{children}</ol>;
 				case 'list-item':
 					return <li {...attributes}>{children}</li>;
 				case 'hr':

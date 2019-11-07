@@ -5,9 +5,11 @@ export default () => {
 		schema: {
 			document: {
 				last: { type: 'paragraph' },
-				normalize: (editor, { code, node, child }) => {
+				normalize(editor, { code, node, child }) {
 					if (code === 'last_child_type_invalid') {
-						console.log('last_child_type_invalid is fired!');
+						if (editor.value.startBlock.type === 'bulleted-list') {
+							console.log('anything need to do here');
+						}
 						const paragraph = Block.create('paragraph');
 						return editor.insertNodeByKey(node.key, node.nodes.size, paragraph);
 					}
