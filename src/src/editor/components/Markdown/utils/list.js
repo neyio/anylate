@@ -11,41 +11,15 @@ export const testIfMatchListGrammer = (text, { editor, event }) => {
 			const startParent = editor.value.document.getClosestBlock(startBlock.key, i => {
 				return i.type === 'bulleted-list' || i.type === 'numbered-list';
 			});
-			// event.preventDefault();
 			console.group('empty process');
 			if (startParent) {
-				console.log('parent is finded');
-				// editor.unwrapBlock(startParent.type);
-
-				// .setBlocks('list-item');
 				const grandpa = editor.value.document.getClosestBlock(startParent.key, i => {
 					return i.type === 'list-item';
 				});
-				if (grandpa) {
-					editor
-						.unwrapBlock(startParent.type)
-						.setBlocks('paragraph')
-						.focus();
-				} else {
-					editor
-						.unwrapBlock(startParent.type)
-						.setBlocks('list-item')
-						.focus();
-				}
-
-				// 	console.log(grandpa);
-				// 	const findParentPath = editor.value.document.getPath(startParent.key);
-				// 	let offset = 0;
-				// 	if (findParentPath.length) {
-				// 		offset = findParentPath[findParentPath.length - 1];
-				// 	}
-				// 	// const grandPaRoot = editor.value.document.getParent(findGrandpaPath);
-				// 	// editor.insertBlock(Block.create('list-item'));
-				// 	// editor.setBlocks('list-item');
-				// } else {
-				// 	// editor.setBlocks('paragraph');
-				// }
-				return true;
+				editor
+					.unwrapBlock(startParent.type)
+					.setBlocks(grandpa ? 'list-item' : 'paragraph')
+					.focus();
 			} else {
 				editor.unwrapBlock('list-item').setBlocks('paragraph');
 				console.log('no parent match bulleted-list or numbered-list');
@@ -99,11 +73,13 @@ export const testIfMatchListGrammer = (text, { editor, event }) => {
 					// console.log(editor.value.document.getPath(textNode.key));
 					const withOutNumberText = text.replace(/^\s{0,3}\d{0,3}.\s+/, ''); //用于去除 markdown的编号 例如 '1. ' or '999. '
 					if (withOutNumberText !== '') {
-						editor.setTextByPath(editor.value.document.getPath(textNode.key), withOutNumberText);
+						editor
+							.setTextByPath(editor.value.document.getPath(textNode.key), withOutNumberText)
+							.insertBlock('list-item');
 					} else {
 						editor.unwrapBlock(listType);
 					}
-					mark = true;
+					mark = false;
 					break;
 				}
 				case 'list_end': {
