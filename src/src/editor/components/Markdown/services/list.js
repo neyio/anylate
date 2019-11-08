@@ -1,4 +1,4 @@
-import { markDownToLexer } from './index';
+import { markDownToLexer } from '../utils/index';
 import { Block } from 'slate';
 export const testIfMatchListGrammer = (text, { editor, event }) => {
 	const textWithSpace = text.replace(/^((?:\d{0,3}.))/, '$1 ');
