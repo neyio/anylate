@@ -2,78 +2,11 @@ import React from 'react';
 import Heading from './Heading';
 import Hr from './Hr';
 import Paragraph from './Paragraph';
-// import List from './List';
-import { markDownToLexer, whenTrueOrNext, chain } from './utils/index';
+import CheckListItem from './CheckListItem';
+import onSpace from './core/onSpace';
+import { whenTrueOrNext, chain } from './utils/index';
 import { testIfMatchListGrammer } from './utils/list';
-const onSpace = (event, editor, next) => {
-	const { value } = editor;
-	const { selection } = value;
-	if (selection.isExpanded) {
-		return next();
-	}
 
-	const { startBlock } = value;
-	const { text } = startBlock;
-	if (startBlock.type === 'heading') {
-		return next();
-	}
-
-	const textWithSpace = text.replace(/^((?:\s{0,3}#+)|(?:\d{0,3}.))/, '$1 ');
-	const tokens = markDownToLexer(textWithSpace);
-	console.log('markdownLexer', tokens, 'textWithSpace', textWithSpace);
-
-	for (let token of tokens) {
-		const { type } = token;
-		//不对列表进行处理
-		if (type === 'list-item' && startBlock.type === 'list-item') {
-			return next();
-		}
-
-		// 类型具有： "code" | "hr" | "html" | "table" | "text" | "space" | "heading" | "blockquote_start" | "blockquote_end" | "list_start" | "loose_item_start" | "list_item_start" | "list_item_end" | "list_end" | "paragraph"
-
-		switch (type) {
-			case 'heading': {
-				event.preventDefault();
-				editor
-					.setBlocks(type)
-					.setNodeByKey(startBlock.key, { data: { depth: token.depth } })
-					.focus();
-				editor.moveFocusToStartOfNode(startBlock).delete();
-				return;
-			}
-			case 'hr': {
-				event.preventDefault();
-				editor
-					.moveFocusToStartOfNode(startBlock)
-					.delete()
-					.setBlocks('hr')
-					.insertBlock('paragraph')
-					.focus();
-				return;
-			}
-			case 'blockquote_start': {
-				event.preventDefault();
-				editor
-					.setBlocks('block-quote')
-					.moveFocusToStartOfNode(startBlock)
-					.delete();
-				return;
-			}
-			case 'blockquote_end': {
-				event.preventDefault();
-				editor.insertBlock('paragraph');
-				return;
-			}
-			default:
-				return next();
-		}
-		// if (type === 'list-item') {
-		// 	editor.wrapBlock('bulleted-list');
-		// }
-		// editor.moveFocusToStartOfNode(startBlock).delete();
-	}
-	return next();
-};
 /**
  * On backspace, if at the start of a non-paragraph, convert it back into a
  * paragraph node.
@@ -86,11 +19,22 @@ const onSpace = (event, editor, next) => {
 const onBackspace = (event, editor, next) => {
 	const { value } = editor;
 	const { selection } = value;
-	if (selection.isExpanded) return next();
-	if (selection.start.offset !== 0) return next();
+	if (selection.isExpanded) {
+		return next();
+	}
+	if (selection.start.offset !== 0) {
+		return next();
+	}
 
 	const { startBlock } = value;
-	if (startBlock.type === 'paragraph') return next();
+	if (startBlock.type === 'paragraph') {
+		return next();
+	}
+
+	if (value.isCollapsed && value.startBlock.type === 'check-list-item' && value.selection.startOffset === 0) {
+		editor.setBlocks('paragraph');
+		return;
+	}
 
 	event.preventDefault();
 
@@ -196,10 +140,6 @@ export default options => {
 					);
 				case 'block-quote':
 					return <blockquote {...attributes}>{children}</blockquote>;
-
-				// case 'bulleted-list':
-				// 	return <List {...attributes}>{children}</List>;
-
 				case 'paragraph':
 					// 通过添加一个placeholderVisible的状态，控制是否增加一个css样式（当文本没有内容[slate中是不存在的，通过attr的相关属性模拟]来显示placeholder）
 					const { isFocused } = props;
@@ -217,6 +157,8 @@ export default options => {
 					return <li {...attributes}>{children}</li>;
 				case 'hr':
 					return <Hr {...attributes} isSelected={props.isSelected} />;
+				case 'check-list-item':
+					return <CheckListItem {...props} />;
 				default:
 					return next();
 			}

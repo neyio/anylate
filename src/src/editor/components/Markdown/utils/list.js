@@ -4,6 +4,16 @@ export const testIfMatchListGrammer = (text, { editor, event }) => {
 	const textWithSpace = text.replace(/^((?:\d{0,3}.))/, '$1 ');
 	const { startBlock } = editor.value;
 	const listType = startBlock.type;
+	if (editor.value.startBlock.type === 'check-list-item') {
+		if (text.replace(' ', '') === '') {
+			editor.setBlocks('paragraph');
+		} else {
+			editor.insertBlock({ type: 'check-list-item', data: { checked: false } });
+		}
+		event.preventDefault();
+		return true;
+	}
+
 	if (listType === 'list-item') {
 		if (text.replace(' ', '') === '') {
 			//如果为空则unwrapBlock,此时需要查询它最亲近的父辈分是否 有 list类型，如果有则直接unwrap父辈

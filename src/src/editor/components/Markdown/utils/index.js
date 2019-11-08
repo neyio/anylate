@@ -8,9 +8,11 @@ import marked from 'marked';
 export const markDownToLexer = md => {
 	return marked.lexer(md);
 };
-export const closureWrapper = (action) => {
-    return () => action();
-}
+
+export const closureWrapper = action => {
+	return () => action();
+};
+
 // if (bool&&action) return action , else return defaultAction;
 // export const when = (bool, action, defaultAction = null) => {
 // 	return (bool && action) || defaultAction;
@@ -39,3 +41,4 @@ export const chain = (...conditions) => conditions.reduceRight((acc, condition) 
 // 	when(true, t('rrrr')),
 // 	when(true, t('llll'))
 // );
+
