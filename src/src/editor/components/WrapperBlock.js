@@ -22,9 +22,18 @@ const DemoWrapper = props => {
 			contentEditable={false}
 			style={{ position: 'absolute', left: '-45px', top: '0px' }}
 			onClick={() => {
-				console.log('自行处理click事件', editor.value.startBlock.key);
-				// if (editor.value.startBlock.object) editor.setBlocks('paragraph');
-				editor.wrapBlock('heading');
+				console.log('自行处理click事件', editor.value.startBlock.type);
+				if (editor.value.startBlock.type === 'list-item') {
+					const startParent = editor.value.document.getClosestBlock(editor.value.startBlock.key, i => {
+						return i.type === 'bulleted-list' || i.type === 'numbered-list';
+					});
+					if (startParent) {
+						console.log(startParent.type, startParent.key);
+						editor.setNodeByKey(startParent.key, {
+							type: startParent.type === 'bulleted-list' ? 'numbered-list' : 'bulleted-list'
+						});
+					}
+				}
 			}}
 		>
 			ICON

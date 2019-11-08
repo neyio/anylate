@@ -86,6 +86,102 @@
                     "object": "text",
                     "text": "Try it out! If you want another good video URL to try, go with: https://www.youtube.com/embed/6Ejga4kJUts"
                 }]
+            },
+            {
+                "object": "block",
+                "type": "bulleted-list",
+                "nodes": [{
+                    "object": "block",
+                    "type": "list-item",
+                    "nodes": [{
+                        "object": "text",
+                        "text": "This is a list-item."
+                    }]
+                }, {
+                    "object": "block",
+                    "type": "list-item",
+                    "nodes": [{
+                        "object": "text",
+                        "text": "This is a list-item."
+                    }]
+                }, {
+                    "object": "block",
+                    "type": "list-item",
+                    "nodes": [{
+                        "object": "text",
+                        "text": "This is a list-item."
+                    }]
+                }]
+            },
+            {
+                "object": "block",
+                "type": "numbered-list",
+                "nodes": [{
+                    "object": "block",
+                    "type": "list-item",
+                    "nodes": [{
+                        "object": "text",
+                        "text": "This is a list-item."
+                    }]
+                }, {
+                    "object": "block",
+                    "type": "list-item",
+                    "nodes": [{
+                        "object": "text",
+                        "text": "This is a list-item."
+                    }]
+                }, {
+                    "object": "block",
+                    "type": "list-item",
+                    "nodes": [{
+                        "object": "block",
+                        "type": "numbered-list",
+                        "nodes": [{
+                            "object": "block",
+                            "type": "list-item",
+                            "nodes": [{
+                                "object": "text",
+                                "text": "This is a nested list-item."
+                            }]
+                        }, {
+                            "object": "block",
+                            "type": "list-item",
+                            "nodes": [{
+                                "object": "text",
+                                "text": "This is a nested list-item."
+                            }]
+                        }, {
+                            "object": "block",
+                            "type": "list-item",
+                            "nodes": [{
+                                "object": "block",
+                                "type": "bulleted-list",
+                                "nodes": [{
+                                    "object": "block",
+                                    "type": "list-item",
+                                    "nodes": [{
+                                        "object": "text",
+                                        "text": "This is a list-item."
+                                    }]
+                                }, {
+                                    "object": "block",
+                                    "type": "list-item",
+                                    "nodes": [{
+                                        "object": "text",
+                                        "text": "This is a list-item."
+                                    }]
+                                }, {
+                                    "object": "block",
+                                    "type": "list-item",
+                                    "nodes": [{
+                                        "object": "text",
+                                        "text": "This is a list-item."
+                                    }]
+                                }]
+                            }]
+                        }]
+                    }]
+                }]
             }
         ]
     }
