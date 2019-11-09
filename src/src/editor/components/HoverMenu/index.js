@@ -2,21 +2,34 @@ import React, { useRef } from 'react';
 import ReactDOM from 'react-dom';
 import { css } from 'emotion';
 import { Button, Icon, Menu } from './components';
+import { Tooltip } from 'antd';
+// <MarkButton editor={editor} type="bold" icon="B" />
+// <MarkButton editor={editor} type="italic" icon="I" />
+// <MarkButton editor={editor} type="underlined" icon="U" />
+// <MarkButton editor={editor} type="code" icon="<>" />
+const tips = {
+	bold: 'Ctrl + b',
+	italic: 'Ctrl + i',
+	underlined: 'Ctrl + l',
+	code: 'Ctrl + `'
+};
 
 const MarkButton = ({ editor, type, icon }) => {
 	const { value } = editor;
 	const isActive = value.activeMarks.some(mark => mark.type === type);
 	return (
-		<Button
-			reversed
-			active={isActive}
-			onMouseDown={event => {
-				event.preventDefault();
-				editor.toggleMark(type);
-			}}
-		>
-			<Icon>{icon}</Icon>
-		</Button>
+		<Tooltip placement="bottom" title={tips[type]}>
+			<Button
+				reversed
+				active={isActive}
+				onMouseDown={event => {
+					event.preventDefault();
+					editor.toggleMark(type);
+				}}
+			>
+				<Icon>{icon}</Icon>
+			</Button>
+		</Tooltip>
 	);
 };
 
@@ -54,10 +67,14 @@ const HoverMenu = ({ editor, visible }) => {
 				transition: opacity 0.75s;
 			`}
 		>
-			<MarkButton editor={editor} type="bold" icon="format_bold" />
+			{/* <MarkButton editor={editor} type="bold" icon="format_bold" />
 			<MarkButton editor={editor} type="italic" icon="format_italic" />
 			<MarkButton editor={editor} type="underlined" icon="format_underlined" />
-			<MarkButton editor={editor} type="code" icon="code" />
+			<MarkButton editor={editor} type="code" icon="code" /> */}
+			<MarkButton editor={editor} type="bold" icon="B" />
+			<MarkButton editor={editor} type="italic" icon="I" />
+			<MarkButton editor={editor} type="underlined" icon="U" />
+			<MarkButton editor={editor} type="code" icon="<>" />
 		</Menu>,
 		root
 	);

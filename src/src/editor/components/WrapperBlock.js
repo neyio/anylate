@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-
+import FullMenu from './Menu';
 const WrapperBlock = ({ visible, wrapper, children }) => {
 	useEffect(() => {
 		console.log('init');
@@ -15,29 +15,38 @@ const WrapperBlock = ({ visible, wrapper, children }) => {
 	);
 };
 
-const DemoWrapper = props => {
-	const { editor } = props;
+// const DemoWrapper = props => {
+// 	const { editor } = props;
+// 	return (
+// 		<button
+// 			contentEditable={false}
+// 			style={{ position: 'absolute', left: '-45px', top: '0px' }}
+// 			onClick={() => {
+// 				console.log('自行处理click事件', editor.value.startBlock.type);
+// 				if (editor.value.startBlock.type === 'list-item') {
+// 					const startParent = editor.value.document.getClosestBlock(editor.value.startBlock.key, i => {
+// 						return i.type === 'bulleted-list' || i.type === 'numbered-list';
+// 					});
+// 					if (startParent) {
+// 						console.log(startParent.type, startParent.key);
+// 						editor.setNodeByKey(startParent.key, {
+// 							type: startParent.type === 'bulleted-list' ? 'numbered-list' : 'bulleted-list'
+// 						});
+// 					}
+// 				}
+// 			}}
+// 		>
+// 			ICON
+// 		</button>
+// 	);
+// };
+
+const DemoWrapper2 = props => {
+	// const { editor } = props;
 	return (
-		<button
-			contentEditable={false}
-			style={{ position: 'absolute', left: '-45px', top: '0px' }}
-			onClick={() => {
-				console.log('自行处理click事件', editor.value.startBlock.type);
-				if (editor.value.startBlock.type === 'list-item') {
-					const startParent = editor.value.document.getClosestBlock(editor.value.startBlock.key, i => {
-						return i.type === 'bulleted-list' || i.type === 'numbered-list';
-					});
-					if (startParent) {
-						console.log(startParent.type, startParent.key);
-						editor.setNodeByKey(startParent.key, {
-							type: startParent.type === 'bulleted-list' ? 'numbered-list' : 'bulleted-list'
-						});
-					}
-				}
-			}}
-		>
-			ICON
-		</button>
+		<div contentEditable={false} style={{ position: 'absolute', left: '-2rem', top: '2px', fontSize: '1em' }}>
+			<FullMenu />
+		</div>
 	);
 };
 
@@ -46,7 +55,7 @@ const DemoWrapper = props => {
  * 例子见demoWrapper
  */
 export default (options = {}) => {
-	const { Wrapper = DemoWrapper } = options;
+	const { Wrapper = DemoWrapper2 } = options;
 	return {
 		renderBlock: (props, editor, next) => {
 			const children = next();

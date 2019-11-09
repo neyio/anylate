@@ -1,7 +1,7 @@
 import { whenTrueOrNext, chain } from '../utils/index';
 import { testIfMatchListGrammer } from '../services/list';
 import { onEnterInblockQuote, testIfMatchBlockQuoteGrammer } from '../services/blockQuote';
-import { onEnterInHeading } from '../services/heading';
+import { onEnterInHeading, testIfMatchHeadingGrammer } from '../services/heading';
 
 const onEnter = (event, editor, next) => {
 	const { value } = editor;
@@ -24,6 +24,7 @@ const onEnter = (event, editor, next) => {
 	}
 
 	const markdownSupport = chain(
+		whenTrueOrNext(() => testIfMatchHeadingGrammer(startBlock, { editor, event })),
 		whenTrueOrNext(() => testIfMatchListGrammer(startBlock.text, { editor, event })), //是否满足是list的grammer
 		whenTrueOrNext(() => testIfMatchBlockQuoteGrammer(startBlock, { editor, event }))
 	);
