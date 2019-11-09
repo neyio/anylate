@@ -7,7 +7,6 @@ class CheckListItem extends React.Component {
 		this.state = {
 			checked: (this.props.node && this.props.node.data && this.props.node.data.get('checked')) || false
 		};
-		console.log('inited checked mark===>', this.props.node.data.get('checked'));
 	}
 	onChange = event => {
 		const checked = event.target.checked;

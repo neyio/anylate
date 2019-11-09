@@ -2,7 +2,7 @@ import React from 'react';
 import Heading from './components/Heading';
 import Hr from './components/Hr';
 import Paragraph from './components/Paragraph';
-
+import BlockQuote from './components/Blockquote';
 import CheckListItem from './components/CheckListItem';
 import onSpace from './core/onSpace';
 import onBackspace from './core/onBackspace';
@@ -19,7 +19,7 @@ export default options => {
 					nodes: [{ match: { object: 'text' } }, { match: { object: 'paragraph' } }]
 				},
 				'check-list-item': {
-					//'numbered-list' || parent.type === 'bulleted-list'
+					//'numbered-list' || 'bulleted-list'
 					parent: [{ type: 'bulleted-list' }, { type: 'numbered-list' }],
 					normalize: (editor, error) => {
 						console.log(error);
@@ -49,7 +49,11 @@ export default options => {
 						</Heading>
 					);
 				case 'block-quote':
-					return <blockquote {...attributes}>{children}</blockquote>;
+					return (
+						<BlockQuote {...attributes} node={node} editor={editor}>
+							{children}
+						</BlockQuote>
+					);
 				case 'paragraph':
 					const { isFocused } = props;
 					const { isExpanded } = editor.value.selection;

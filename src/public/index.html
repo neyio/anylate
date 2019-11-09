@@ -114,13 +114,30 @@
     }
 
     .markdown-section blockquote {
-      border-left: 4px solid var(--theme-color, #42b983);
+      /* border-left: 4px solid var(--theme-color, #42b983); */
       color: #999;
       margin: 2em 0;
       padding: 1em;
       background-color: #f8f8f8;
       font-style: italic;
       font-size: 1em;
+      border-radius: 3px;
+    }
+
+    .markdown-section blockquote.blockquote-info {
+      border-left: 4px solid var(--theme-color, #3884ff);
+    }
+
+    .markdown-section blockquote.blockquote-warning {
+      border-left: 4px solid var(--theme-color, #f77d02);
+    }
+
+    .markdown-section blockquote.blockquote-danger {
+      border-left: 4px solid var(--theme-color, #ff4642);
+    }
+
+    .markdown-section blockquote.blockquote-success {
+      border-left: 4px solid var(--theme-color, #42b983);
     }
 
     .markdown-section blockquote p {
