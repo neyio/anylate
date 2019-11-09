@@ -122,11 +122,9 @@ export const testIfMatchListGrammer = (text, { editor, event }) => {
 			}
 		}
 		console.groupEnd('testIfMatchListGrammer');
-		if (mark) return true;
-	} else return false;
-};
-
-export const insertListItem = (text, { editor, event }) => {
-	console.log('insertListItem');
-	return true;
+		if (mark) {
+			return true;
+		}
+	}
+	return false;
 };

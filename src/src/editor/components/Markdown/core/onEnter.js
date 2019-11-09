@@ -1,5 +1,7 @@
 import { whenTrueOrNext, chain } from '../utils/index';
 import { testIfMatchListGrammer } from '../services/list';
+import { onEnterInblockQuote, testIfMatchBlockQuoteGrammer } from '../services/blockQuote';
+import { onEnterInHeading } from '../services/heading';
 
 const onEnter = (event, editor, next) => {
 	const { value } = editor;
@@ -9,30 +11,27 @@ const onEnter = (event, editor, next) => {
 	if (isExpanded) {
 		return next();
 	}
+
 	const { startBlock } = value;
-	if (startBlock.type === 'block-quote') {
-		if (startBlock.text.endsWith('\n')) {
-			editor
-				.moveFocusBackward(2)
-				.delete()
-				.unwrapBlock('block-quote')
-				.insertBlock('paragraph');
-			return null;
-		}
-		event.preventDefault();
-		return editor.insertText('\n');
-	}
-	if (startBlock.type === 'heading') {
-		event.preventDefault();
-		editor.splitBlock().setBlocks('paragraph');
+
+	const flow = chain(
+		whenTrueOrNext(() => onEnterInblockQuote(startBlock, { editor, event })), // 在blockQuote中回车
+		whenTrueOrNext(() => onEnterInHeading(startBlock, { editor, event })) // 在 heading中回车
+	);
+
+	if (flow()) {
+		return;
 	}
 
-	const flow = chain(whenTrueOrNext(() => testIfMatchListGrammer(startBlock.text, { editor, event })));
+	const markdownSupport = chain(
+		whenTrueOrNext(() => testIfMatchListGrammer(startBlock.text, { editor, event })), //是否满足是list的grammer
+		whenTrueOrNext(() => testIfMatchBlockQuoteGrammer(startBlock, { editor, event }))
+	);
 
-	if (!flow()) {
-		console.log('未捕获流程');
-		next();
+	if (!markdownSupport()) {
+		return next();
 	}
+
 	return;
 };
 export default onEnter;

@@ -6,6 +6,7 @@ import marked from 'marked';
 //     return (async (md, opts) => await workerMaster(md, { ...opts }))(md, options);
 // }
 export const markDownToLexer = md => {
+	console.log('markDownToLexer is used');
 	return marked.lexer(md);
 };
 
@@ -41,4 +42,3 @@ export const chain = (...conditions) => conditions.reduceRight((acc, condition) 
 // 	when(true, t('rrrr')),
 // 	when(true, t('llll'))
 // );
-
