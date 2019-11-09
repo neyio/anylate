@@ -17,6 +17,13 @@ export default options => {
 				},
 				'block-quote': {
 					nodes: [{ match: { object: 'text' } }, { match: { object: 'paragraph' } }]
+				},
+				'check-list-item': {
+					//'numbered-list' || parent.type === 'bulleted-list'
+					parent: [{ type: 'bulleted-list' }, { type: 'numbered-list' }],
+					normalize: (editor, error) => {
+						console.log(error);
+					}
 				}
 			}
 		},
@@ -61,7 +68,7 @@ export default options => {
 				case 'hr':
 					return <Hr {...attributes} isSelected={props.isSelected} />;
 				case 'check-list-item':
-					return <CheckListItem {...props} />;
+					return <CheckListItem {...props} editor={editor} />;
 				default:
 					return next();
 			}

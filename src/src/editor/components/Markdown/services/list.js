@@ -51,13 +51,14 @@ export const testIfMatchListGrammer = (text, { editor, event }) => {
 		console.group('testIfMatchListGrammer');
 		console.log('matched list grammer', listType);
 		console.log(tokens);
-
+		//判断 命中后是否为list
 		const isList = listType === 'bulleted-list' || listType === 'numbered-list' ? true : false;
 		let mark = false;
 		for (const token of tokens) {
 			switch (token.type) {
 				case 'list_start': {
 					if (!isList) {
+						//如果原本为非 list 则wrap该block为列表
 						if (token.ordered) {
 							editor.wrapBlock('numbered-list');
 						} else {
@@ -72,7 +73,26 @@ export const testIfMatchListGrammer = (text, { editor, event }) => {
 					break;
 				}
 				case 'list_item_start': {
-					editor.setBlocks('list-item');
+					const { checked, task } = token;
+					console.log('TCL: testIfMatchListGrammer -> { checked, task }', { checked, task });
+
+					if (!task) {
+						editor.setBlocks('list-item');
+					} else {
+						const parent = editor.value.document.getParent(startBlock.key);
+						if (parent.type === 'numbered-list' || parent.type === 'bulleted-list') {
+							console.log('in list parent');
+							if (startBlock.type !== 'check-list-item') {
+								editor.setBlocks({
+									type: 'check-list-item',
+									object: 'block',
+									data: { checked }
+								});
+							}
+						} else {
+							editor.setBlocks('check-list-item').wrapBlock('numbered-list');
+						}
+					}
 					mark = true;
 					break;
 				}
@@ -81,11 +101,10 @@ export const testIfMatchListGrammer = (text, { editor, event }) => {
 					// getPath用于 获取当前对象和目标key的通路 例如 List[0] ,List[9,1,2]; 第N个子孙（迭代）
 					// console.log(editor.value.startBlock.getPath(textNode.key));
 					// console.log(editor.value.document.getPath(textNode.key));
-					const withOutNumberText = text.replace(/^\s{0,3}\d{0,3}.\s+/, ''); //用于去除 markdown的编号 例如 '1. ' or '999. '
-					if (withOutNumberText !== '') {
-						editor
-							.setTextByPath(editor.value.document.getPath(textNode.key), withOutNumberText)
-							.insertBlock('list-item');
+					const originText = tokens.find(i => i.type === 'text');
+					// const withOutNumberText = text.replace(/^\s{0,3}\d{0,3}.\s+/, ''); //用于去除 markdown的编号 例如 '1. ' or '999. '
+					if (originText && originText.text !== '') {
+						editor.setTextByPath(editor.value.document.getPath(textNode.key), originText.text);
 					} else {
 						editor.unwrapBlock(listType);
 					}
@@ -105,4 +124,9 @@ export const testIfMatchListGrammer = (text, { editor, event }) => {
 		console.groupEnd('testIfMatchListGrammer');
 		if (mark) return true;
 	} else return false;
+};
+
+export const insertListItem = (text, { editor, event }) => {
+	console.log('insertListItem');
+	return true;
 };

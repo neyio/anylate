@@ -55,7 +55,7 @@ export default (options = {}) => {
 				node: { type }
 			} = props;
 			const { isExpanded } = editor.value.selection; //选区未展开
-			if (type !== 'list-item')
+			if (type !== 'list-item' && type !== 'check-list-item')
 				// 这地方是防止list-item
 				return (
 					<WrapperBlock visible={isFocused && !isExpanded} wrapper={<Wrapper editor={editor} />}>

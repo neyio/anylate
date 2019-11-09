@@ -6,6 +6,19 @@
         "object": "block",
         "type": "heading",
         "data": {
+          "depth": 2
+        },
+        "nodes": [{
+          "object": "text",
+          "text": "AM & Neyio & YuSunshine 's Simplely Easy Editor. Design By Jervine & Kevin."
+        }]
+      }, {
+        "object": "block",
+        "type": "hr"
+      }, {
+        "object": "block",
+        "type": "heading",
+        "data": {
           "depth": 1
         },
         "nodes": [{
@@ -81,10 +94,35 @@
         "type": "hr"
       }, {
         "object": "block",
+        "type": "heading",
+        "data": {
+          "depth": 1
+        },
+        "nodes": [{
+          "object": "text",
+          "text": "Here is a block-quote"
+        }]
+      }, {
+        "object": "block",
         "type": "block-quote",
         "nodes": [{
           "object": "text",
           "text": "Try it out! If you want another good video URL to try, go with: https://www.youtube.com/embed/6Ejga4kJUts"
+        }]
+      },
+      {
+        "object": "block",
+        "type": "hr"
+      },
+      {
+        "object": "block",
+        "type": "heading",
+        "data": {
+          "depth": 3
+        },
+        "nodes": [{
+          "object": "text",
+          "text": "Here is a TodoList "
         }]
       },
       {
@@ -198,6 +236,37 @@
           "text": "todo list item"
         }]
 
+      }, {
+        "object": "block",
+        "type": "heading",
+        "data": {
+          "depth": 3
+        },
+        "nodes": [{
+          "object": "text",
+          "text": "Here is a TodoList "
+        }]
+      }, {
+        "object": "block",
+        "type": "bulleted-list",
+        "nodes": [{
+          "type": "check-list-item",
+          "object": "block",
+          "data": {
+            "checked": true
+          },
+          "nodes": [{
+            "object": "text",
+            "text": "it's check-list-item 11111"
+          }]
+        }, {
+          "type": "check-list-item",
+          "object": "block",
+          "nodes": [{
+            "object": "text",
+            "text": "it's check-list-item 2222"
+          }]
+        }]
       }
     ]
   }

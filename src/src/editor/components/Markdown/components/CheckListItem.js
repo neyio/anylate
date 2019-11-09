@@ -2,17 +2,29 @@ import React from 'react';
 import { css } from 'emotion';
 
 class CheckListItem extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			checked: (this.props.node && this.props.node.data && this.props.node.data.get('checked')) || false
+		};
+		console.log('inited checked mark===>', this.props.node.data.get('checked'));
+	}
 	onChange = event => {
 		const checked = event.target.checked;
 		const { editor, node } = this.props;
 		editor.setNodeByKey(node.key, { data: { checked } });
+		event.stopPropagation();
+		this.setState({
+			checked: !this.state.checked
+		});
 	};
 
 	render() {
-		const { attributes, children, node, readOnly } = this.props;
-		const checked = node.data.get('checked');
+		const { attributes, children, readOnly } = this.props;
+		const { checked } = this.state;
+		// const checked = node.data.get('checked'); node,
 		return (
-			<div
+			<li
 				{...attributes}
 				className={css`
 					display: flex;
@@ -45,7 +57,7 @@ class CheckListItem extends React.Component {
 				>
 					{children}
 				</span>
-			</div>
+			</li>
 		);
 	}
 }
