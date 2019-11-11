@@ -1,4 +1,6 @@
-import marked from 'marked';
+// import marked from 'marked';
+import marked from './marked';
+// marked.Renderer = Renderer;
 
 // 考虑到webwork的异步特性，为了不产生对编辑器插件产生结构性破坏，暂时注释
 // import workerMaster from './WorkerMaster';
@@ -8,6 +10,21 @@ import marked from 'marked';
 export const markDownToLexer = md => {
 	console.log('markDownToLexer is used');
 	return marked.lexer(md);
+};
+
+export const markDownToInlineLexer = (md, links = [], options) => {
+	// console.log('new marked.Renderer()', new marked.Renderer());
+	// const renderer = new marked.Renderer();
+	// renderer.code = function(code, infostring, escaped) {
+	// 	return '<pre><code>' + (escaped ? code : escape(code, true)) + '</code></pre>';
+	// };
+
+	// //内联的code块[`code`]
+	// renderer.codespan = function(text) {
+	// 	return '<code>' + text + '</code>';
+	// };
+	//{ renderer}
+	return marked.inlineLexer(md, [], null);
 };
 
 export const closureWrapper = action => {
