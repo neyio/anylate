@@ -4,6 +4,20 @@
     "object": "document",
     "nodes": [{
         "object": "block",
+        "type": "paragraph",
+        "nodes": [{
+          "object": "text",
+          "text": "`code`"
+        }]
+      }, {
+        "object": "block",
+        "type": "paragraph",
+        "nodes": [{
+          "object": "text",
+          "text": "`code` **bbb** __uuu__ ~~ddd~~ "
+        }]
+      }, {
+        "object": "block",
         "type": "heading",
         "data": {
           "depth": 2

@@ -8,6 +8,7 @@ import onSpace from './core/onSpace';
 import onBackspace from './core/onBackspace';
 import onEnter from './core/onEnter';
 import onInlineLexer from './core/onInlineLexer';
+import { decorateNode, renderDecoration } from './core/renderDecoration';
 
 // import { gfm as GFMInlineRuls } from './utils/inlineRules';
 // eslint-disable-next-line
@@ -81,15 +82,8 @@ export default options => {
 				default:
 					return next();
 			}
-		},
-		decorateNode: (node, editor, next) => {
-			const others = next() || [];
-			if (node.object !== 'block') return others;
-			// console.log(GFMInlineRuls);
-			// const string = node.text;
-			// const texts = Array.from(node.texts());
-			// const em = GFMInlineRuls.em.exec(string);
-			// if (em) console.log(em);
 		}
+		// decorateNode,
+		// renderDecoration
 	};
 };
