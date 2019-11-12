@@ -1,6 +1,8 @@
-// import { markDownToInlineLexer } from '../utils';
+import { Mark, Node, Text } from 'slate';
+import { markDownToInlineLexer } from '../utils';
 
 const onInlineLexer = ({ editor, event }, next) => {
+	next();
 	// console.log('here is inline');
 	// const { value } = editor;
 	// const { selection, startBlock } = value;
@@ -34,8 +36,22 @@ const onInlineLexer = ({ editor, event }, next) => {
 	// console.log('TCL: decorateNode -> endstart', endstart);
 	//
 	const { startBlock } = editor.value;
+	const startText = startBlock.getFirstText();
 	console.log('startblock', startBlock);
+	const tokens = markDownToInlineLexer(startBlock.text, []);
 
-	return next();
+	console.group('INLINE LEXER');
+	console.log(startText);
+	console.log(tokens);
+
+	editor.replaceNodeByKey(
+		startText.key,
+		Text.fromJSON({ text: 'hello world', marks: [Mark.fromJSON({ type: 'bold' })] })
+	);
+	console.log(editor.value.startBlock);
+
+	console.groupEnd('INLINE LEXER');
+
+	return;
 };
 export default onInlineLexer;

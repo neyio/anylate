@@ -8,7 +8,6 @@ import onSpace from './core/onSpace';
 import onBackspace from './core/onBackspace';
 import onEnter from './core/onEnter';
 import onInlineLexer from './core/onInlineLexer';
-import { decorateNode, renderDecoration } from './core/renderDecoration';
 
 // import { gfm as GFMInlineRuls } from './utils/inlineRules';
 // eslint-disable-next-line
@@ -28,7 +27,9 @@ export default options => {
 					//'numbered-list' || 'bulleted-list'
 					parent: [{ type: 'bulleted-list' }, { type: 'numbered-list' }],
 					normalize: (editor, error) => {
-						console.log(error);
+						if (error.code === 'parent_type_invalid') {
+							console.log(editor, error.node, error.code);
+						}
 					}
 				}
 			}
