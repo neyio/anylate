@@ -4,5 +4,6 @@ import LastChildAvailable from './components/LastChildAvailable';
 import HoverMenu from './components/HoverMenu/index';
 
 import MarkdownSupport from './components/Markdown/MarkdownSupport';
-
-export default [WrapperBlock(), MarkdownSupport(), EmbedComponent(), LastChildAvailable(), HoverMenu()];
+import createPlugin from '@zhujianshi/slate-code-base';
+import '@zhujianshi/slate-code-base/lib/index.css';
+export default [createPlugin(), WrapperBlock(), MarkdownSupport(), EmbedComponent(), LastChildAvailable(), HoverMenu()];

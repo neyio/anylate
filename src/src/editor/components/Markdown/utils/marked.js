@@ -1093,7 +1093,7 @@ Renderer.prototype.codespan = function(text) {
 
   // return '<code>' + text + '</code>';
   return {
-		type: 'codespan',
+		type: 'code',
 		content: text
   };
 };
