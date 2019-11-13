@@ -1,12 +1,12 @@
-import { Mark, Node, Text } from 'slate';
+import { Mark, Block, Text } from 'slate';
 import { markDownToInlineLexer } from '../utils';
 
 const onInlineLexer = ({ editor, event }, next) => {
-	return next();
+	next();
 
 	const { startBlock } = editor.value;
 	const startText = startBlock.getFirstText();
-	const path = editor.value.document.getPath(startBlock.key);
+	// const path = editor.value.document.getPath(startBlock.key);
 	console.log('startblock', startBlock);
 	const tokens = markDownToInlineLexer(startBlock.text, []);
 
@@ -15,6 +15,10 @@ const onInlineLexer = ({ editor, event }, next) => {
 	console.group('INLINE LEXER');
 	// console.log(startText);
 	console.log('tokens=>', tokens);
+	const block = Block.create('paragraph');
+	editor.insertBlock(block);
+	const path = editor.value.document.getPath(block.key);
+
 	tokens.forEach((token, index) => {
 		console.log(token);
 		editor.insertNodeByPath(
@@ -28,7 +32,7 @@ const onInlineLexer = ({ editor, event }, next) => {
 	});
 
 	// console.log(startBlock.text, startBlock.nodes.last());
-	editor.removeNodeByKey(startBlock.nodes.last().key);
+	editor.replaceNodeByKey(startBlock.key,);
 
 	console.groupEnd('INLINE LEXER');
 
