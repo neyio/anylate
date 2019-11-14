@@ -95,7 +95,7 @@ export default options => ({
 		return <Editor editor={editor}>{children}</Editor>;
 	},
 	renderMark: (props, editor, next) => {
-		const { children, mark, attributes } = props;
+		const { children, mark, ...attributes } = props;
 		switch (mark.type) {
 			case 'bold':
 				return <strong {...attributes}>{children}</strong>;
@@ -105,6 +105,8 @@ export default options => ({
 				return <em {...attributes}>{children}</em>;
 			case 'underlined':
 				return <u {...attributes}>{children}</u>;
+			case 'deleted':
+				return <del {...attributes}>{children}</del>;
 			default:
 				return next();
 		}

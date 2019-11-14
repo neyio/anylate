@@ -18,10 +18,7 @@
         }]
       }, {
         "object": "block",
-        "type": "heading",
-        "data": {
-          "depth": 2
-        },
+        "type": "heading1",
         "nodes": [{
           "object": "text",
           "text": "AM & Neyio & YuSunshine 's Simplely Easy Editor. Design By Jervine & Kevin."
@@ -31,10 +28,7 @@
         "type": "hr"
       }, {
         "object": "block",
-        "type": "heading",
-        "data": {
-          "depth": 1
-        },
+        "type": "heading1",
         "nodes": [{
           "object": "text",
           "text": "This is a Heading Depth 1 ."
@@ -42,10 +36,7 @@
       },
       {
         "object": "block",
-        "type": "heading",
-        "data": {
-          "depth": 2
-        },
+        "type": "heading2",
         "nodes": [{
           "object": "text",
           "text": "This is a Heading Depth 2 ."
@@ -167,7 +158,7 @@
       },
       {
         "object": "block",
-        "type": "numbered-list",
+        "type": "ordered-list",
         "nodes": [{
           "object": "block",
           "type": "list-item",
@@ -187,7 +178,7 @@
           "type": "list-item",
           "nodes": [{
             "object": "block",
-            "type": "numbered-list",
+            "type": "ordered-list",
             "nodes": [{
               "object": "block",
               "type": "list-item",
@@ -262,23 +253,23 @@
         }]
       }, {
         "object": "block",
-        "type": "bulleted-list",
+        "type": "todo-list",
         "nodes": [{
-          "type": "check-list-item",
+          "type": "list-item",
           "object": "block",
           "data": {
             "checked": true
           },
           "nodes": [{
             "object": "text",
-            "text": "it's check-list-item 11111"
+            "text": "it's list-item 11111"
           }]
         }, {
-          "type": "check-list-item",
+          "type": "list-item",
           "object": "block",
           "nodes": [{
             "object": "text",
-            "text": "it's check-list-item 2222"
+            "text": "it's list-item 2222"
           }]
         }]
       }
