@@ -46,7 +46,7 @@ const HoverMenu = ({ editor, visible }) => {
 			<Button editor={editor} type="underlined" icon="icon-editor-underline" />
 			<Button editor={editor} type="code" icon="icon-code" />
 			<Button editor={editor} type="clean" icon="icon-editor-clean" />
-			|
+			<span className={css`margin-left: 15px;`}>|</span>
 			{ifHasLinks(editor) ? (
 				<Button editor={editor} type="unlink" icon="icon-editor-unlink" />
 			) : (
