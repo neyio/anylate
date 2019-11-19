@@ -10,18 +10,13 @@ export default function onDash(ev, editor, next) {
 
 	if (chars === '--') {
 		ev.preventDefault();
-		return editor
+		editor
 			.moveFocusToStartOfNode(startBlock)
 			.delete()
-			.setBlocks(
-				{
-					type: 'horizontal-rule',
-					isVoid: true
-				},
-				{ normalize: false }
-			)
+			.setBlocks('horizontal-rule')
 			.insertBlock('paragraph')
-			.moveToStart();
+			.focus();
+		return true;
 	}
 
 	return next();
