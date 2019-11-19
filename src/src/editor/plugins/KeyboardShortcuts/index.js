@@ -1,9 +1,6 @@
-import { isModKey } from "../../utils";
+import { isModKey } from "./utils";
 
 const toggleMark = (editor, type, next) => {
-  // const { value } = editor;
-  // don't allow formatting of main document title
-  // if (value.startBlock.type === "heading1") return next();
   editor.removeMark("code").toggleMark(type);
 };
 

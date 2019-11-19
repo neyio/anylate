@@ -9,10 +9,14 @@ export const onEnterInblockQuote = (startBlock, { editor, event }) => {
       .unwrapBlock("block-quote")
       .insertBlock("paragraph");
     return true;
+  } else if (startBlock.text === "") {
+    editor.unwrapBlock("block-quote").setBlocks("paragraph");
+  } else {
+    console.log("what?");
+    event.preventDefault();
+    editor.insertText("\n");
+    return true;
   }
-  event.preventDefault();
-  editor.insertText("\n");
-  return true;
 };
 
 export const insertBlockQuote = (startBlock, { editor, event }) => {

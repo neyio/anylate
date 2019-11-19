@@ -1,12 +1,11 @@
-import { isModKey } from "../../utils";
+import { isModKey } from "./utils";
 import onEnterHandler from "./onEnter";
-import onTabHandler from "./onTab";
 import onBackspaceHandler from "./onBackspace";
+import onDash from "./onDash";
 
 export default function KeyboardBehavior(options = {}) {
   const onEnter = options.onEnter || onEnterHandler;
-  const onTab = options.onEnter || onTabHandler;
-  const onBackspace = options.onEnter || onBackspaceHandler;
+  const onBackspace = options.onBackspace || onBackspaceHandler;
 
   return {
     onKeyDown(e, editor, next) {
@@ -14,10 +13,10 @@ export default function KeyboardBehavior(options = {}) {
       switch (e.key) {
         case "Enter":
           return onEnter(e, editor, next);
-        case "Tab":
-          return onTab(e, editor, next);
         case "Backspace":
           return onBackspace(e, editor, next);
+        case "-":
+          return onDash(e, editor, next);
         default:
           return next();
       }

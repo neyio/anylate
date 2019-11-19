@@ -6,7 +6,7 @@ import initialValueAsJson from "./value.json";
 import plugins from "./plugins";
 import renderBlock from "./renderBlock";
 import renderMark from "./renderMark";
-
+import schema from "./schema";
 const initialValue = Value.fromJSON(initialValueAsJson);
 
 const AnySlate = props => {
@@ -14,6 +14,7 @@ const AnySlate = props => {
     <div className="markdown-section">
       <Editor
         style={{ position: "relative" }}
+        schema={schema}
         plugins={plugins}
         renderBlock={renderBlock}
         renderMark={renderMark}

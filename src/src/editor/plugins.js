@@ -7,5 +7,8 @@
 // import createPlugin from '@zhujianshi/slate-code-base';
 // import '@zhujianshi/slate-code-base/lib/index.css';
 // export default [createPlugin(), WrapperBlock(), MarkdownSupport(), EmbedComponent(), LastChildAvailable(), HoverMenu()];
-import MarkDownShortcuts from "./plugins/MarkDownShortcuts";
-export default [MarkDownShortcuts()];
+import MarkDownShortcuts from './plugins/MarkDownShortcuts';
+import KeyboardShortcuts from './plugins/KeyboardShortcuts';
+import OnKeyDown from './plugins/OnKeyDown';
+import MarkDownPaste from './plugins/Paste/MarkDownPaste';
+export default [ MarkDownShortcuts(), KeyboardShortcuts(), OnKeyDown(), MarkDownPaste() ];

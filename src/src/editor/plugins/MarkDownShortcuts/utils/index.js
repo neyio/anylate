@@ -13,8 +13,8 @@ export const getType = chars => {
     case "*":
     case "+":
     case "1.":
-    case "[ ]":
-    case "[x]":
+    case "- [ ]":
+    case "- [x]":
       return "list-item";
     case ">":
       return "block-quote";
@@ -42,6 +42,7 @@ export const addMark = (startBlock, editor) => {
     let result = null;
 
     while ((result = reg.exec(startBlock.text)) !== null) {
+      console.log(inlineTags);
       inlineTags = [result.index, result.index + result[0].length];
     }
 

@@ -1,4 +1,4 @@
-export default function onDash(ev, editor, next) {
+export default function onDash(e, editor, next) {
   const { value } = editor;
   const { startBlock, selection } = value;
   if (selection.isExpanded) return next();
@@ -11,7 +11,7 @@ export default function onDash(ev, editor, next) {
     .replace(/\s*/g, "");
 
   if (chars === "--") {
-    ev.preventDefault();
+    e.preventDefault();
     return editor
       .moveFocusToStartOfNode(startBlock)
       .delete()
@@ -23,7 +23,7 @@ export default function onDash(ev, editor, next) {
         { normalize: false }
       )
       .insertBlock("paragraph")
-      .moveToStart();
+      .focus();
   }
 
   return next();
