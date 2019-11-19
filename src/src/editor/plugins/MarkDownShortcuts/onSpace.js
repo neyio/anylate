@@ -85,29 +85,37 @@ export default function onSpace(event, editor, next) {
 
 	console.log('inlineProcess');
 
-	const firstText = startBlock.getFirstText();
-	for (const key of inlineShortcuts) {
-		
-		let { mark, shortcut, reg } = key;
-		const text = startBlock.text;
-		let inlineTags = [];
-		let result = reg.exec(text);
-		// while ((result = reg.exec(text)) !== null) {
-		if (result) {
-			inlineTags = [ result.index, result.index + result[0].length ];
-			const [ start, end ] = inlineTags;
-			console.log(inlineTags, firstText.text);
-			event.preventDefault();
-			console.log(shortcut, editor.value.startBlock.text, firstText.text);
-			editor
-				.removeText(startBlock.key, end - shortcut.length, shortcut.length)
-				.removeText(startBlock.key, start, shortcut.length)
-				.moveAnchorTo(start, end - shortcut.length)
-				.addMark(mark)
-				.moveToEnd()
-				.removeMark(mark);
-		}
-	}
+	editor.withoutNormalizing((editor) => {
+		const list = startBlock.getTexts();
+		list.forEach((firstText) => {
+			for (const key of inlineShortcuts) {
+				let { mark, shortcut, reg } = key;
+				const text = firstText.text;
+				let inlineTags = [];
+				let result = reg.exec(text);
+				console.log('result before', result);
+				// while ((result = reg.exec(text)) !== null) {
+				if (result) {
+					console.log('result', result);
+					inlineTags = [ result.index, result.index + result[0].length ];
+					const [ start, end ] = inlineTags;
+					console.log([ start, end ], firstText.text);
+
+					console.log(end - shortcut.length, shortcut.length);
+					console.log(start, shortcut.length);
+
+					editor
+						.removeTextByKey(firstText.key, end - shortcut.length, shortcut.length)
+						.removeTextByKey(firstText.key, start, shortcut.length)
+						.moveAnchorTo(start, end - shortcut.length)
+						.addMark(mark)
+						.moveToEnd()
+						.removeMark(mark);
+					break;
+				}
+			}
+		});
+	});
 	return next();
 
 	// return addMark(startBlock, editor) || next();
