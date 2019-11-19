@@ -11,4 +11,12 @@ import MarkDownShortcuts from './plugins/MarkDownShortcuts';
 import KeyboardShortcuts from './plugins/KeyboardShortcuts';
 import OnKeyDown from './plugins/OnKeyDown';
 import MarkDownPaste from './plugins/Paste/MarkDownPaste';
-export default [ MarkDownShortcuts(), KeyboardShortcuts(), OnKeyDown(), MarkDownPaste() ];
+import HOC from './plugins/HOC/index';
+import HoverMenu from './plugins/HOC/HoverMenu';
+export default [
+	MarkDownShortcuts(),
+	KeyboardShortcuts(),
+	OnKeyDown(),
+	MarkDownPaste(),
+	HOC({ plugins: [ HoverMenu ] })
+];

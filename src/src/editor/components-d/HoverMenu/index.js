@@ -8,21 +8,21 @@ import { Tooltip } from 'antd';
 // <MarkButton editor={editor} type="underlined" icon="U" />
 // <MarkButton editor={editor} type="code" icon="<>" />
 const tips = {
-	bold: 'Ctrl + b',
-	italic: 'Ctrl + i',
-	underlined: 'Ctrl + l',
+	bold: 'Ctrl + B',
+	italic: 'Ctrl + I',
+	underlined: 'Ctrl + L',
 	code: 'Ctrl + `'
 };
 
 const MarkButton = ({ editor, type, icon }) => {
 	const { value } = editor;
-	const isActive = value.activeMarks.some(mark => mark.type === type);
+	const isActive = value.activeMarks.some((mark) => mark.type === type);
 	return (
 		<Tooltip placement="bottom" title={tips[type]}>
 			<Button
 				reversed
 				active={isActive}
-				onMouseDown={event => {
+				onMouseDown={(event) => {
 					event.preventDefault();
 					editor.toggleMark(type);
 				}}
@@ -89,7 +89,7 @@ const Editor = ({ children, editor }) => {
 	);
 };
 
-export default options => ({
+export default (options) => ({
 	renderEditor: (props, editor, next) => {
 		const children = next();
 		return <Editor editor={editor}>{children}</Editor>;

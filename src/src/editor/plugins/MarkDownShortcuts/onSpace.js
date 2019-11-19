@@ -16,6 +16,7 @@ export default function onSpace(event, editor, next) {
 	const type = getType(chars); //计算类型
 	const blockType = startBlock.type;
 
+	console.log(startBlock);
 	//TODO:table 中是否支持md？
 	//判断类型是否符合处理类型的markdown组件
 	if (type) {
