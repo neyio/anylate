@@ -92,7 +92,8 @@ const schema = {
 					{ type: 'table' },
 					{ type: 'link' },
 					{ type: 'math' },
-					{ type: 'code' }
+					{ type: 'code' },
+					{ type: 'code_line' }
 				],
 				min: 1
 			}
