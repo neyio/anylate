@@ -56,7 +56,7 @@ export default function renderBlock(props, editor, next) {
 		// case "code-line":
 		//   return <pre {...attributes}>{props.children}</pre>;
 		case 'image':
-			return <Image {...props} />;
+			return <Image {...attributes} isSelected={props.isSelected} {...props} />;
 		case 'link':
 			return <Link {...props} />;
 		// case "hashtag":

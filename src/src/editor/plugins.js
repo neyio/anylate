@@ -13,10 +13,24 @@ import OnKeyDown from './plugins/OnKeyDown';
 import MarkDownPaste from './plugins/Paste/MarkDownPaste';
 import HOC from './plugins/HOC/index';
 import HoverMenu from './plugins/HOC/HoverMenu';
+import Image from './plugins/Image';
 export default [
 	MarkDownShortcuts(),
 	KeyboardShortcuts(),
 	OnKeyDown(),
 	MarkDownPaste(),
-	HOC({ plugins: [ HoverMenu ] })
+	HOC({ plugins: [ HoverMenu ] }),
+	Image({
+		extensions: [ 'png', 'jpeg', 'jpg' ],
+		insertImage: (editor, src) => {
+			editor.insertImageFile(src);
+			// console.log(src);
+			// editor.insertBlock({
+			// 	type: 'image',
+			// 	isVoid: true,
+			// 	data: { src, alt: 'none', loading: false }
+			// });
+			// console.log(editor.value);
+		}
+	})
 ];

@@ -2,7 +2,6 @@ import React from 'react';
 import { cx, css } from 'emotion';
 
 const Icon = React.forwardRef(({ icon, ...props }, ref) => {
-	console.log(icon);
 	return (
 		<span
 			{...props}

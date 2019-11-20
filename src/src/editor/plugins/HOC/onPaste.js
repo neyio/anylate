@@ -1,5 +1,6 @@
 import { getEventTransfer } from 'slate-react';
 import isUrl from 'is-url';
+
 import { wrapLink, unwrapLink } from './link';
 export default function onPaste(event, editor, next) {
 	if (editor.value.selection.isCollapsed) return next();
