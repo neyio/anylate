@@ -7,7 +7,8 @@ import { ifHasLinks } from './link';
 
 const HoverMenu = ({ editor, visible }) => {
 	const ref = useRef(null);
-	const root = window.document.getElementById('root') || window.document.getElementById('app');
+	const root =
+		window.document.getElementById('root') || window.document.getElementById('app') || window.document.body;
 	const menu = ref.current;
 	if (menu) {
 		const { value } = editor;

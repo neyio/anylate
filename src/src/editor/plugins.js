@@ -14,7 +14,10 @@ import MarkDownPaste from './plugins/Paste/MarkDownPaste';
 import HOC from './plugins/HOC/index';
 import HoverMenu from './plugins/HOC/HoverMenu';
 import Image from './plugins/Image';
+import Embed from './plugins/Embed';
+import SideIcon from './plugins/Toolbar/SideIcon';
 export default [
+	SideIcon(),
 	MarkDownShortcuts(),
 	KeyboardShortcuts(),
 	OnKeyDown(),
@@ -32,5 +35,6 @@ export default [
 			// });
 			// console.log(editor.value);
 		}
-	})
+	}),
+	Embed()
 ];
