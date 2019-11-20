@@ -1,5 +1,5 @@
 import React from 'react';
-import renderInline from './renderInline';
+
 import onPaste from './onPaste';
 const Editor = ({ children, editor, hocs, readOnly }) => {
 	return (
@@ -26,7 +26,6 @@ export default (options = {}) => {
 					</Editor>
 				);
 			},
-			renderInline,
 			onPaste
 		};
 	} else
@@ -35,7 +34,6 @@ export default (options = {}) => {
 				const children = next();
 				return <React.Fragment>{children}</React.Fragment>;
 			},
-			renderInline,
 			onPaste
 		};
 };

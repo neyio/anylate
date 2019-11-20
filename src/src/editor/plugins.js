@@ -27,13 +27,6 @@ export default [
 		extensions: [ 'png', 'jpeg', 'jpg' ],
 		insertImage: (editor, src) => {
 			editor.insertImageFile(src);
-			// console.log(src);
-			// editor.insertBlock({
-			// 	type: 'image',
-			// 	isVoid: true,
-			// 	data: { src, alt: 'none', loading: false }
-			// });
-			// console.log(editor.value);
 		}
 	}),
 	Embed()
