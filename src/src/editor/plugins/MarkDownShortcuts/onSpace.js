@@ -90,21 +90,30 @@ export default function onSpace(event, editor, next) {
 		const list = startBlock.getTexts();
 		list.forEach((firstText) => {
 			for (const key of inlineShortcuts) {
-				let { mark, shortcut, reg } = key;
+				let { mark, shortcut, reg, type } = key;
+
 				const text = firstText.text;
 				let inlineTags = [];
 				let result = reg.exec(text);
-				console.log('result before', result);
-				// while ((result = reg.exec(text)) !== null) {
 				if (result) {
-					console.log('result', result);
 					inlineTags = [ result.index, result.index + result[0].length ];
 					const [ start, end ] = inlineTags;
-					console.log([ start, end ], firstText.text);
-
-					console.log(end - shortcut.length, shortcut.length);
-					console.log(start, shortcut.length);
-
+					if (type === 'inline') {
+						event.preventDefault();
+						console.log('inline', [ start, end ], result);
+						const [ , label, uri ] = /\[(\S+)\]\((\S+)\)/.exec(result[0]);
+						editor
+							.removeTextByKey(firstText.key, end - uri.length - 3, uri.length + 3)
+							.removeTextByKey(firstText.key, start, 1)
+							.moveStartTo(firstText.key, start)
+							.moveEndTo(firstText.key, start + label.length)
+							.wrapInline({
+								type: 'link',
+								data: { href: uri }
+							})
+							.moveToEnd();
+						break;
+					}
 					editor
 						.removeTextByKey(firstText.key, end - shortcut.length, shortcut.length)
 						.removeTextByKey(firstText.key, start, shortcut.length)
@@ -118,6 +127,4 @@ export default function onSpace(event, editor, next) {
 		});
 	});
 	return next();
-
-	// return addMark(startBlock, editor) || next();
 }
