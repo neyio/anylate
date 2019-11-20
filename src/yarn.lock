@@ -1614,6 +1614,15 @@
     is-hotkey "^0.1.6"
     prismjs "^1.17.1"
 
+"@zhujianshi/slate-code-math@^0.0.1-alpha.4":
+  version "0.0.1-alpha.4"
+  resolved "https://registry.npm.taobao.org/@zhujianshi/slate-code-math/download/@zhujianshi/slate-code-math-0.0.1-alpha.4.tgz#875be2ed1a180ecd7cffd9dc642b1ccda94585d4"
+  integrity sha1-h1vi7RoYDs18/9ncZCsczalFhdQ=
+  dependencies:
+    "@zhujianshi/slate-code-base" "^0.0.1-alpha.4"
+    is-hotkey "^0.1.6"
+    katex "^0.11.1"
+
 abab@^2.0.0:
   version "2.0.2"
   resolved "https://registry.npm.taobao.org/abab/download/abab-2.0.2.tgz?cache=0&sync_timestamp=1569365531381&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fabab%2Fdownload%2Fabab-2.0.2.tgz#a2fba1b122c69a85caa02d10f9270c7219709a9d"
@@ -2850,7 +2859,7 @@ commander@2.17.x:
   resolved "https://registry.npm.taobao.org/commander/download/commander-2.17.1.tgz?cache=0&sync_timestamp=1572603184853&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcommander%2Fdownload%2Fcommander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
   integrity sha1-vXerfebelCBc6sxy8XFtKfIKd78=
 
-commander@^2.11.0, commander@^2.20.0, commander@~2.20.3:
+commander@^2.11.0, commander@^2.19.0, commander@^2.20.0, commander@~2.20.3:
   version "2.20.3"
   resolved "https://registry.npm.taobao.org/commander/download/commander-2.20.3.tgz?cache=0&sync_timestamp=1572603184853&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fcommander%2Fdownload%2Fcommander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha1-/UhehMA+tIgcIHIrpIA16FMa6zM=
@@ -6394,6 +6403,13 @@ jsx-ast-utils@^2.1.0, jsx-ast-utils@^2.2.1:
   dependencies:
     array-includes "^3.0.3"
     object.assign "^4.1.0"
+
+katex@^0.11.1:
+  version "0.11.1"
+  resolved "https://registry.npm.taobao.org/katex/download/katex-0.11.1.tgz#df30ca40c565c9df01a466a00d53e079e84ffaa2"
+  integrity sha1-3zDKQMVlyd8BpGagDVPgeehP+qI=
+  dependencies:
+    commander "^2.19.0"
 
 killable@^1.0.0:
   version "1.0.1"

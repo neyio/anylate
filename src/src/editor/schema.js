@@ -1,8 +1,5 @@
 import { Block } from 'slate';
 const schema = {
-	code: {
-		marks: [ '' ]
-	},
 	blocks: {
 		heading1: {
 			nodes: [ { match: { object: 'text' } } ]
@@ -85,7 +82,7 @@ const schema = {
 					{ type: 'heading5' },
 					{ type: 'heading6' },
 					{ type: 'block-quote' },
-					{ type: 'code' },
+
 					{ type: 'horizontal-rule' },
 					{ type: 'image' },
 					{ type: 'bulleted-list' },
@@ -93,7 +90,9 @@ const schema = {
 					{ type: 'todo-list' },
 					{ type: 'block-toolbar' },
 					{ type: 'table' },
-					{ type: 'link' }
+					{ type: 'link' },
+					{ type: 'math' },
+					{ type: 'code' }
 				],
 				min: 1
 			}

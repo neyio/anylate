@@ -1,12 +1,7 @@
-// import EmbedComponent from './components-d/EmbedComponent';
-// import WrapperBlock from './components-d/WrapperBlock';
-// import LastChildAvailable from './components-d/LastChildAvailable';
-// import HoverMenu from './components-d/HoverMenu/index';
-
-// import MarkdownSupport from './components-d/Markdown/MarkdownSupport';
-// import createPlugin from '@zhujianshi/slate-code-base';
-// import '@zhujianshi/slate-code-base/lib/index.css';
-// export default [createPlugin(), WrapperBlock(), MarkdownSupport(), EmbedComponent(), LastChildAvailable(), HoverMenu()];
+import Code from '@zhujianshi/slate-code-base';
+import Math from '@zhujianshi/slate-code-math';
+import '@zhujianshi/slate-code-base/lib/index.css';
+import '@zhujianshi/slate-code-math/lib/index.css';
 import MarkDownShortcuts from './plugins/MarkDownShortcuts';
 import KeyboardShortcuts from './plugins/KeyboardShortcuts';
 import OnKeyDown from './plugins/OnKeyDown';
@@ -17,6 +12,8 @@ import Image from './plugins/Image';
 import Embed from './plugins/Embed';
 import SideIcon from './plugins/Toolbar/SideIcon';
 export default [
+	Math(),
+	Code(),
 	SideIcon(),
 	MarkDownShortcuts(),
 	KeyboardShortcuts(),

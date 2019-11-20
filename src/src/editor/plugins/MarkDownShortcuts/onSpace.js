@@ -28,6 +28,10 @@ export default function onSpace(event, editor, next) {
 			{ reg: /^\s*-\s*\[x{1}\]/, type: 'finished' },
 			{ reg: /^\* +/, type: 'bulleted' }
 		];
+		if (type.match(/heading/) || type.match('paragraph')) {
+			// 防止空格
+			event.preventDefault();
+		}
 
 		if (startBlock.type.match(/heading/) && !type.match(/heading/)) {
 			return next();

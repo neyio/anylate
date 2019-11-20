@@ -12,18 +12,17 @@ const initialValue = Value.fromJSON(initialValueAsJson);
 
 const AnySlate = (props) => {
 	return (
-		<div className="markdown-section">
-			<Editor
-				style={{ position: 'relative' }}
-				schema={schema}
-				plugins={plugins}
-				renderBlock={renderBlock}
-				renderMark={renderMark}
-				renderInline={renderInline}
-				placeholder="Enter some text..."
-				defaultValue={initialValue}
-			/>
-		</div>
+		<Editor
+			className="markdown-section"
+			style={{ position: 'relative' }}
+			schema={schema}
+			plugins={plugins}
+			renderBlock={renderBlock}
+			renderMark={renderMark}
+			renderInline={renderInline}
+			placeholder="Enter some text..."
+			defaultValue={initialValue}
+		/>
 	);
 };
 
