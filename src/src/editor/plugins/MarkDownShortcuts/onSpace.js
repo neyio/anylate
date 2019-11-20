@@ -90,17 +90,15 @@ export default function onSpace(event, editor, next) {
 		const list = startBlock.getTexts();
 		list.forEach((firstText) => {
 			for (const key of inlineShortcuts) {
-				let { mark, shortcut, reg, type } = key;
-
+				let { mark, shortcut, reg, type, wrap } = key;
 				const text = firstText.text;
 				let inlineTags = [];
 				let result = reg.exec(text);
 				if (result) {
 					inlineTags = [ result.index, result.index + result[0].length ];
 					const [ start, end ] = inlineTags;
-					if (type === 'inline') {
+					if (type === 'inline' && wrap === 'link') {
 						event.preventDefault();
-						console.log('inline', [ start, end ], result);
 						const [ , label, uri ] = /\[(\S+)\]\((\S+)\)/.exec(result[0]);
 						editor
 							.removeTextByKey(firstText.key, end - uri.length - 3, uri.length + 3)
