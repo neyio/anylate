@@ -1,7 +1,9 @@
 import Code from '@zhujianshi/slate-code-base';
 import Math from '@zhujianshi/slate-code-math';
+import Table from '@zhujianshi/slate-table';
 import '@zhujianshi/slate-code-base/lib/index.css';
 import '@zhujianshi/slate-code-math/lib/index.css';
+import '@zhujianshi/slate-table/lib/index.css';
 import MarkDownShortcuts from './plugins/MarkDownShortcuts';
 import KeyboardShortcuts from './plugins/KeyboardShortcuts';
 import OnKeyDown from './plugins/OnKeyDown';
@@ -14,6 +16,7 @@ import SideIcon from './plugins/Toolbar/SideIcon';
 export default [
 	Math(),
 	Code(),
+	Table(),
 	SideIcon(),
 	MarkDownShortcuts(),
 	KeyboardShortcuts(),
