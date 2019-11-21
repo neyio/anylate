@@ -19,7 +19,7 @@ export default [
 	HOC({ plugins: [ HoverMenu ] }),
 	Math(),
 	Code(),
-	// SideIcon(),
+	SideIcon(),
 	MarkDownShortcuts(),
 	KeyboardShortcuts(),
 	OnKeyDown(),

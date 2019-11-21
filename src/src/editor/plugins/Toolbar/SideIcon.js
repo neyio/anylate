@@ -18,7 +18,7 @@ const WrapperBlock = ({ visible, wrapper, children }) => {
 const DemoWrapper2 = (props) => {
 	return (
 		<div contentEditable={false} style={{ position: 'absolute', left: '-2rem', top: '2px', fontSize: '1em' }}>
-			this is Menu
+			<span className="iconfont icon-row-add" />
 		</div>
 	);
 };

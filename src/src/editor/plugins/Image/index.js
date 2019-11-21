@@ -88,7 +88,7 @@ function DropOrPasteImages(options = {}) {
 				return onInsertText(event, change, next, transfer, range);
 			case 'fragment':
 				console.log('fragment');
-				if (transfer.text) return next();
+				if (transfer.text && !transfer.text.match(/\.svg$/)) return next();
 				else return;
 			default:
 				return next();
