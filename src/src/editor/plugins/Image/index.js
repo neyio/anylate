@@ -86,6 +86,10 @@ function DropOrPasteImages(options = {}) {
 				return onInsertHtml(event, change, next, transfer, range);
 			case 'text':
 				return onInsertText(event, change, next, transfer, range);
+			case 'fragment':
+				console.log('fragment');
+				if (transfer.text) return next();
+				else return;
 			default:
 				return next();
 		}

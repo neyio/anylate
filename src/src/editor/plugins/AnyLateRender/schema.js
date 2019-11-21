@@ -82,7 +82,6 @@ const schema = {
 					{ type: 'heading5' },
 					{ type: 'heading6' },
 					{ type: 'block-quote' },
-
 					{ type: 'horizontal-rule' },
 					{ type: 'image' },
 					{ type: 'bulleted-list' },

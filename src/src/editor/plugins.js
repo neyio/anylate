@@ -12,22 +12,28 @@ import HOC from './plugins/HOC/index';
 import HoverMenu from './plugins/HOC/HoverMenu';
 import Image from './plugins/Image';
 import Embed from './plugins/Embed';
+import AnyLateRender from './plugins/AnyLateRender';
 import SideIcon from './plugins/Toolbar/SideIcon';
+import Draggable from './plugins/Draggable';
+
 export default [
+	Draggable(),
+	HOC({ plugins: [ HoverMenu ] }),
 	Math(),
 	Code(),
 	Table(),
 	SideIcon(),
+	// SideIcon(),
 	MarkDownShortcuts(),
 	KeyboardShortcuts(),
 	OnKeyDown(),
 	MarkDownPaste(),
-	HOC({ plugins: [ HoverMenu ] }),
 	Image({
 		extensions: [ 'png', 'jpeg', 'jpg' ],
 		insertImage: (editor, src) => {
 			editor.insertImageFile(src);
 		}
 	}),
-	Embed()
+	Embed(),
+	AnyLateRender()
 ];
