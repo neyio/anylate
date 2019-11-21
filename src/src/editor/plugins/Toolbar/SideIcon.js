@@ -29,14 +29,15 @@ const DemoWrapper2 = (props) => {
  */
 export default (options = {}) => {
 	const { Wrapper = DemoWrapper2 } = options;
-	console.log('renderBlock');
 	return {
 		renderBlock: (props, editor, next) => {
 			const children = next();
-			const { isFocused, node: { type } } = props;
+			const { isFocused, node } = props;
 			const { isExpanded } = editor.value.selection; //选区未展开
-			console.log('renderBlock');
-			if (type !== 'list-item')
+			const { document } = editor.value;
+			const { type } = node;
+			// console.log('includes', document.nodes.includes(node)); 判断是否为直接根相关枝干节点
+			if (type !== 'list-item' && document.nodes.includes(node))
 				return (
 					<WrapperBlock visible={isFocused && !isExpanded} wrapper={<Wrapper editor={editor} />}>
 						{children}

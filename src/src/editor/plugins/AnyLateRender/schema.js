@@ -82,7 +82,6 @@ const schema = {
 					{ type: 'heading5' },
 					{ type: 'heading6' },
 					{ type: 'block-quote' },
-
 					{ type: 'horizontal-rule' },
 					{ type: 'image' },
 					{ type: 'bulleted-list' },
@@ -92,8 +91,7 @@ const schema = {
 					{ type: 'table' },
 					{ type: 'link' },
 					{ type: 'math' },
-					{ type: 'code' },
-					{ type: 'code_line' }
+					{ type: 'code' }
 				],
 				min: 1
 			}

@@ -1,19 +1,11 @@
-import * as React from 'react';
-// import { Editor } from 'slate';
-// import Code from "./components/Code";
-// import BlockToolbar from './components/Toolbar/BlockToolbar';
-import Hr from './components/Hr';
-
-import Image from './components/Image';
-import Link from './components/Link';
-// import Hashtag from "./components-d/Hashtag";
-// import Table from "./plugins/MarkDown/components/Table";
-// import Cell from "./plugins/MarkDown/components/Table/Cell";
-// import Row from "./plugins/MarkDown/components/Table/Row";
-import ListItem from './components/ListItem';
-import TodoList from './components/TodoList';
-import { Heading1, Heading2, Heading3, Heading4, Heading5, Heading6 } from './components/Heading';
-import Paragraph from './components/Paragraph';
+import React from 'react';
+import Hr from '../../components/Hr';
+import Image from '../../components/Image';
+import Link from '../../components/Link';
+import ListItem from '../../components/ListItem';
+import TodoList from '../../components/TodoList';
+import { Heading1, Heading2, Heading3, Heading4, Heading5, Heading6 } from '../../components/Heading';
+import Paragraph from '../../components/Paragraph';
 
 export default function renderBlock(props, editor, next) {
 	const { attributes } = props;
@@ -31,8 +23,6 @@ export default function renderBlock(props, editor, next) {
 					{props.children}
 				</Paragraph>
 			);
-		// case 'block-toolbar':
-		// 	return <BlockToolbar {...props} />;
 		case 'block-quote':
 			return <blockquote {...attributes}>{props.children}</blockquote>;
 		case 'bulleted-list':
@@ -41,26 +31,14 @@ export default function renderBlock(props, editor, next) {
 			return <ol {...attributes}>{props.children}</ol>;
 		case 'todo-list':
 			return <TodoList {...attributes}>{props.children}</TodoList>;
-		// case "table":
-		//   return <Table {...props}>{props.children}</Table>;
-		// case "table-row":
-		//   return <Row {...props} />;
-		// case "table-cell":
-		//   return <Cell {...props} />;
 		case 'list-item':
 			return <ListItem {...props} />;
 		case 'horizontal-rule':
 			return <Hr {...attributes} isSelected={props.isSelected} />;
-		// case "code":
-		//   return <Code {...props} />;
-		// case "code-line":
-		//   return <pre {...attributes}>{props.children}</pre>;
 		case 'image':
 			return <Image {...attributes} isSelected={props.isSelected} {...props} />;
 		case 'link':
 			return <Link {...props} />;
-		// case "hashtag":
-		//   return <Hashtag {...props} />;
 		case 'heading1':
 			return <Heading1 {...attributes}>{props.children}</Heading1>;
 		case 'heading2':
