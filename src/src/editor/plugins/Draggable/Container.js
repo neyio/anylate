@@ -24,7 +24,6 @@ const Container = (props) => {
 			console.log('clean container');
 		};
 	}, []);
-	console.log('TCL: Container -> state', state);
 	return (
 		<div className="container" contentEditable={false} style={{ overflow: 'hidden' }}>
 			<Context.Provider value={{ state, dispatch }}>

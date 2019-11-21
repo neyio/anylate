@@ -101,6 +101,21 @@ export default function onSpace(event, editor, next) {
 				if (result) {
 					inlineTags = [ result.index, result.index + result[0].length ];
 					const [ start, end ] = inlineTags;
+					if (type === 'block' && wrap === 'image') {
+						event.preventDefault();
+						const [ , label, uri ] = /\[(\S*)\]\((\S+)\)/.exec(result[0]);
+						editor
+							.removeTextByKey(firstText.key, start, result[0].length)
+							.splitBlock()
+							.setBlocks({
+								type: 'image',
+								data: { src: uri, alt: label }
+							})
+							.moveForward(1);
+						// .moveToEndOf()
+						// .moveToEnd();
+						break;
+					}
 					if (type === 'inline' && wrap === 'link') {
 						event.preventDefault();
 						const [ , label, uri ] = /\[(\S+)\]\((\S+)\)/.exec(result[0]);

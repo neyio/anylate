@@ -1,7 +1,6 @@
 import { getEventTransfer } from 'slate-react';
 import isUrl from 'is-url';
-
-import { wrapLink, unwrapLink } from './link';
+import { wrapLink, unwrapLink, ifHasLinks } from './link';
 export default function onPaste(event, editor, next) {
 	if (editor.value.selection.isCollapsed) return next();
 
@@ -10,7 +9,7 @@ export default function onPaste(event, editor, next) {
 	if (type !== 'text' && type !== 'html') return next();
 	if (!isUrl(text)) return next();
 
-	if (this.hasLinks()) {
+	if (ifHasLinks(editor)) {
 		editor.command(unwrapLink);
 	}
 

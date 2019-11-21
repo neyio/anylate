@@ -22,40 +22,51 @@ class Image extends React.Component {
 		editor.setNodeByKey(node.key, { data: { ...data, alt } });
 	};
 
-
-
 	render() {
-		const { node, isSelected, readOnly,editor } = this.props;
+		const { node, isSelected, readOnly, editor } = this.props;
 		// const isLoading = node.data.get('loading');
 		const caption = node.data.get('alt') || '';
 		const src = node.data.get('src');
 		const showCaption = !readOnly || caption;
 
 		return (
-			<>
-				<div contentEditable={false} style={{ margin:"1rem 0 ",padding:"1rem", border: isSelected ? '2px solid var(--theme-color, #42b983)' : '2px solid transparent' }}>
-          <img
-            contentEditable={false}
+			<React.Fragment>
+				<div
+					contentEditable={false}
+					style={{
+						margin: '1rem 0 ',
+						padding: '1rem',
+						border: isSelected ? '2px solid var(--theme-color, #42b983)' : '2px solid transparent'
+					}}
+				>
+					<img
+						contentEditable={false}
 						style={{
 							marginTop: '1rem',
 							marginBottom: '1rem',
-              maxWidth: '100%',
-              maxHeight:'200px'
+							maxWidth: '100%',
+							maxHeight: '200px'
 						}}
 						src={src}
-            alt={caption}
-            onClick={(e) => {
-              console.log(e)
-              editor.moveToRangeOfNode(node);
-            }}
+						alt={caption}
+						onClick={(e) => {
+							console.log(e);
+							editor.moveToRangeOfNode(node);
+						}}
 					/>
-
-					{showCaption &&
-					isSelected && (
-						<div style={{textAlign:'center'}} contentEditable={false}>
+					<div style={{ textAlign: 'center', minHeight: '19px' }} contentEditable={false}>
+						{showCaption &&
+						isSelected && (
 							<Caption
 								type="text"
-								style={{ outline: 'none', minWidth: '414px',textAlign:'center', border: '0', fontSize:'0.8rem',color:"#333" }}
+								style={{
+									outline: 'none',
+									minWidth: '414px',
+									textAlign: 'center',
+									border: '0',
+									fontSize: '0.8rem',
+									color: '#333'
+								}}
 								placeholder="可以在这里添加图片题注"
 								onKeyDown={this.handleKeyDown}
 								onChange={this.handleChange}
@@ -63,18 +74,16 @@ class Image extends React.Component {
 								defaultValue={caption}
 								contentEditable={false}
 								disabled={readOnly}
-								async
+								// autoFocus={isSelected}
+								// async
 							/>
-						</div>
-					)}
+						)}
+					</div>
 				</div>
-			</>
+			</React.Fragment>
 		);
 	}
 }
-
-
-
 
 const Caption = styled.input`
 	border: 0;

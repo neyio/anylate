@@ -63,6 +63,9 @@ export default function onEnter(event, editor, next) {
 	if (flow()) {
 		return;
 	}
-
+	//清除样式
+	[ 'bold', 'italic', 'deleted', 'underlined', 'code', 'inserted' ].forEach((mark) => {
+		editor.removeMark(mark);
+	});
 	return next();
 }

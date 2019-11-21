@@ -79,7 +79,7 @@ const Card = ({ id, children, dispatch, index, nodeKey, editor, state }) => {
 						left: -2px;
 						transform: rotate(90deg);
 						top: 0;
-						fontSize: 1rem;
+						fontSize: 1.5rem;
 						width: 1rem;
 						top: 0;
 						cursor: move;

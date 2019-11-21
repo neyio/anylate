@@ -6,6 +6,7 @@ export const inlineShortcuts = [
 	{ mark: 'code', shortcut: '`', reg: /`\S+`/ },
 	{ mark: 'inserted', shortcut: '++', reg: /\+\+\S+\+\+/ },
 	{ mark: 'deleted', shortcut: '~~', reg: /~~\S+~~/ },
+	{ wrap: 'image', type: 'block', reg: /!\[\S*]\(\S+\)/ },
 	{ wrap: 'link', type: 'inline', reg: /\[\S+\]\(\S+\)/ }
 ];
 
