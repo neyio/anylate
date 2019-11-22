@@ -6,6 +6,8 @@ export const chain = (...conditions) =>
   conditions.reduceRight((acc, condition) => condition(acc), noop);
 
 export const isModKey = event => {
+console.log("TCL: event", event)
+  
   const inIOS =
     typeof window !== "undefined" &&
     /Mac|iPad|iPod|iPhone/.test(window.navigator.platform);

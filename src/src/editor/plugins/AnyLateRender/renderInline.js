@@ -13,7 +13,6 @@ export default function renderInline(props, editor, next) {
 				</a>
 			);
 		}
-
 		default: {
 			return next();
 		}

@@ -38,6 +38,7 @@
     "identity-obj-proxy": "3.0.0",
     "immutable": "^4.0.0-rc.12",
     "is-data-uri": "^0.1.0",
+    "is-hotkey": "^0.1.6",
     "is-image": "^3.0.0",
     "is-url": "^1.2.4",
     "is-wsl": "^1.1.0",

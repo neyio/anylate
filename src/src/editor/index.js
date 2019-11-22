@@ -13,7 +13,7 @@ const AnySlate = (props) => {
 			className="markdown-section"
 			style={{ position: 'relative' }}
 			plugins={plugins}
-			placeholder="Enter some text..."
+			placeholder="Write the code , change the world..."
 			defaultValue={initialValue}
 		/>
 	);

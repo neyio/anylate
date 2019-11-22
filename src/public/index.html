@@ -128,7 +128,7 @@
 
     .markdown-section ol,
     .markdown-section ul {
-      padding-left: 12px;
+      padding-left: 16px;
     }
 
     .markdown-section ol,
@@ -138,7 +138,7 @@
 
     .markdown-section ol li,
     .markdown-section ul li {
-      padding-left: 1rem;
+      padding-left: 10px;
       font-size: 1rem;
     }
     .any-todo-item{
@@ -151,10 +151,10 @@
     }
 
     .markdown-section blockquote {
-      /* border-left: 4px solid var(--theme-color, #42b983); */
-      color: #999;
-      margin: 2rem 0;
-      padding: 1rem;
+      border-left: 4px solid var(--theme-color, #42b983);
+      color: #333;
+      margin: 0;
+      padding: 0.5rem 1rem;
       background-color: #f8f8f8;
       font-style: italic;
       font-size: 1rem;
@@ -196,13 +196,13 @@
       font-size: .8em;
       margin: 0 2px;
       /* padding: 3px 5px; */
-      white-space: pre-wrap
+      white-space: pre-wrap;
     }
 
     .markdown-section code,
     .markdown-section pre {
       background-color: #f8f8f8;
-      font-family: Roboto Mono, Monaco, courier, monospace
+      font-family: Roboto Mono, Monaco, courier, monospace;
     }
 
     .markdown-section pre {
@@ -213,7 +213,7 @@
       overflow: auto;
       padding: 0 1.2em;
       position: relative;
-      word-wrap: normal
+      word-wrap: normal;
     }
 
 
@@ -221,36 +221,36 @@
     .markdown-section .token.comment,
     .markdown-section .token.doctype,
     .markdown-section .token.prolog {
-      color: #8e908c
+      color: #8e908c;
     }
 
     .markdown-section .token.namespace {
-      opacity: .7
+      opacity: .7;
     }
 
     .markdown-section .token.boolean,
     .markdown-section .token.number {
-      color: #c76b29
+      color: #c76b29;
     }
 
     .markdown-section .token.punctuation {
-      color: #525252
+      color: #525252;
     }
 
     .markdown-section .token.property {
-      color: #c08b30
+      color: #c08b30;
     }
 
     .markdown-section .token.tag {
-      color: #2973b7
+      color: #2973b7;
     }
 
     .markdown-section .token.string {
-      color: var(--theme-color, #42b983)
+      color: var(--theme-color, #42b983);
     }
 
     .markdown-section .token.selector {
-      color: #6679cc
+      color: #6679cc;
     }
 
     .markdown-section .token.attr-name {
@@ -261,14 +261,14 @@
     .style .markdown-section .token.string,
     .markdown-section .token.entity,
     .markdown-section .token.url {
-      color: #22a2c9
+      color: #22a2c9;
     }
 
     .markdown-section .token.attr-value,
     .markdown-section .token.control,
     .markdown-section .token.directive,
     .markdown-section .token.unit {
-      color: var(--theme-color, #42b983)
+      color: var(--theme-color, #42b983);
     }
 
     .markdown-section .token.function,
@@ -297,49 +297,22 @@
     }
 
     .markdown-section .token.italic {
-      font-style: italic
+      font-style: italic;
     }
 
     .markdown-section .token.bold,
     .markdown-section .token.important {
-      font-weight: 700
+      font-weight: 700;
     }
 
     .markdown-section .token.important {
-      color: #c94922
+      color: #c94922;
     }
 
     .markdown-section .token.entity {
-      cursor: help
+      cursor: help;
     }
 
-    /* .markdown-section code {
-      -moz-osx-font-smoothing: initial;
-      -webkit-font-smoothing: initial;
-      background-color: #f8f8f8;
-      border-radius: 2px;
-      color: #525252;
-      display: block;
-      font-family: Roboto Mono, Monaco, courier, monospace;
-      font-size: .8em;
-      line-height: inherit;
-      margin: 0 2px;
-      max-width: inherit;
-      overflow: inherit;
-      padding: 2.2em 5px;
-      white-space: inherit
-    } */
-
-    /* .markdown-section code:after,
-    .markdown-section code:before {
-      letter-spacing: .05em
-    } */
-
-    /* .markdown-section code .token {
-      -moz-osx-font-smoothing: initial;
-      -webkit-font-smoothing: initial;
-      min-height: 1.5em
-    } */
   </style>
   <!--
       Notice the use of %PUBLIC_URL% in the tags above.
@@ -355,7 +328,6 @@
 
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
-
   <div id="root"></div>
   <!--
       This HTML file is a template.
@@ -368,32 +340,5 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
 </body>
-<!-- <script src="./marked.min.js"></script>
-<script src="./highlight.min.js"></script>
-<script id="markedWorker" type="javascript/worker">
-  importScripts("http://localhost:3000/marked.min.js","http://localhost:3000/highlight.min.js");
-    marked.setOptions({
-      renderer: new marked.Renderer(),
-      highlight: function(code) {
-        return hljs.highlightAuto(code).value;
-      },
-      pedantic: false,
-      gfm: true,
-      breaks: false,
-      sanitize: false,
-      smartLists: true,
-      smartypants: false,
-      xhtml: false,
-    });
-    onmessage = e => {
-      const {data:markdownString,type,options={}} = e.data;
-      if(!type||type==='html'){
-          postMessage(marked(markdownString));
-      }
-      if(type==='lexer'){
-        postMessage(marked.lexer(markdownString,options));
-      }
-    };
-  </script> -->
 
 </html>

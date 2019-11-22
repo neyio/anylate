@@ -50,7 +50,7 @@ class CheckListItem extends React.Component {
 						type="checkbox"
 						checked={checked}
 						onChange={this.onChange}
-						style={{ margin: '0 18px 0 -18px', fontSize: '18px', height: '18px' }}
+						style={{ margin: '2px 18px 0 -10px', fontSize: '18px', height: '18px' }}
 					/>
 				</span>
 				<span

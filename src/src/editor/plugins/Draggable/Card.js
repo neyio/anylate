@@ -3,11 +3,8 @@ import { useDrag } from 'react-dnd';
 import { cx, css } from 'emotion';
 import draghandler from './draghandler.svg';
 const style = {
-	// border: '1px dashed gray',
-	padding: '0.5rem 1rem',
-	// marginBottom: '0.5rem',
+	padding: '0.5rem 1rem 0.5rem 1.2rem',
 	backgroundColor: 'white'
-	// cursor: 'move'
 };
 const Card = ({ id, children, dispatch, index, nodeKey, editor, state }) => {
 	const { hoverKey, dragKey } = state;
@@ -76,11 +73,10 @@ const Card = ({ id, children, dispatch, index, nodeKey, editor, state }) => {
 					.img-handler {
 						display: none;
 						position: absolute;
-						left: -2px;
+						left: -3px;
 						transform: rotate(90deg);
 						top: 0.5rem;
-						font-size: 1.5rem;
-						width: 1rem;
+						width: 1.2rem;
 						cursor: move;
 					}
 					&:hover .img-handler {

@@ -68,5 +68,19 @@ export default {
 			editor.moveFocusToStartOfNode(startBlock).delete().setBlocks({ type: 'list-item', data });
 		}
 		return editor;
+	},
+	handlerShortCut: (editor, type) => {
+		const { startBlock } = editor.value;
+		if (type === 'hr') {
+			return editor.focus().insertBlock('paragraph').setBlocks('horizontal-rule');
+		}
+		if (type === 'math') {
+			return editor.focus().insertMathBlock();
+		}
+		if ([ 'ordered', 'undo', 'finished', 'bulleted' ].includes(type)) {
+			return editor.focus().moveToStartOfNode(startBlock).insertListItem(type, true);
+		}
+		editor.focus().moveToEnd().setBlocks(type);
+		return editor;
 	}
 };

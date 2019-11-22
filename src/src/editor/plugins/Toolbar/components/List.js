@@ -6,7 +6,7 @@ const List = (props) => {
 	const clickHandler = (item) => {
 		console.log('clickHandler', editor, node);
 		hiddenMenu();
-		if (item.block === 'code') {
+		if (item.block === 'math') {
 			return editor.focus().insertMathBlock();
 		}
 		if ([ 'ordered', 'undo', 'finished', 'bulleted' ].includes(item.block)) {
@@ -14,7 +14,7 @@ const List = (props) => {
 			return editor.focus().moveToStartOfNode(node).insertListItem(item.block, true);
 		}
 
-		editor.focus().moveToEnd().insertBlock(item.block);
+		editor.focus().moveToEnd().setBlocks(item.block);
 	};
 	return (
 		<ul className="a-menu-list">

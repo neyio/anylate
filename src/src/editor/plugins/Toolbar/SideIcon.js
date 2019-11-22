@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Tooltip from 'rc-tooltip';
 import 'rc-tooltip/assets/bootstrap.css';
 import List from './components/List';
+import { cx } from 'emotion';
 const iconItems = [
 	{ text: '一级标题', icon: 'icon-formatheader1', block: 'heading1', shortCut: '⌘+1' },
 	{ text: '二级标题', icon: 'icon-formatheader2', block: 'heading2', shortCut: '⌘+2' },
@@ -11,10 +12,10 @@ const iconItems = [
 	{ text: '六级标题', icon: 'icon-formatheader6', block: 'heading6', shortCut: '⌘+6' },
 	{ text: '段落', icon: 'icon-paragraph', block: 'paragraph', shortCut: '⌘+p' },
 	{ text: '引用段落', icon: 'icon-double-quotes-l', block: 'block-quote', shortCut: '⌘+>' },
-	{ text: '有序列表', icon: 'icon-editor-list-numbers', block: 'ordered', shortCut: '⌘+>' },
-	{ text: '无序列表', icon: 'icon-editor-list-bulleted', block: 'bulleted', shortCut: '⌘+>' },
-	{ text: '任务列表', icon: 'icon--Todo-List', block: 'undo', shortCut: '⌘+>' },
-	{ text: '代码块', icon: 'icon-code', block: 'code', shortCut: '⌘+⌥+c' }
+	{ text: '有序列表', icon: 'icon-editor-list-numbers', block: 'ordered', shortCut: '⌘+shift+l' },
+	{ text: '无序列表', icon: 'icon-editor-list-bulleted', block: 'bulleted', shortCut: '⌘+l' },
+	{ text: '任务列表', icon: 'icon--Todo-List', block: 'undo', shortCut: '⌘+shift+o' },
+	{ text: '公式', icon: 'icon-formula', block: 'math', shortCut: '' }
 ];
 const WrapperBlock = ({ visible, wrapper, children }) => {
 	useEffect(() => {
@@ -38,13 +39,30 @@ const DemoWrapper2 = ({ editor, node }) => {
 		e.stopPropagation();
 		e.preventDefault();
 	};
+	let iconItem = iconItems.find((i) => i.block === node.type);
+	if (!iconItem) {
+		console.log(node.type);
+		switch (node.type) {
+			case 'todo-list':
+				iconItem = { icon: 'icon--Todo-List' };
+				break;
+			case 'ordered-list':
+				iconItem = { icon: 'icon-editor-list-numbers' };
+				break;
+			case 'bulleted-list':
+				iconItem = { icon: 'icon-editor-list-bulleted' };
+				break;
+			default:
+		}
+	}
+	console.log('TCL: iconItem', iconItem);
 	return (
 		<div
 			contentEditable={false}
 			style={{
 				position: 'absolute',
-				left: '-40px',
-				top: '-7px',
+				left: '-50px',
+				top: '-5px',
 				fontSize: '16px',
 				padding: '4px',
 				cursor: 'pointer'
@@ -61,7 +79,10 @@ const DemoWrapper2 = ({ editor, node }) => {
 				trigger="click"
 				overlay={<List editor={editor} node={node} hiddenMenu={() => setVisible(false)} items={iconItems} />}
 			>
-				<span className="iconfont icon-row-add" style={{ fontSize: '1.2rem', color: '#666' }} />
+				<span
+					className={cx('iconfont', (iconItem && iconItem.icon) || '')}
+					style={{ fontSize: '1.2rem', color: '#666' }}
+				/>
 			</Tooltip>
 		</div>
 	);
