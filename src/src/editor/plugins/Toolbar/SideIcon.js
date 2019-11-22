@@ -11,9 +11,9 @@ const iconItems = [
 	{ text: '六级标题', icon: 'icon-formatheader6', block: 'heading6', shortCut: '⌘+6' },
 	{ text: '段落', icon: 'icon-paragraph', block: 'paragraph', shortCut: '⌘+p' },
 	{ text: '引用段落', icon: 'icon-double-quotes-l', block: 'block-quote', shortCut: '⌘+>' },
-	{ text: '有序列表', icon: 'icon-editor-list-numbers', block: 'block-quote', shortCut: '⌘+>' },
-	{ text: '无序列表', icon: 'icon-editor-list-bulleted', block: 'block-quote', shortCut: '⌘+>' },
-	{ text: '任务列表', icon: 'icon--Todo-List', block: 'todo-list', shortCut: '⌘+>' },
+	{ text: '有序列表', icon: 'icon-editor-list-numbers', block: 'ordered', shortCut: '⌘+>' },
+	{ text: '无序列表', icon: 'icon-editor-list-bulleted', block: 'bulleted', shortCut: '⌘+>' },
+	{ text: '任务列表', icon: 'icon--Todo-List', block: 'undo', shortCut: '⌘+>' },
 	{ text: '代码块', icon: 'icon-code', block: 'code', shortCut: '⌘+⌥+c' }
 ];
 const WrapperBlock = ({ visible, wrapper, children }) => {

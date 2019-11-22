@@ -7,13 +7,14 @@ const List = (props) => {
 		console.log('clickHandler', editor, node);
 		hiddenMenu();
 		if (item.block === 'code') {
-			return editor.focus().moveToEnd().insertMathBlock();
-    } 
-    if (item.block === 'todo-list') {
-      
-    }
-    
-    editor.focus().moveToEnd().insertBlock(item.block);
+			return editor.focus().insertMathBlock();
+		}
+		if ([ 'ordered', 'undo', 'finished', 'bulleted' ].includes(item.block)) {
+			console.log(item.block);
+			return editor.focus().moveToStartOfNode(node).insertListItem(item.block, true);
+		}
+
+		editor.focus().moveToEnd().insertBlock(item.block);
 	};
 	return (
 		<ul className="a-menu-list">

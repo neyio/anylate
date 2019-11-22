@@ -13,6 +13,9 @@ export default function onTab(event, editor, next) {
 
 	editor.removeNodeByKey(startBlock.key);
 
+	if (!sibling) {
+		return next();
+	}
 	const lastChild = sibling.nodes.last();
 	console.log('lastChild', lastChild);
 
