@@ -112,8 +112,6 @@ export default function onSpace(event, editor, next) {
 								data: { src: uri, alt: label }
 							})
 							.moveForward(1);
-						// .moveToEndOf()
-						// .moveToEnd();
 						break;
 					}
 					if (type === 'inline' && wrap === 'link') {

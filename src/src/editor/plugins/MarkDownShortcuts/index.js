@@ -2,7 +2,9 @@ import onSpace from './onSpace';
 import onDash from './onDash';
 import onBacktick from './onBacktick';
 import onTab from './onTab';
+import commands from './commands';
 const MarkdownShortcuts = (options = {}) => ({
+	commands,
 	onKeyDown(e, editor, next) {
 		const { value } = editor;
 		const { startBlock } = value;

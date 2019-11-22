@@ -25,7 +25,7 @@ const Container = (props) => {
 		};
 	}, []);
 	return (
-		<div className="container" contentEditable={false} style={{ overflow: 'hidden' }}>
+		<div className="container">
 			<Context.Provider value={{ state, dispatch }}>
 				<DndProvider backend={HTML5Backend}>{props.children}</DndProvider>
 			</Context.Provider>

@@ -78,10 +78,9 @@ const Card = ({ id, children, dispatch, index, nodeKey, editor, state }) => {
 						position: absolute;
 						left: -2px;
 						transform: rotate(90deg);
-						top: 0;
-						fontSize: 1.5rem;
+						top: 0.5rem;
+						font-size: 1.5rem;
 						width: 1rem;
-						top: 0;
 						cursor: move;
 					}
 					&:hover .img-handler {
