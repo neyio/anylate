@@ -95,7 +95,6 @@ body,
     font-size: @font-size-normal;
     text-align: left;
     overflow: visible;
-    // min-height: @font-size-base*15;
     background: @theme-color-white;
     position: relative;
 
@@ -124,9 +123,7 @@ body,
       li{
         padding:0 @padding-tiny;
       }
-      & li+li{
-        margin-top: @margin-base;
-      }
+
     }
 
     .@{Code}{
@@ -151,6 +148,9 @@ body,
     }
 
     .@{BulletedList},.@{OrderedList}{
+      li+li{
+        margin-top: @margin-base;
+      }
       & .@{ListItem}{
         line-height: @font-size-normal*1.25;
         padding-left: @padding-small;
@@ -162,6 +162,9 @@ body,
 
     .@{ToDoList}{
       list-style: none;
+      li+li{
+        margin-top: @margin-base;
+      }
       & .@{ToDoItemCheckbox}{
         margin: 0 @margin-large 0 @margin-base;
         padding: 0;
@@ -195,7 +198,7 @@ body,
     }
     
     .@{ParagraphPlaceHolder}{
-      color:@theme-color-text-lighten;
+      color:@theme-color-title-lighten;
     }
     .@{H1}{
       font-size: @font-size-extra-large;

@@ -34,6 +34,9 @@ const HoverMenu = ({ editor, visible }) => {
 				top: -10000px;
 				left: -10000px;
 				margin-top: -6px;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
 				opacity: 0;
 				background-color: #222;
 				color: #fff;
@@ -46,15 +49,13 @@ const HoverMenu = ({ editor, visible }) => {
 			<Button editor={editor} type="deleted" icon="icon-editor-strikethrough" />
 			<Button editor={editor} type="underlined" icon="icon-editor-underline" />
 			<Button editor={editor} type="code" icon="icon-code" />
-			<Button editor={editor} type="clean" icon="icon-editor-clean" />
-			<span className={css`margin-left: 15px;`}>|</span>
+			<span className={css`margin-left: 15px;`}> | </span>
 			{ifHasLinks(editor) ? (
 				<Button editor={editor} type="unlink" icon="icon-editor-unlink" />
 			) : (
 				<Button editor={editor} type="link" icon="icon-editor-link" />
 			)}
-			{/* <Button editor={editor} type="code" icon=".icon-editor-undo" />
-			<Button editor={editor} type="code" icon=".icon-editor-redo" /> */}
+			<Button editor={editor} type="clean" icon="icon-editor-clean" />
 		</Menu>,
 		root
 	);

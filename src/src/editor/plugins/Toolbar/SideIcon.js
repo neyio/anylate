@@ -41,7 +41,6 @@ const DemoWrapper2 = ({ editor, node }) => {
 	};
 	let iconItem = iconItems.find((i) => i.block === node.type);
 	if (!iconItem) {
-		console.log(node.type);
 		switch (node.type) {
 			case 'todo-list':
 				iconItem = { icon: 'icon--Todo-List' };
@@ -55,7 +54,6 @@ const DemoWrapper2 = ({ editor, node }) => {
 			default:
 		}
 	}
-	console.log('TCL: iconItem', iconItem);
 	return (
 		<div
 			contentEditable={false}

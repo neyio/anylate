@@ -206,7 +206,7 @@ module.exports = function(webpackEnv) {
 						},
 						compress: {
 							ecma: 5,
-							warnings: false,
+							warnings: isEnvProduction ? true : false,
 							// Disabled because of an issue with Uglify breaking seemingly valid code:
 							// https://github.com/facebook/create-react-app/issues/2376
 							// Pending further investigation:
@@ -216,7 +216,9 @@ module.exports = function(webpackEnv) {
 							// https://github.com/facebook/create-react-app/issues/5250
 							// Pending further investigation:
 							// https://github.com/terser-js/terser/issues/120
-							inline: 2
+							inline: 2,
+							drop_debugger: true,
+							drop_console: isEnvProduction ? true : false // 禁止console输出
 						},
 						mangle: {
 							safari10: true
