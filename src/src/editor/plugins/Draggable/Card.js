@@ -3,10 +3,6 @@ import { useDrag } from 'react-dnd';
 import { componentClassName } from '../../theme';
 import { cx } from 'emotion';
 
-// const style = {
-// 	padding: '0.5rem 1rem 0.5rem 1.2rem',
-// 	backgroundColor: 'white'
-// };
 const Card = ({ id, children, dispatch, index, nodeKey, editor, state }) => {
 	const { hoverKey, dragKey } = state;
 	const moveCard = useCallback(

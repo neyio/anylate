@@ -83,13 +83,19 @@ body,
   position: relative;
   background: @theme-color-light;
   font-size: @font-size-small;
-
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
   .@{ThemeBase}{
     padding-left: 0;
+    margin:2rem;
     font-size: @font-size-normal;
     text-align: left;
     overflow: visible;
-    min-height: @font-size-base*15;
+    // min-height: @font-size-base*15;
     background: @theme-color-white;
     position: relative;
 
@@ -126,7 +132,7 @@ body,
     .@{Code}{
       &,& pre{
         background-color:@theme-color-light;
-        font-family: Roboto Mono, Monaco, courier, monospace;
+        font-family: source-code-pro, Roboto Mono, Monaco, courier, Consolas, "Courier New", monospace;
         border-radius: 2px;
         color: @theme-color-danger;
         font-size: @font-size-normal;
@@ -231,6 +237,8 @@ body,
         transition: auto;
         padding: 0.5rem 1rem 0.5rem 1.2rem;
         background: transparent;
+        opacity: 1;
+        border: 2px solid transparent;
         .@{DragHandler} {
           display: none;
           position: absolute;
