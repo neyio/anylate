@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { useDrag } from 'react-dnd';
 import draghandler from './draghandler.svg';
 import { componentClassName } from '../../theme';
+import { cx } from 'emotion';
 
 // const style = {
 // 	padding: '0.5rem 1rem 0.5rem 1.2rem',
@@ -67,13 +68,19 @@ const Card = ({ id, children, dispatch, index, nodeKey, editor, state }) => {
 			}}
 			className={componentClassName.DragContainer}
 		>
-			<img
+			<span
+				ref={drag}
+				className={cx('iconfont', 'icon-drag', componentClassName.DragHandler)}
+				contentEditable={false}
+			/>
+
+			{/* <img
 				className={componentClassName.DragHandler}
 				contentEditable={false}
 				ref={drag}
 				src={draghandler}
 				alt="拖拽此处以排序"
-			/>
+			/> */}
 			{children}
 		</div>
 	);

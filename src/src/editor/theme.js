@@ -22,3 +22,8 @@ export const componentClassName = {
 	Link: 'any-link',
 	Code: 'any-code'
 };
+
+export const theme = {
+	base: 'any-theme-base',
+	dark: 'any-theme-dark'
+};
