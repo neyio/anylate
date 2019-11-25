@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react';
 import { useDrag } from 'react-dnd';
-import draghandler from './draghandler.svg';
 import { componentClassName } from '../../theme';
 import { cx } from 'emotion';
 
@@ -73,14 +72,6 @@ const Card = ({ id, children, dispatch, index, nodeKey, editor, state }) => {
 				className={cx('iconfont', 'icon-drag', componentClassName.DragHandler)}
 				contentEditable={false}
 			/>
-
-			{/* <img
-				className={componentClassName.DragHandler}
-				contentEditable={false}
-				ref={drag}
-				src={draghandler}
-				alt="拖拽此处以排序"
-			/> */}
 			{children}
 		</div>
 	);
