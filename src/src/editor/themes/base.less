@@ -29,14 +29,21 @@
 @margin-large:@margin-base*1.5;
 @margin-extra-large:@margin-base*2;
 
+
+
 //color
 @theme-color-primary:#2275FF;
 @theme-color-primary-lighten:lighten(@theme-color-primary,40%);
-
 @theme-color-helper:#6C6C6C;
 @theme-color-helper-lighten:lighten(@theme-color-helper,10%);
+@theme-color-warn:#f77700;
+@theme-color-info:lighten(@theme-color-helper-lighten,30);
+@theme-color-danger:#ff4242;
+@theme-color-success:#1a2;
+
 
 @theme-color-title:#333;
+@theme-color-title-lighten:lighten(@theme-color-title,10%);
 
 @theme-color-text-primary:#666;
 @theme-color-text-lighten:lighten(@theme-color-text-primary,10%);
@@ -44,6 +51,9 @@
 
 @theme-color-light:#f5f5f5;
 @theme-color-white:#fff;
+
+
+
 
 //fontWeight normal
 @font-weight-normal:normal;
@@ -58,6 +68,7 @@ body,
   position: relative;
   background: @theme-color-light;
   font-size: @font-size-small;
+
   .@{theme-dark}{
     background: #000;
   }
@@ -66,18 +77,24 @@ body,
 
 
 .markdown-section{
-  padding-left: @padding-normal;
+  padding-left: 0;
   font-size: @font-size-normal;
   text-align: left;
   overflow: visible;
   min-height: @font-size-base*15;
-
+  background: #fff;
   //base-reset
+  blockquote p {
+    font-weight: 600;
+    margin-left: 0
+  }
+
   h1,h2,h3,h4,h5,h6{
     margin:0;
     padding: 0;
     color:@theme-color-title;
   }
+
   ol,p,ul {
     line-height: @font-size-base*1.2;
     word-spacing: .05rem;
@@ -89,43 +106,68 @@ body,
     margin-inline-end: 0px;
     li{
       padding:0 @padding-tiny;
+      // margin-bottom:@margin-base;
+      // &:last-child{
+      //   margin-bottom: 0;
+      // }
     }
     & li+li{
       margin-top: @margin-base;
     }
   }
 
-  code, pre {
-    background-color:@theme-color-helper-lighten;
-    font-family: Roboto Mono, Monaco, courier, monospace;
+  .@{Code}{
+    &,& pre{
+      background-color:@theme-color-light;
+      font-family: Roboto Mono, Monaco, courier, monospace;
+      border-radius: 2px;
+      color: #e96900;
+      font-size: @font-size-normal;
+      margin: 0 @margin-tiny;
+      padding:0 @padding-normal;
+      white-space: pre-wrap;
+    }
   }
+
+
+  iframe {
+    margin: @margin-extra-large;
+  }
+  
+  em {
+    color: @theme-color-title;
+  }
+
+
 
   .@{BulletedList},.@{OrderedList}{
     & .@{ListItem}{
-      line-height: @font-size-normal*1.25;;
+      line-height: @font-size-normal*1.25;
       padding-left: @padding-small;
+      & .@{BulletedList}{
+        padding-left: @padding-extra-large;
+      }
     }
   }
 
   .@{ToDoList}{
     list-style: none;
-    // margin-left:0 - @margin-large;
     & .@{ToDoItemCheckbox}{
-      margin-right: @margin-large;
+      margin: 0 @margin-large 0 @margin-base;
       padding: 0;
-      line-height: @font-size-normal*1.25;;
+      line-height: @font-size-normal*1.25;
       vertical-align: middle;
       width: @font-size-base;
     }
     & .@{ToDoItemContent}{
       margin-right: 0;
       padding: 0;
-      line-height: @font-size-normal*1.25;;
+      line-height: @font-size-normal*1.25;
       vertical-align: middle;
     }
     & .@{ToDoItem}{
-      line-height: @font-size-normal*1.25;;
-      margin-left: 0 - @padding-large;
+      line-height: @font-size-normal*1.25;
+      margin-left: 0 - @padding-large*2;
       padding-left:0;
     }
   }
@@ -183,12 +225,14 @@ body,
   .@{DragContainer}{
     	position: relative;
       transition: auto;
+      padding: 0.5rem 1rem 0.5rem 1.2rem;
+      background: transparent;
       .@{DragHandler} {
         display: none;
         position: absolute;
         left: 0px - @padding-tiny;
         transform: rotate(90deg);
-        top: @font-size-normal*0.5;
+        top: @font-size-normal - 6px;
         width: @font-size-normal;
         cursor: move;
       }
@@ -202,101 +246,28 @@ body,
     font-weight: @font-weight-heavy;
   }
 
-  blockquote {
-    border-left: 4px solid var(--theme-color, #2275FF);
-    color: #333;
+  .@{Blockquote} {
+    border-left: 4px solid @theme-color-primary;
+    color: @theme-color-title-lighten;
     margin: 0;
-    padding: 0.5rem 1rem;
-    background-color: #f8f8f8;
+    padding: @padding-base @padding-large;
+    background-color: @theme-color-light;
     font-style: italic;
-    font-size: 1rem;
-    border-radius: 3px;
+    font-size: @font-size-normal;
+    border-radius: 3px; 
+    &-info{
+      border-left: 4px solid @theme-color-primary;
+    }
+    &-warning {
+      border-left: 4px solid @theme-color-warn;
+    }
+    &-danger {
+      border-left: 4px solid @theme-color-danger;
+    }
+    &-success {
+      border-left: 4px solid @theme-color-success;
+    }
   }
 
-.markdown-section blockquote.blockquote-info {
-  border-left: 4px solid var(--theme-color, #3884ff);
-}
 
-.markdown-section blockquote.blockquote-warning {
-  border-left: 4px solid var(--theme-color, #f77d02);
-}
-
-.markdown-section blockquote.blockquote-danger {
-  border-left: 4px solid var(--theme-color, #ff4642);
-}
-
-.markdown-section blockquote.blockquote-success {
-  border-left: 4px solid var(--theme-color, #1a2);
-}
-
-}
-
-
-
-
-
-
-.markdown-section blockquote {
-  border-left: 4px solid var(--theme-color, #2275FF);
-  color: #333;
-  margin: 0;
-  padding: 0.5rem 1rem;
-  background-color: #f8f8f8;
-  font-style: italic;
-  font-size: 1rem;
-  border-radius: 3px;
-}
-
-.markdown-section blockquote.blockquote-info {
-  border-left: 4px solid var(--theme-color, #3884ff);
-}
-
-.markdown-section blockquote.blockquote-warning {
-  border-left: 4px solid var(--theme-color, #f77d02);
-}
-
-.markdown-section blockquote.blockquote-danger {
-  border-left: 4px solid var(--theme-color, #ff4642);
-}
-
-.markdown-section blockquote.blockquote-success {
-  border-left: 4px solid var(--theme-color, #1a2);
-}
-
-.markdown-section blockquote p {
-  font-weight: 600;
-  margin-left: 0
-}
-
-.markdown-section iframe {
-  margin: @margin-extra-large;
-}
-
-.markdown-section em {
-  color: @theme-color-title;
-}
-
-.markdown-section code {
-  border-radius: 2px;
-  color: #e96900;
-  font-size: @font-size-normal;
-  margin: 0 @margin-tiny;
-  white-space: pre-wrap;
-}
-
-.markdown-section code,
-.markdown-section pre {
-  background-color: #f8f8f8;
-  font-family: Roboto Mono, Monaco, courier, monospace;
-}
-
-.markdown-section pre {
-  -moz-osx-font-smoothing: initial;
-  -webkit-font-smoothing: initial;
-  line-height: 1.5em;
-  margin: 1.2em 0;
-  overflow: auto;
-  padding: 0 1.2em;
-  position: relative;
-  word-wrap: normal;
 }

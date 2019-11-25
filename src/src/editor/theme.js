@@ -19,5 +19,6 @@ export const componentClassName = {
 	H6: 'any-h6',
 	DragContainer: 'any-drag-container',
 	DragHandler: 'any-drag-handler',
-	Link: 'any-link'
+	Link: 'any-link',
+	Code: 'any-code'
 };

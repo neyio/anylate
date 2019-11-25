@@ -3,10 +3,10 @@ import { useDrag } from 'react-dnd';
 import draghandler from './draghandler.svg';
 import { componentClassName } from '../../theme';
 
-const style = {
-	padding: '0.5rem 1rem 0.5rem 1.2rem',
-	backgroundColor: 'white'
-};
+// const style = {
+// 	padding: '0.5rem 1rem 0.5rem 1.2rem',
+// 	backgroundColor: 'white'
+// };
 const Card = ({ id, children, dispatch, index, nodeKey, editor, state }) => {
 	const { hoverKey, dragKey } = state;
 	const moveCard = useCallback(
@@ -61,7 +61,6 @@ const Card = ({ id, children, dispatch, index, nodeKey, editor, state }) => {
 		<div
 			ref={preview}
 			style={{
-				...style,
 				opacity,
 				border: hoverKey === nodeKey ? '2px solid var(--theme-color,#eee)' : '2px solid transparent',
 				...borderExtra(dragKey, hoverKey)
