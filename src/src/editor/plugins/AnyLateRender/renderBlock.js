@@ -6,6 +6,7 @@ import ListItem from '../../components/ListItem';
 import TodoList from '../../components/TodoList';
 import { Heading1, Heading2, Heading3, Heading4, Heading5, Heading6 } from '../../components/Heading';
 import Paragraph from '../../components/Paragraph';
+import { componentClassName } from '../../theme';
 
 export default function renderBlock(props, editor, next) {
 	const { attributes } = props;
@@ -24,11 +25,23 @@ export default function renderBlock(props, editor, next) {
 				</Paragraph>
 			);
 		case 'block-quote':
-			return <blockquote {...attributes}>{props.children}</blockquote>;
+			return (
+				<blockquote className={componentClassName.Blockquote} {...attributes}>
+					{props.children}
+				</blockquote>
+			);
 		case 'bulleted-list':
-			return <ul {...attributes}>{props.children}</ul>;
+			return (
+				<ul className={componentClassName.BulletedList} {...attributes}>
+					{props.children}
+				</ul>
+			);
 		case 'ordered-list':
-			return <ol {...attributes}>{props.children}</ol>;
+			return (
+				<ol className={componentClassName.OrderedList} {...attributes}>
+					{props.children}
+				</ol>
+			);
 		case 'todo-list':
 			return <TodoList {...attributes}>{props.children}</TodoList>;
 		case 'list-item':

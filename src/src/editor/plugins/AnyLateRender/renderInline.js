@@ -1,4 +1,5 @@
 import React from 'react';
+import { componentClassName } from '../../theme';
 
 export default function renderInline(props, editor, next) {
 	const { attributes, children, node } = props;
@@ -8,7 +9,7 @@ export default function renderInline(props, editor, next) {
 			const { data } = node;
 			const href = data.get('href');
 			return (
-				<a {...attributes} href={href}>
+				<a className={componentClassName.Link} {...attributes} href={href}>
 					{children}
 				</a>
 			);

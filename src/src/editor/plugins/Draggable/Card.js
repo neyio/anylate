@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react';
 import { useDrag } from 'react-dnd';
-import { cx, css } from 'emotion';
 import draghandler from './draghandler.svg';
+import { componentClassName } from '../../theme';
+
 const style = {
 	padding: '0.5rem 1rem 0.5rem 1.2rem',
 	backgroundColor: 'white'
@@ -65,27 +66,15 @@ const Card = ({ id, children, dispatch, index, nodeKey, editor, state }) => {
 				border: hoverKey === nodeKey ? '2px solid var(--theme-color,#eee)' : '2px solid transparent',
 				...borderExtra(dragKey, hoverKey)
 			}}
-			className={cx(
-				'drag-container',
-				css`
-					position: relative;
-					transition: auto;
-					.img-handler {
-						display: none;
-						position: absolute;
-						left: -3px;
-						transform: rotate(90deg);
-						top: 0.5rem;
-						width: 1.2rem;
-						cursor: move;
-					}
-					&:hover .img-handler {
-						display: block;
-					}
-				`
-			)}
+			className={componentClassName.DragContainer}
 		>
-			<img className="img-handler" contentEditable={false} ref={drag} src={draghandler} alt="拖拽此处以排序" />
+			<img
+				className={componentClassName.DragHandler}
+				contentEditable={false}
+				ref={drag}
+				src={draghandler}
+				alt="拖拽此处以排序"
+			/>
 			{children}
 		</div>
 	);

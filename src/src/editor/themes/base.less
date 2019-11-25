@@ -1,0 +1,302 @@
+@import './component.less';
+@theme-dark:dark;
+
+// fontSize
+@font-size-base:12px;
+
+@font-size-tiny:12px;
+@font-size-small:14px;
+@font-size-normal:16px;
+@font-size-medium:@font-size-base*2;//24
+@font-size-large:@font-size-base*3; //36
+@font-size-extra-large:@font-size-base*4;//48
+
+//padding 8px 
+@padding-base:8px;
+
+@padding-tiny:@padding-base*0.25;
+@padding-small:@padding-base*0.5;
+@padding-normal:@padding-base;
+@padding-large:@padding-base*1.5;
+@padding-extra-large:@padding-base*2;
+
+//margin 8px
+@margin-base:8px;
+
+@margin-tiny:@margin-base*0.25;
+@margin-small:@margin-base*0.5;
+@margin-normal:@margin-base;
+@margin-large:@margin-base*1.5;
+@margin-extra-large:@margin-base*2;
+
+//color
+@theme-color-primary:#2275FF;
+@theme-color-primary-lighten:lighten(@theme-color-primary,40%);
+
+@theme-color-helper:#6C6C6C;
+@theme-color-helper-lighten:lighten(@theme-color-helper,10%);
+
+@theme-color-title:#333;
+
+@theme-color-text-primary:#666;
+@theme-color-text-lighten:lighten(@theme-color-text-primary,10%);
+@theme-color-text-disabled:#BFBFBF;
+
+@theme-color-light:#f5f5f5;
+@theme-color-white:#fff;
+
+//fontWeight normal
+@font-weight-normal:normal;
+@font-weight-bold:bold;
+@font-weight-thin:300;
+@font-weight-heavy:600;
+
+
+body,
+#root,
+#app {
+  position: relative;
+  background: @theme-color-light;
+  font-size: @font-size-small;
+  .@{theme-dark}{
+    background: #000;
+  }
+}
+
+
+
+.markdown-section{
+  padding-left: @padding-normal;
+  font-size: @font-size-normal;
+  text-align: left;
+  overflow: visible;
+  min-height: @font-size-base*15;
+
+  //base-reset
+  h1,h2,h3,h4,h5,h6{
+    margin:0;
+    padding: 0;
+    color:@theme-color-title;
+  }
+  ol,p,ul {
+    line-height: @font-size-base*1.2;
+    word-spacing: .05rem;
+    padding: 0 @padding-large;
+    margin-bottom:@margin-base;
+    margin-block-start:0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    li{
+      padding:0 @padding-tiny;
+    }
+    & li+li{
+      margin-top: @margin-base;
+    }
+  }
+
+  code, pre {
+    background-color:@theme-color-helper-lighten;
+    font-family: Roboto Mono, Monaco, courier, monospace;
+  }
+
+  .@{BulletedList},.@{OrderedList}{
+    & .@{ListItem}{
+      line-height: @font-size-normal*1.25;;
+      padding-left: @padding-small;
+    }
+  }
+
+  .@{ToDoList}{
+    list-style: none;
+    // margin-left:0 - @margin-large;
+    & .@{ToDoItemCheckbox}{
+      margin-right: @margin-large;
+      padding: 0;
+      line-height: @font-size-normal*1.25;;
+      vertical-align: middle;
+      width: @font-size-base;
+    }
+    & .@{ToDoItemContent}{
+      margin-right: 0;
+      padding: 0;
+      line-height: @font-size-normal*1.25;;
+      vertical-align: middle;
+    }
+    & .@{ToDoItem}{
+      line-height: @font-size-normal*1.25;;
+      margin-left: 0 - @padding-large;
+      padding-left:0;
+    }
+  }
+
+  //文本段落Paragraph css接口
+
+  .@{ParagraphPlaceHolder},.@{Paragraph}{
+    padding:0 ;
+    line-height: @font-size-medium;
+    font-size: @font-size-normal;
+  }
+
+  .@{Paragraph}{
+    color:@theme-color-text-primary;
+  }
+  
+  .@{ParagraphPlaceHolder}{
+    color:@theme-color-text-lighten;
+  }
+  .@{H1}{
+    font-size: @font-size-extra-large;
+    line-height: @font-size-extra-large*1.25;
+  }
+  .@{H2}{
+    font-size: @font-size-large;
+    line-height: @font-size-large*1.25;
+  }
+  .@{H3}{
+    font-size: @font-size-medium;
+    line-height: @font-size-medium*1.25;
+  }
+  .@{H4}{
+    font-size: @font-size-normal;
+    line-height: @font-size-normal*1.25;
+  }
+  .@{H5}{
+    font-size: @font-size-small + 4px;
+     line-height: @font-size-small*1.25;
+  }
+  .@{H6}{
+    font-size: @font-size-tiny + 4px;
+    line-height: @font-size-tiny*1.5;
+  }
+
+  .@{H1},.@{H2},.@{H3},.@{H4},.@{H5},.@{H6}{
+    font-weight: @font-weight-heavy;
+    height: auto;
+    margin:0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+  }
+
+  .@{DragContainer}{
+    	position: relative;
+      transition: auto;
+      .@{DragHandler} {
+        display: none;
+        position: absolute;
+        left: 0px - @padding-tiny;
+        transform: rotate(90deg);
+        top: @font-size-normal*0.5;
+        width: @font-size-normal;
+        cursor: move;
+      }
+      &:hover .@{DragHandler} {
+        display: block;
+      }
+  }
+
+  .@{Link}{
+    color:@theme-color-primary;
+    font-weight: @font-weight-heavy;
+  }
+
+  blockquote {
+    border-left: 4px solid var(--theme-color, #2275FF);
+    color: #333;
+    margin: 0;
+    padding: 0.5rem 1rem;
+    background-color: #f8f8f8;
+    font-style: italic;
+    font-size: 1rem;
+    border-radius: 3px;
+  }
+
+.markdown-section blockquote.blockquote-info {
+  border-left: 4px solid var(--theme-color, #3884ff);
+}
+
+.markdown-section blockquote.blockquote-warning {
+  border-left: 4px solid var(--theme-color, #f77d02);
+}
+
+.markdown-section blockquote.blockquote-danger {
+  border-left: 4px solid var(--theme-color, #ff4642);
+}
+
+.markdown-section blockquote.blockquote-success {
+  border-left: 4px solid var(--theme-color, #1a2);
+}
+
+}
+
+
+
+
+
+
+.markdown-section blockquote {
+  border-left: 4px solid var(--theme-color, #2275FF);
+  color: #333;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  background-color: #f8f8f8;
+  font-style: italic;
+  font-size: 1rem;
+  border-radius: 3px;
+}
+
+.markdown-section blockquote.blockquote-info {
+  border-left: 4px solid var(--theme-color, #3884ff);
+}
+
+.markdown-section blockquote.blockquote-warning {
+  border-left: 4px solid var(--theme-color, #f77d02);
+}
+
+.markdown-section blockquote.blockquote-danger {
+  border-left: 4px solid var(--theme-color, #ff4642);
+}
+
+.markdown-section blockquote.blockquote-success {
+  border-left: 4px solid var(--theme-color, #1a2);
+}
+
+.markdown-section blockquote p {
+  font-weight: 600;
+  margin-left: 0
+}
+
+.markdown-section iframe {
+  margin: @margin-extra-large;
+}
+
+.markdown-section em {
+  color: @theme-color-title;
+}
+
+.markdown-section code {
+  border-radius: 2px;
+  color: #e96900;
+  font-size: @font-size-normal;
+  margin: 0 @margin-tiny;
+  white-space: pre-wrap;
+}
+
+.markdown-section code,
+.markdown-section pre {
+  background-color: #f8f8f8;
+  font-family: Roboto Mono, Monaco, courier, monospace;
+}
+
+.markdown-section pre {
+  -moz-osx-font-smoothing: initial;
+  -webkit-font-smoothing: initial;
+  line-height: 1.5em;
+  margin: 1.2em 0;
+  overflow: auto;
+  padding: 0 1.2em;
+  position: relative;
+  word-wrap: normal;
+}

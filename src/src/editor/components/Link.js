@@ -1,4 +1,5 @@
 import * as React from "react";
+import { componentClassName } from "../theme";
 
 export default function Link(props) {
   const { attributes, node, children, editor, readOnly } = props;
@@ -13,6 +14,7 @@ export default function Link(props) {
   return (
     <a
       {...attributes}
+      className={componentClassName.Link}
       href={readOnly ? href : undefined}
       onClick={
         readOnly
