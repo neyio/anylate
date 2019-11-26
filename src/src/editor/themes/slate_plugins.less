@@ -1,0 +1,17 @@
+/*
+  该文件用来补偿slate-plugins项目没有考虑到的样式冲突
+ */
+
+.s-table{
+  & &__tool{
+    ul{
+      padding: 0 !important;
+      line-height: initial !important;
+      // padding: 0 ;
+      li{
+        padding: 0 !important;
+        // padding: 0 ;
+      }
+    }
+  }
+}
