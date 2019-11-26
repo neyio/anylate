@@ -20,7 +20,7 @@ const Hr = React.forwardRef((props, ref) => {
 				`,
 				componentClassName.Hr,
 				css`
-					border-color: ${isSelected ? 'var(--theme-color, #42b983)' : 'transparent'};
+					border-color: ${isSelected ? 'var(--theme-color-primary, #42b983)' : 'transparent'};
 				`
 			)}
 		/>

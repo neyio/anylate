@@ -58,7 +58,9 @@ class Image extends React.Component {
 								max-height: 100%;
 							`}
 							style={{
-								border: isSelected ? '2px solid var(--theme-color, #42b983)' : '2px solid transparent'
+								border: isSelected
+									? '2px solid var(--theme-color-primary-lighten, #42b983)'
+									: '2px solid transparent'
 							}}
 							src={src}
 							alt={caption}
@@ -84,7 +86,7 @@ class Image extends React.Component {
 									className={css`
 										border: 0;
 										display: block;
-										color: var(--theme-color, #1a2);
+										color: var(--theme-color-primary, #1a2);
 										font-size: 1rem;
 										padding: 0.25rem 0.5rem;
 										line-height: 1.5rem;

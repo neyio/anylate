@@ -1,4 +1,5 @@
 import isHotkey from 'is-hotkey';
+import { Text } from 'slate';
 import onSpace from './onSpace';
 import onDash from './onDash';
 import onBacktick from './onBacktick';
@@ -7,6 +8,7 @@ import commands from './commands';
 import ifFlow from './utils/flow';
 // import { isModKey } from './utils/index';
 const MarkdownShortcuts = (options = {}) => {
+	// 注意 此处的 快捷键需要和sideIcon组件的快捷键一一对应
 	const isDash = isHotkey('-');
 	const isBacktick = isHotkey('`');
 	const isSpace = isHotkey(' ');
@@ -20,11 +22,13 @@ const MarkdownShortcuts = (options = {}) => {
 	const setHeading5 = isHotkey('mod+5');
 	const setHeading6 = isHotkey('mod+6');
 	const setOrderedList = isHotkey('mod+shift+l');
-	// const insertCode = isHotkey('mod+shift+c');
 	const setBulletedList = isHotkey('mod+l');
 	const setTodoList = isHotkey('mod+o');
 	const setBlockQuote = isHotkey('mod+m');
 	const insertHr = isHotkey('mod+h');
+	const insertCode = isHotkey('mod+shift+c');
+	const insertFormula = isHotkey('mod+shift+f');
+	const insertTable = isHotkey('mod+opt+t');
 	const saveToJson = isHotkey('mod+s');
 	return {
 		commands,
@@ -33,14 +37,41 @@ const MarkdownShortcuts = (options = {}) => {
 			const { startBlock } = value;
 			if (!startBlock) return next();
 			if (startBlock.type.match(/code/)) return next();
-			// if (!isModKey(e)) return next();
+
 			return ifFlow(
 				[ isDash, options.onDash || onDash ],
 				[ isBacktick, options.onBacktick || onBacktick ],
 				[ isSpace, options.onSpace || onSpace ],
 				[ isShiftSpace, options.onSpace || onSpace ],
 				[ isTab, options.onTab || onTab ],
-				// [ insertCode, () => editor.handlerShortCut('code') && e.preventDefault() ],
+				[
+					insertCode,
+					() => {
+						// 	const codeBlockKey = editor.insertCodeBlock('js', ' ').getClosestCodeBlock();editor.wrapBlockByKey(codeBlockKey, 'list-item').wrapBlockByKey(codeBlockKey, 'paragraph');});
+						if (startBlock.type === 'list-item') {
+							return;
+						}
+						editor.insertCodeBlock('js', '');
+					}
+				],
+				[
+					insertFormula,
+					() => {
+						if (startBlock.type === 'list-item') {
+							return;
+						}
+						editor.focus().insertMathBlock();
+					}
+				],
+				[
+					insertTable,
+					() => {
+						if (startBlock.type === 'list-item') {
+							return;
+						}
+						editor.focus().insertTable(3, 2, () => () => ({ nodes: [ Text.create('') ] }));
+					}
+				],
 				[ setParagraph, () => editor.handlerShortCut('paragraph') && e.preventDefault() ],
 				[ setHeading1, () => editor.handlerShortCut('heading1') && e.preventDefault() ],
 				[ setHeading2, () => editor.handlerShortCut('heading2') && e.preventDefault() ],

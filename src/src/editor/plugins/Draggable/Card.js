@@ -58,7 +58,7 @@ const Card = ({ id, children, dispatch, index, nodeKey, editor, state }) => {
 			ref={preview}
 			style={{
 				opacity,
-				border: hoverKey === nodeKey ? '2px solid var(--theme-color,#eee)' : '2px solid transparent',
+				border: hoverKey === nodeKey ? '2px solid var(--theme-color-primary,#eee)' : '2px solid transparent',
 				...borderExtra(dragKey, hoverKey)
 			}}
 			className={componentClassName.DragContainer}

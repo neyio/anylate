@@ -19,7 +19,13 @@ const schema = {
 		heading6: {
 			nodes: [ { match: { object: 'text' } } ]
 		},
-
+		// paragraph: {
+		// 	nodes: [
+		// 		{
+		// 			match: [ { object: 'text' }, { type: 'code' } ]
+		// 		}
+		// 	]
+		// },
 		'horizontal-rule': {
 			isVoid: true
 		},
@@ -64,6 +70,7 @@ const schema = {
 						{ object: 'text' },
 						{ type: 'image' },
 						// { type: 'list-item' },
+						{ type: 'code' },
 						{ type: 'paragraph' },
 						{ type: 'bulleted-list' },
 						{ type: 'ordered-list' },
