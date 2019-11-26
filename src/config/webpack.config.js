@@ -26,6 +26,7 @@ const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpack
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 // eslint-disable-next-line no-unused-vars
 const eslint = require('eslint');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const postcssNormalize = require('postcss-normalize');
 
@@ -615,6 +616,7 @@ module.exports = function(webpackEnv) {
 					};
 				}
 			}),
+			new BundleAnalyzerPlugin(),
 			// Moment.js is an extremely popular library that bundles large locale files
 			// by default due to how Webpack interprets its code. This is a practical
 			// solution that requires the user to opt into importing specific locales.

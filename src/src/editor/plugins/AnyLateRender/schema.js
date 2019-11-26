@@ -63,14 +63,21 @@ const schema = {
 					match: [
 						{ object: 'text' },
 						{ type: 'image' },
-						{ type: 'list-item' },
+						// { type: 'list-item' },
 						{ type: 'paragraph' },
 						{ type: 'bulleted-list' },
 						{ type: 'ordered-list' },
 						{ type: 'todo-list' }
 					]
 				}
-			]
+			],
+			normalize(editor, { code, node, child }) {
+				console.log('TCL: normalize -> code', code, child);
+				if (code === 'last_child_type_invalid') {
+					console.log('last_child_type_invalid');
+					return editor;
+				}
+			}
 		}
 	},
 	document: {

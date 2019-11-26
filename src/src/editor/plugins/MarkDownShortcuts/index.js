@@ -24,6 +24,7 @@ const MarkdownShortcuts = (options = {}) => {
 	const setTodoList = isHotkey('mod+o');
 	const setBlockQuote = isHotkey('mod+m');
 	const insertHr = isHotkey('mod+h');
+	const saveToJson = isHotkey('mod+s');
 	return {
 		commands,
 		onKeyDown(e, editor, next) {
@@ -50,6 +51,13 @@ const MarkdownShortcuts = (options = {}) => {
 				[ setBulletedList, () => editor.handlerShortCut('bulleted') && e.preventDefault() ],
 				[ setTodoList, () => editor.handlerShortCut('undo') && e.preventDefault() ],
 				[ setBlockQuote, () => editor.handlerShortCut('block-quote') && e.preventDefault() ],
+				[
+					saveToJson,
+					() => {
+						e.preventDefault();
+						console.log('调试用', JSON.stringify(editor.value.toJSON(editor.value.document.key)));
+					}
+				],
 				[ () => true, () => next() ]
 			)(e, editor, next);
 		}
