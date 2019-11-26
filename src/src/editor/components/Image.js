@@ -1,10 +1,5 @@
 import * as React from 'react';
 import { css } from 'emotion';
-// import Portal from './Portal';
-
-// const Viewer = ({ children, visible }) => {
-// 	return <Portal visible={visible}>{children}</Portal>;
-// };
 
 class Image extends React.Component {
 	state = {
@@ -49,7 +44,6 @@ class Image extends React.Component {
 							align-items: center;
 							flex: 1;
 						`}
-						// onClick={() => this.setState({ visible: !this.state.visible })}
 					>
 						<img
 							contentEditable={false}
@@ -115,37 +109,6 @@ class Image extends React.Component {
 						</div>
 					</div>
 				</div>
-				{/* <Viewer visible={this.state.visible}>
-					<div
-						className={css`
-							position: fixed;
-							width: 100vw;
-							height: 100vh;
-							background: rgba(0, 0, 0, .7);
-							z-index: 100;
-							overflow: hidden;
-							transition: background-color .2s ease-in-out;
-							top: 0;
-							left: 0;
-							display: flex;
-							flex-direction: row;
-							align-items: center;
-							justify-content: center;
-						`}
-						onClick={() => this.setState({ visible: !this.state.visible })}
-					>
-						<img
-							contentEditable={false}
-							className={css`
-								max-width: 150%;
-								max-height: 150%;
-								width: 75%;
-							`}
-							src={src}
-							alt={caption}
-						/>
-					</div>
-				</Viewer> */}
 			</React.Fragment>
 		);
 	}
