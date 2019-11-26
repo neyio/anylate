@@ -10,6 +10,7 @@ const MarkdownShortcuts = (options = {}) => {
 	const isDash = isHotkey('-');
 	const isBacktick = isHotkey('`');
 	const isSpace = isHotkey(' ');
+	const isShiftSpace = isHotkey('shift+ ');
 	const isTab = isHotkey('tab');
 	const setParagraph = isHotkey('mod+p');
 	const setHeading1 = isHotkey('mod+1');
@@ -37,6 +38,7 @@ const MarkdownShortcuts = (options = {}) => {
 				[ isDash, options.onDash || onDash ],
 				[ isBacktick, options.onBacktick || onBacktick ],
 				[ isSpace, options.onSpace || onSpace ],
+				[ isShiftSpace, options.onSpace || onSpace ],
 				[ isTab, options.onTab || onTab ],
 				// [ insertCode, () => editor.handlerShortCut('code') && e.preventDefault() ],
 				[ setParagraph, () => editor.handlerShortCut('paragraph') && e.preventDefault() ],

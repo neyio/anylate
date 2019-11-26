@@ -2,6 +2,7 @@ import { isModKey } from './utils';
 import onEnterHandler from './onEnter';
 import onBackspaceHandler from './onBackspace';
 import onDash from './onDash';
+import onEscape from './onEscape';
 
 export default function KeyboardBehavior(options = {}) {
 	const onEnter = options.onEnter || onEnterHandler;
@@ -16,7 +17,10 @@ export default function KeyboardBehavior(options = {}) {
 				});
 			}
 			if (isModKey(e)) return next();
+
 			switch (e.key) {
+				case 'Escape':
+					return onEscape(e, editor, next);
 				case 'Enter':
 					return onEnter(e, editor, next);
 				case 'Backspace':
