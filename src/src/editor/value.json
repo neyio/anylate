@@ -213,18 +213,18 @@
           "data": {},
           "nodes": [{
             "object": "text",
-            "text": "SUM(a+b)",
+            "text": "\\sum(a^2+b\\frac{d/e}{g(h(f))-i*3/4}-j_k)",
             "marks": []
           }]
         }]
       }]
     }, {
       "object": "block",
-      "type": "paragraph",
+      "type": "heading5",
       "data": {},
       "nodes": [{
         "object": "text",
-        "text": "",
+        "text": "代码高亮",
         "marks": []
       }]
     }, {
@@ -245,62 +245,229 @@
       }]
     }, {
       "object": "block",
-      "type": "paragraph",
+      "type": "heading5",
       "data": {},
       "nodes": [{
         "object": "text",
-        "text": "表格有bug，不敢放！",
+        "text": "表格支持",
         "marks": []
       }]
     }, {
       "object": "block",
-      "type": "code",
+      "type": "table",
       "data": {
-        "language": "javascript"
+        "colMenuPos": {
+          "top": 0,
+          "width": 370,
+          "left": 740
+        },
+        "tableHeight": 123,
+        "plusPos": {
+          "top": 123,
+          "left": 555
+        },
+        "rowMenuPos": {
+          "top": 82,
+          "height": 41,
+          "left": 1110
+        },
+        "isInHead": false
       },
       "nodes": [{
         "object": "block",
-        "type": "code_line",
+        "type": "table-row",
         "data": {},
         "nodes": [{
-          "object": "text",
-          "text": "console.log('console.log');",
-          "marks": []
+          "object": "block",
+          "type": "table-row-cell",
+          "data": {
+            "text-align": "table-cell--align-left"
+          },
+          "nodes": [{
+            "object": "block",
+            "type": "paragraph",
+            "data": {},
+            "nodes": [{
+              "object": "text",
+              "text": "居左",
+              "marks": []
+            }]
+          }]
+        }, {
+          "object": "block",
+          "type": "table-row-cell",
+          "data": {
+            "text-align": "table-cell--align-center"
+          },
+          "nodes": [{
+            "object": "block",
+            "type": "paragraph",
+            "data": {},
+            "nodes": [{
+              "object": "text",
+              "text": "标题二",
+              "marks": [{
+                "object": "mark",
+                "type": "bold",
+                "data": {}
+              }]
+            }]
+          }]
+        }, {
+          "object": "block",
+          "type": "table-row-cell",
+          "data": {
+            "text-align": "table-cell--align-right"
+          },
+          "nodes": [{
+            "object": "block",
+            "type": "paragraph",
+            "data": {},
+            "nodes": [{
+              "object": "text",
+              "text": "居右",
+              "marks": [{
+                "object": "mark",
+                "type": "bold",
+                "data": {}
+              }]
+            }]
+          }]
         }]
-      }]
-    }, {
-      "object": "block",
-      "type": "paragraph",
-      "data": {},
-      "nodes": [{
-        "object": "text",
-        "text": "图片大小缩放需要做...",
-        "marks": []
-      }]
-    }, {
-      "object": "block",
-      "type": "math",
-      "data": {},
-      "nodes": [{
+      }, {
         "object": "block",
-        "type": "code",
-        "data": {
-          "language": "latex"
-        },
+        "type": "table-row",
+        "data": {},
         "nodes": [{
           "object": "block",
-          "type": "code_line",
-          "data": {},
+          "type": "table-row-cell",
+          "data": {
+            "text-align": "table-cell--align-left"
+          },
           "nodes": [{
-            "object": "text",
-            "text": "console.log(111);",
-            "marks": []
+            "object": "block",
+            "type": "paragraph",
+            "data": {},
+            "nodes": [{
+              "object": "text",
+              "text": "内容1",
+              "marks": [{
+                "object": "mark",
+                "type": "bold",
+                "data": {}
+              }]
+            }]
+          }]
+        }, {
+          "object": "block",
+          "type": "table-row-cell",
+          "data": {
+            "text-align": "table-cell--align-center"
+          },
+          "nodes": [{
+            "object": "block",
+            "type": "paragraph",
+            "data": {},
+            "nodes": [{
+              "object": "text",
+              "text": "内容2",
+              "marks": [{
+                "object": "mark",
+                "type": "bold",
+                "data": {}
+              }]
+            }]
+          }]
+        }, {
+          "object": "block",
+          "type": "table-row-cell",
+          "data": {
+            "text-align": "table-cell--align-right"
+          },
+          "nodes": [{
+            "object": "block",
+            "type": "paragraph",
+            "data": {},
+            "nodes": [{
+              "object": "text",
+              "text": "内容3",
+              "marks": [{
+                "object": "mark",
+                "type": "bold",
+                "data": {}
+              }]
+            }]
+          }]
+        }]
+      }, {
+        "object": "block",
+        "type": "table-row",
+        "data": {},
+        "nodes": [{
+          "object": "block",
+          "type": "table-row-cell",
+          "data": {
+            "text-align": "table-cell--align-left"
+          },
+          "nodes": [{
+            "object": "block",
+            "type": "paragraph",
+            "data": {},
+            "nodes": [{
+              "object": "text",
+              "text": "内容4",
+              "marks": [{
+                "object": "mark",
+                "type": "bold",
+                "data": {}
+              }]
+            }]
+          }]
+        }, {
+          "object": "block",
+          "type": "table-row-cell",
+          "data": {
+            "text-align": "table-cell--align-center"
+          },
+          "nodes": [{
+            "object": "block",
+            "type": "paragraph",
+            "data": {},
+            "nodes": [{
+              "object": "text",
+              "text": "内容5",
+              "marks": [{
+                "object": "mark",
+                "type": "bold",
+                "data": {}
+              }]
+            }]
+          }]
+        }, {
+          "object": "block",
+          "type": "table-row-cell",
+          "data": {
+            "text-align": "table-cell--align-right"
+          },
+          "nodes": [{
+            "object": "block",
+            "type": "paragraph",
+            "data": {},
+            "nodes": [{
+              "object": "text",
+              "text": "内容6",
+              "marks": [{
+                "object": "mark",
+                "type": "bold",
+                "data": {}
+              }]
+            }]
           }]
         }]
       }]
     }, {
       "object": "block",
-      "type": "paragraph",
+      "type": "heading3",
       "data": {},
       "nodes": [{
         "object": "text",

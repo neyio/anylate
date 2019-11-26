@@ -4,13 +4,34 @@
 
 .s-table{
   & &__tool{
+    transition: all 0.3s;
     ul{
       padding: 0 !important;
       line-height: initial !important;
+      display: flex;
+      justify-content: flex-start;
+      
       // padding: 0 ;
       li{
         padding: 0 !important;
+        flex:0 0 25px;
         // padding: 0 ;
+        color:#999;
+        font-size: 1rem;
+        span{
+          &.icon-add_col_after,&.icon-add_col_before{
+              font-size: 1.1rem!important;
+              line-height: 23px;
+              width: 23px;
+          }
+        }
+        &:hover{ 
+          background-color: transparent;
+          span{
+            color:#333;
+          
+          }
+        }
       }
     }
   }

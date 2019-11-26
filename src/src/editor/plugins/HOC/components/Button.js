@@ -45,10 +45,15 @@ const Button = React.forwardRef(({ editor, type, className, icon }, ref) => {
 			className={cx(
 				className,
 				css`
-					padding: 2px 5px;
-					cursor: pointer;
 					background: ${active ? '#eee' : 'transparent'};
 					color: ${active ? '#333' : '#eee'};
+					flex: 1;
+					height: 100%;
+					display: flex;
+					flex-direction: row;
+					align-items: center;
+					justify-content: center;
+					cursor: pointer;
 				`
 			)}
 			onMouseDown={(event) => {
