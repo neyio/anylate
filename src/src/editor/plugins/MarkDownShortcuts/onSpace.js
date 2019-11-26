@@ -1,5 +1,7 @@
 import { getType, inlineShortcuts } from './utils';
-
+const ifCodeBlockMatch = (str) => {
+	return str === '```';
+};
 export default function onSpace(event, editor, next) {
 	const { value } = editor;
 	const { selection, startBlock } = value;
@@ -39,8 +41,12 @@ export default function onSpace(event, editor, next) {
 				let inlineTags = [];
 				let result = reg.exec(text);
 				if (result) {
+					console.log(result, type);
 					inlineTags = [ result.index, result.index + result[0].length ];
 					const [ start, end ] = inlineTags;
+					if (ifCodeBlockMatch(result[0])) {
+						break;
+					}
 					if (type === 'block' && wrap === 'image') {
 						event.preventDefault();
 						const [ , label, uri ] = /\[(\S*)\]\((\S+)\)/.exec(result[0]);
@@ -69,6 +75,7 @@ export default function onSpace(event, editor, next) {
 							.moveToEnd();
 						break;
 					}
+
 					editor
 						.removeTextByKey(firstText.key, end - shortcut.length, shortcut.length)
 						.removeTextByKey(firstText.key, start, shortcut.length)

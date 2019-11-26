@@ -4,233 +4,208 @@
     "object": "document",
     "data": {},
     "nodes": [{
+      "object": "block",
+      "type": "heading1",
+      "data": {},
+      "nodes": [{
+        "object": "text",
+        "text": "一级标题",
+        "marks": []
+      }]
+    }, {
+      "object": "block",
+      "type": "heading2",
+      "data": {},
+      "nodes": [{
+        "object": "text",
+        "text": "二级标题",
+        "marks": []
+      }]
+    }, {
+      "object": "block",
+      "type": "heading3",
+      "data": {},
+      "nodes": [{
+        "object": "text",
+        "text": "三级标题",
+        "marks": []
+      }]
+    }, {
+      "object": "block",
+      "type": "heading4",
+      "data": {},
+      "nodes": [{
+        "object": "text",
+        "text": "四级标题",
+        "marks": []
+      }]
+    }, {
+      "object": "block",
+      "type": "heading5",
+      "data": {},
+      "nodes": [{
+        "object": "text",
+        "text": "五级",
+        "marks": []
+      }]
+    }, {
+      "object": "block",
+      "type": "heading6",
+      "data": {},
+      "nodes": [{
+        "object": "text",
+        "text": "六级",
+        "marks": []
+      }]
+    }, {
+      "object": "block",
+      "type": "paragraph",
+      "data": {},
+      "nodes": [{
+        "object": "text",
+        "text": "普通段落",
+        "marks": []
+      }]
+    }, {
+      "object": "block",
+      "type": "block-quote",
+      "data": {},
+      "nodes": [{
+        "object": "text",
+        "text": " 引用段落",
+        "marks": []
+      }]
+    }, {
+      "object": "block",
+      "type": "ordered-list",
+      "data": {},
+      "nodes": [{
         "object": "block",
-        "type": "heading1",
+        "type": "list-item",
         "data": {},
         "nodes": [{
           "object": "text",
-          "text": "一级标题",
+          "text": " 有序列表",
           "marks": []
         }]
       }, {
         "object": "block",
-        "type": "heading2",
+        "type": "list-item",
         "data": {},
         "nodes": [{
           "object": "text",
-          "text": "二级标题",
+          "text": "有序列表",
           "marks": []
         }]
       }, {
         "object": "block",
-        "type": "heading3",
-        "data": {},
-        "nodes": [{
-          "object": "text",
-          "text": "三级标题",
-          "marks": []
-        }]
-      }, {
-        "object": "block",
-        "type": "heading4",
-        "data": {},
-        "nodes": [{
-          "object": "text",
-          "text": "四级标题",
-          "marks": []
-        }]
-      }, {
-        "object": "block",
-        "type": "heading5",
-        "data": {},
-        "nodes": [{
-          "object": "text",
-          "text": "五级",
-          "marks": []
-        }]
-      }, {
-        "object": "block",
-        "type": "heading6",
-        "data": {},
-        "nodes": [{
-          "object": "text",
-          "text": "六级",
-          "marks": []
-        }]
-      }, {
-        "object": "block",
-        "type": "paragraph",
-        "data": {},
-        "nodes": [{
-          "object": "text",
-          "text": "普通段落",
-          "marks": []
-        }]
-      }, {
-        "object": "block",
-        "type": "block-quote",
-        "data": {},
-        "nodes": [{
-          "object": "text",
-          "text": " 引用段落",
-          "marks": []
-        }]
-      }, {
-        "object": "block",
-        "type": "ordered-list",
+        "type": "list-item",
         "data": {},
         "nodes": [{
           "object": "block",
-          "type": "list-item",
-          "data": {},
-          "nodes": [{
-            "object": "text",
-            "text": " 有序列表",
-            "marks": []
-          }]
-        }, {
-          "object": "block",
-          "type": "list-item",
-          "data": {},
-          "nodes": [{
-            "object": "text",
-            "text": "有序列表",
-            "marks": []
-          }]
-        }, {
-          "object": "block",
-          "type": "list-item",
+          "type": "bulleted-list",
           "data": {},
           "nodes": [{
             "object": "block",
-            "type": "bulleted-list",
+            "type": "list-item",
+            "data": {},
+            "nodes": [{
+              "object": "text",
+              "text": "嵌套无序列表",
+              "marks": []
+            }]
+          }, {
+            "object": "block",
+            "type": "list-item",
+            "data": {},
+            "nodes": [{
+              "object": "text",
+              "text": "嵌套无序列表",
+              "marks": []
+            }]
+          }, {
+            "object": "block",
+            "type": "list-item",
+            "data": {},
+            "nodes": [{
+              "object": "text",
+              "text": "嵌套任务列表",
+              "marks": []
+            }]
+          }, {
+            "object": "block",
+            "type": "list-item",
             "data": {},
             "nodes": [{
               "object": "block",
-              "type": "list-item",
-              "data": {},
-              "nodes": [{
-                "object": "text",
-                "text": "嵌套无序列表",
-                "marks": []
-              }]
-            }, {
-              "object": "block",
-              "type": "list-item",
-              "data": {},
-              "nodes": [{
-                "object": "text",
-                "text": "嵌套无序列表",
-                "marks": []
-              }]
-            }, {
-              "object": "block",
-              "type": "list-item",
-              "data": {},
-              "nodes": [{
-                "object": "text",
-                "text": "嵌套任务列表",
-                "marks": []
-              }]
-            }, {
-              "object": "block",
-              "type": "list-item",
+              "type": "todo-list",
               "data": {},
               "nodes": [{
                 "object": "block",
-                "type": "todo-list",
-                "data": {},
+                "type": "list-item",
+                "data": {
+                  "checked": false
+                },
                 "nodes": [{
-                  "object": "block",
-                  "type": "list-item",
-                  "data": {
-                    "checked": false
-                  },
-                  "nodes": [{
-                    "object": "text",
-                    "text": "任务列表",
-                    "marks": []
-                  }]
-                }, {
-                  "object": "block",
-                  "type": "list-item",
-                  "data": {
-                    "checked": true
-                  },
-                  "nodes": [{
-                    "object": "text",
-                    "text": "任务列表",
-                    "marks": []
-                  }]
+                  "object": "text",
+                  "text": "任务列表",
+                  "marks": []
+                }]
+              }, {
+                "object": "block",
+                "type": "list-item",
+                "data": {
+                  "checked": true
+                },
+                "nodes": [{
+                  "object": "text",
+                  "text": "任务列表",
+                  "marks": []
                 }]
               }]
             }]
           }]
-        }, {
-          "object": "block",
-          "type": "list-item",
-          "data": {},
-          "nodes": [{
-            "object": "text",
-            "text": "BUG 一摞子",
-            "marks": []
-          }]
         }]
       }, {
         "object": "block",
-        "type": "image",
-        "data": {
-          "alt": "",
-          "src": "https://pic2.zhimg.com/80/v2-f0ebe3f33f34bd1031d4d7abc4b47f29_hd.jpg"
-        }
-      },
-      {
-        "object": "block",
-        "type": "heading5",
+        "type": "list-item",
         "data": {},
         "nodes": [{
           "object": "text",
-          "text": "公式支持",
+          "text": "BUG 一摞子",
           "marks": []
         }]
+      }]
+    }, {
+      "object": "block",
+      "type": "image",
+      "data": {
+        "alt": "",
+        "src": "https://pic2.zhimg.com/80/v2-f0ebe3f33f34bd1031d4d7abc4b47f29_hd.jpg"
       },
-      {
-        "object": "block",
-        "type": "math",
-        "data": {},
-        "nodes": [{
-          "object": "block",
-          "type": "code",
-          "data": {
-            "language": "latex"
-          },
-          "nodes": [{
-            "object": "block",
-            "type": "code_line",
-            "data": {},
-            "nodes": [{
-              "object": "text",
-              "text": "SUM(a+b)",
-              "marks": []
-            }]
-          }]
-        }]
-      },
-      {
-        "object": "block",
-        "type": "paragraph",
-        "data": {},
-        "nodes": [{
-          "object": "text",
-          "text": "",
-          "marks": []
-        }]
-      },
-      {
+      "nodes": [{
+        "object": "text",
+        "text": "",
+        "marks": []
+      }]
+    }, {
+      "object": "block",
+      "type": "heading5",
+      "data": {},
+      "nodes": [{
+        "object": "text",
+        "text": "公式支持",
+        "marks": []
+      }]
+    }, {
+      "object": "block",
+      "type": "math",
+      "data": {},
+      "nodes": [{
         "object": "block",
         "type": "code",
         "data": {
-          "language": "javascript"
+          "language": "latex"
         },
         "nodes": [{
           "object": "block",
@@ -238,50 +213,100 @@
           "data": {},
           "nodes": [{
             "object": "text",
-            "text": "console.log('hello world!');",
+            "text": "SUM(a+b)",
             "marks": []
           }]
-        }, {
+        }]
+      }]
+    }, {
+      "object": "block",
+      "type": "paragraph",
+      "data": {},
+      "nodes": [{
+        "object": "text",
+        "text": "",
+        "marks": []
+      }]
+    }, {
+      "object": "block",
+      "type": "code",
+      "data": {
+        "language": "javascript"
+      },
+      "nodes": [{
+        "object": "block",
+        "type": "code_line",
+        "data": {},
+        "nodes": [{
+          "object": "text",
+          "text": "console.log('hello world!');",
+          "marks": []
+        }]
+      }]
+    }, {
+      "object": "block",
+      "type": "paragraph",
+      "data": {},
+      "nodes": [{
+        "object": "text",
+        "text": "表格有bug，不敢放！",
+        "marks": []
+      }]
+    }, {
+      "object": "block",
+      "type": "code",
+      "data": {
+        "language": "javascript"
+      },
+      "nodes": [{
+        "object": "block",
+        "type": "code_line",
+        "data": {},
+        "nodes": [{
+          "object": "text",
+          "text": "console.log('console.log');",
+          "marks": []
+        }]
+      }]
+    }, {
+      "object": "block",
+      "type": "paragraph",
+      "data": {},
+      "nodes": [{
+        "object": "text",
+        "text": "图片大小缩放需要做...",
+        "marks": []
+      }]
+    }, {
+      "object": "block",
+      "type": "math",
+      "data": {},
+      "nodes": [{
+        "object": "block",
+        "type": "code",
+        "data": {
+          "language": "latex"
+        },
+        "nodes": [{
           "object": "block",
           "type": "code_line",
           "data": {},
           "nodes": [{
             "object": "text",
-            "text": "",
+            "text": "console.log(111);",
             "marks": []
           }]
         }]
-      },
-      {
-        "object": "block",
-        "type": "paragraph",
-        "data": {},
-        "nodes": [{
-          "object": "text",
-          "text": "表格有bug，不敢放！",
-          "marks": []
-        }]
-      },
-      {
-        "object": "block",
-        "type": "paragraph",
-        "data": {},
-        "nodes": [{
-          "object": "text",
-          "text": "图片大小缩放需要做...",
-          "marks": []
-        }]
-      },
-      {
-        "object": "block",
-        "type": "paragraph",
-        "data": {},
-        "nodes": [{
-          "object": "text",
-          "text": "先就这些吧！",
-          "marks": []
-        }]
-      }
-    ]
+      }]
+    }, {
+      "object": "block",
+      "type": "paragraph",
+      "data": {},
+      "nodes": [{
+        "object": "text",
+        "text": "先就这些吧！",
+        "marks": []
+      }]
+    }]
   }
 }

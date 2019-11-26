@@ -3,7 +3,7 @@ export const inlineShortcuts = [
 	{ mark: 'bold', shortcut: '__', reg: /__\S+__/ },
 	{ mark: 'italic', shortcut: '*', reg: /\*\S+\*/ },
 	{ mark: 'italic', shortcut: '_', reg: /_\S+_/ },
-	{ mark: 'code', shortcut: '`', reg: /`\S+`/ },
+	{ mark: 'code', shortcut: '`', reg: /`\S*`/ },
 	{ mark: 'inserted', shortcut: '++', reg: /\+\+\S+\+\+/ },
 	{ mark: 'deleted', shortcut: '~~', reg: /~~\S+~~/ },
 	{ wrap: 'image', type: 'block', reg: /!\[\S*]\(\S+\)/ },
