@@ -35,6 +35,7 @@ const WrapperBlock = ({ visible, wrapper, children }) => {
 const DemoWrapper2 = ({ editor, node }) => {
 	const [ visible, setVisible ] = useState(false);
 	const triggerRef = useRef(null);
+	let listItemMark = false;
 	const handleClick = (e) => {
 		e.stopPropagation();
 		e.preventDefault();
@@ -44,12 +45,15 @@ const DemoWrapper2 = ({ editor, node }) => {
 		switch (node.type) {
 			case 'todo-list':
 				iconItem = { icon: 'icon--Todo-List' };
+				listItemMark = true;
 				break;
 			case 'ordered-list':
 				iconItem = { icon: 'icon-editor-list-numbers' };
+				listItemMark = true;
 				break;
 			case 'bulleted-list':
 				iconItem = { icon: 'icon-editor-list-bulleted' };
+				listItemMark = true;
 				break;
 			default:
 		}
@@ -75,7 +79,20 @@ const DemoWrapper2 = ({ editor, node }) => {
 				destroyTooltipOnHide={true}
 				onVisibleChange={(v) => setVisible(v)}
 				trigger="click"
-				overlay={<List editor={editor} node={node} hiddenMenu={() => setVisible(false)} items={iconItems} />}
+				overlay={
+					<List
+						editor={editor}
+						node={node}
+						hiddenMenu={() => setVisible(false)}
+						items={
+							listItemMark ? (
+								iconItems.filter((i) => [ 'ordered', 'bulleted' ].includes(i.block))
+							) : (
+								iconItems
+							)
+						}
+					/>
+				}
 			>
 				<span
 					className={cx('iconfont', (iconItem && iconItem.icon) || '')}
