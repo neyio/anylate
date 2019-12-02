@@ -1,6 +1,6 @@
 {
   "name": "slate-md-support",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha.0",
   "description": "> TODO: description",
   "author": "Neyio <neyioqian@gmail.com>",
   "homepage": "https://github.com/neyio/anylate/tree/master/packages/slate-md-support#readme",
@@ -12,7 +12,8 @@
     "test": "__tests__"
   },
   "files": [
-    "lib", "src"
+    "lib",
+    "src"
   ],
   "repository": {
     "type": "git",
@@ -25,6 +26,6 @@
     "url": "https://github.com/neyio/anylate/issues"
   },
   "dependencies": {
-    "slate-base-components": "^0.0.1"
+    "slate-base-components": "^0.0.1-alpha.0"
   }
 }
