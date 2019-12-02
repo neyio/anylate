@@ -2,15 +2,15 @@ import renderBlock from './renderBlock';
 import renderMark from './renderMark';
 import renderInline from './renderInline';
 import schema from './schema';
-import aliOss from 'ali-oss';
-const client = new aliOss({
-	accessKeyId: '',
-	accessKeySecret: '',
-	bucket: 'mostyouth',
-	endpoint: 'https://oss-cn-shanghai.aliyuncs.com',
-	timeout: '60s',
-	bucketWithEndpoint: 'https://oss.mostyouth.cn'
-});
+// import aliOss from 'ali-oss';
+// const client = new aliOss({
+// 	accessKeyId: '',
+// 	accessKeySecret: '',
+// 	bucket: 'mostyouth',
+// 	endpoint: 'https://oss-cn-shanghai.aliyuncs.com',
+// 	timeout: '60s',
+// 	bucketWithEndpoint: 'https://oss.mostyouth.cn'
+// });
 function dataUriToBlob(uri) {
 	const data = uri.split(',')[1];
 	const bytes = atob(data);
@@ -45,10 +45,10 @@ export default function AnyLateRender(
 		upload: (blob, callback) => {
 			console.log('请实现上传代码 (blob)=>void', blob.length);
 			callback('error');
-			client.put('anylate/1.png', dataUriToBlob(blob)).then((result) => {
-				console.log(result);
-				// callback(null, result);
-			});
+			// client.put('anylate/1.png', dataUriToBlob(blob)).then((result) => {
+			// 	console.log(result);
+			// 	// callback(null, result);
+			// });
 		}
 	}
 ) {

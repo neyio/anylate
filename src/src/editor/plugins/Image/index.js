@@ -1,7 +1,6 @@
 // copied from https://github.com/ianstormtaylor/slate-plugins ,for some reasons ，it updated 1years ago, i may need to diy it ,so copied .
 import isImage from 'is-image';
 import isUrl from 'is-url';
-// import logger from 'slate-dev-logger';
 import { Block, KeyUtils } from 'slate';
 import { extname } from 'path';
 import { getEventTransfer, getEventRange } from 'slate-react';

@@ -7,7 +7,6 @@ import plugins from './plugins';
 import './themes/base.less';
 import { theme } from './theme.js';
 import { cx } from 'emotion';
-
 const initialValue = Value.fromJSON(initialValueAsJson);
 const AnySlate = (props) => {
 	const [ currentTheme, setTheme ] = useState(theme.light);

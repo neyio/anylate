@@ -138,9 +138,10 @@ module.exports = function(webpackEnv) {
 		mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
 		// Stop compilation early in production
 		bail: isEnvProduction,
+
 		devtool: isEnvProduction
 			? shouldUseSourceMap ? 'source-map' : false
-			: isEnvDevelopment && 'cheap-module-source-map',
+			: isEnvDevelopment && 'cheap-module-eval-source-map', ////devtool: 'cheap-module-eval-source-map',
 		// These are the "entry points" to our application.
 		// This means they will be the "root" imports that are included in JS bundle.
 		entry: [
@@ -180,10 +181,9 @@ module.exports = function(webpackEnv) {
 			// We inferred the "public path" (such as / or /my-project) from homepage.
 			// We use "/" in development.
 			publicPath: publicPath,
+			devtoolModuleFilenameTemplate: (info) => info.absoluteResourcePath.replace(/\\/g, '/'),
 			// Point sourcemap entries to original disk location (format as URL on Windows)
-			devtoolModuleFilenameTemplate: isEnvProduction
-				? (info) => path.relative(paths.appSrc, info.absoluteResourcePath).replace(/\\/g, '/')
-				: isEnvDevelopment && ((info) => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')),
+			// devtoolModuleFilenameTemplate: isEnvProduction? (info) => path.relative(paths.appSrc, info.absoluteResourcePath).replace(/\\/g, '/'): isEnvDevelopment && ((info) => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')),
 			// Prevents conflicts when multiple Webpack runtimes (from different apps)
 			// are used on the same page.
 			jsonpFunction: `webpackJsonp${appPackageJson.name}`,
@@ -389,6 +389,12 @@ module.exports = function(webpackEnv) {
 								cacheCompression: false,
 								compact: isEnvProduction
 							}
+						},
+						{
+							test: /\.(js|mjs)$/,
+							// include: /(?:slate-code-base)|(?:slate-code-math)|(?:slate-table)/,
+							include: path.join(__dirname, '../../packages/'),
+							loader: 'babel-loader'
 						},
 						// Process any JS outside of the app with Babel.
 						// Unlike the application JS, we only compile the standard ES features.

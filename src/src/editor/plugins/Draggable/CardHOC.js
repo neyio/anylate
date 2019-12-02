@@ -3,7 +3,6 @@ import { useDrop } from 'react-dnd';
 import Card from './Card';
 import throttle from 'lodash/throttle';
 import { cx, css } from 'emotion';
-// import Context from './Context';
 const th = throttle((item, monitor, node, dispatch) => {
 	console.log('before setHover', item, monitor, node.key);
 	const { nodeKey } = item;

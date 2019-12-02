@@ -69,4 +69,5 @@ const renderBlock = (options = {}) => (props, editor, next) => {
 			return next();
 	}
 };
+
 export default renderBlock;
