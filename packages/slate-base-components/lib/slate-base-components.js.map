@@ -1,0 +1,1 @@
+{"version":3,"file":"slate-base-components.js","sources":["../src/index.js"],"sourcesContent":["export const hello = () => {\n  return 'hello world';\n};\n"],"names":["hello"],"mappings":";;;;IAAaA,KAAK,GAAG,SAARA,KAAQ,GAAM;SAClB,aAAP;CADK;;;;"}

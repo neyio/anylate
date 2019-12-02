@@ -1,0 +1,67 @@
+{
+  "name": "anylate",
+  "version": "1.0.0",
+  "description": "Neyio & AM & Sunshine's Editor Based On Slate.",
+  "main": "index.js",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neyio/anylate.git"
+  },
+  "author": "neyio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/neyio/anylate/issues"
+  },
+  "homepage": "https://github.com/neyio/anylate#readme",
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0",
+    "@babel/preset-stage-0": "^7.0.0",
+    "@rollup/plugin-json": "^4.0.0",
+    "@rollup/plugin-replace": "^2.2.1",
+    "babel-eslint": "^10.0.3",
+    "babel-plugin-named-asset-import": "^0.3.4",
+    "babel-plugin-prismjs": "^1.1.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "cross-env": "^6.0.3",
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^2.3.0",
+    "immutable": "^4.0.0-rc.12",
+    "lerna": "^3.19.0",
+    "lodash.startcase": "^4.4.0",
+    "prettier": "^1.19.1",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "rollup": "^1.26.5",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-less": "^1.1.2",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.4.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-uglify": "^6.0.3",
+    "slate": "^0.47.9",
+    "slate-react": "^0.22.10",
+    "chokidar": "^3.3.0"
+  },
+  "scripts": {
+    "pkg-create": "lerna create",
+    "pkg-add": "lerna add",
+    "root-dev-add": "yarn add -D --ignore-workspace-root-check",
+    "build:rollup": "rollup --config ./support/config.js",
+    "build:production": "cross-env NODE_ENV=production yarn build:rollup",
+    "build:watch": "rollup --watch --config ./support/config.js",
+    "release": "yarn build:production  && lerna publish"
+  },
+  "workspaces": [
+    "packages/**"
+  ]
+}

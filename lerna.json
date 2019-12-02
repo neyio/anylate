@@ -1,0 +1,12 @@
+{
+  "packages": [
+    "packages/**"
+  ],
+  "useWorkspaces": true,
+  "npmClient": "yarn",
+  "registry": "https://registry.npmjs.org/",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "0.0.0"
+}
