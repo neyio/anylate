@@ -1,5 +1,7 @@
 import { getType, inlineShortcuts } from './utils';
-
+const ifCodeBlockMatch = (str) => {
+	return str === '```';
+};
 export default function onSpace(event, editor, next) {
 	const { value } = editor;
 	const { selection, startBlock } = value;
@@ -15,18 +17,19 @@ export default function onSpace(event, editor, next) {
 	if (type) {
 		//如果类型匹配为heading则址
 		console.log(chars, type);
-
 		if (type.match(/heading/) || type.match('paragraph')) {
-			// 防止空格
-			event.preventDefault();
-		}
-		if (startBlock.type.match(/heading/) && !type.match(/heading/)) {
-			return next();
+			if (startBlock.type !== 'list-item') {
+				// 命中如果不是列表则防止空格
+				event.preventDefault();
+			}
+			if (startBlock.type.match(/heading/) && !type.match(/heading/)) {
+				return next();
+			}
 		}
 		if (type === 'list-item') {
 			return editor.insertListItem(); //不传入参数，则由正则判断，传入字符串，表示类型	 'ordered' ｜ 'undo'｜'finished'｜ 'bulleted'
 		}
-		return editor.moveFocusToStartOfNode(startBlock).delete().setBlocks(type);
+		if (startBlock.type !== 'list-item') return editor.moveFocusToStartOfNode(startBlock).delete().setBlocks(type);
 	}
 
 	editor.withoutNormalizing((editor) => {
@@ -38,11 +41,15 @@ export default function onSpace(event, editor, next) {
 				let inlineTags = [];
 				let result = reg.exec(text);
 				if (result) {
+					console.log(result, type);
 					inlineTags = [ result.index, result.index + result[0].length ];
 					const [ start, end ] = inlineTags;
+					if (ifCodeBlockMatch(result[0])) {
+						break;
+					}
 					if (type === 'block' && wrap === 'image') {
 						event.preventDefault();
-						const [ , label, uri ] = /\[(\S*)\]\((\S+)\)/.exec(result[0]);
+						const [ , label, uri ] = /\[(\S*)\]\((\S*)\)/.exec(result[0]);
 						editor
 							.removeTextByKey(firstText.key, start, result[0].length)
 							.splitBlock()
@@ -68,6 +75,7 @@ export default function onSpace(event, editor, next) {
 							.moveToEnd();
 						break;
 					}
+
 					editor
 						.removeTextByKey(firstText.key, end - shortcut.length, shortcut.length)
 						.removeTextByKey(firstText.key, start, shortcut.length)

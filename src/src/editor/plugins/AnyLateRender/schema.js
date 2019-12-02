@@ -19,7 +19,13 @@ const schema = {
 		heading6: {
 			nodes: [ { match: { object: 'text' } } ]
 		},
-
+		// paragraph: {
+		// 	nodes: [
+		// 		{
+		// 			match: [ { object: 'text' }, { type: 'code' } ]
+		// 		}
+		// 	]
+		// },
 		'horizontal-rule': {
 			isVoid: true
 		},
@@ -34,6 +40,7 @@ const schema = {
 		},
 		'bulleted-list': {
 			normalize(editor, { code, node, child }) {
+				console.log('bulleted-list', 0);
 				if (code === 'child_type_invalid') {
 					console.log('bulleted-list child_type_invalid');
 				}
@@ -41,6 +48,7 @@ const schema = {
 		},
 		'ordered-list': {
 			normalize(editor, { code, node, child }) {
+				console.log('ordered-list', 123);
 				if (code === 'child_type_invalid') {
 					console.log('ordered-list child_type_invalid');
 				}
@@ -48,6 +56,7 @@ const schema = {
 		},
 		'todo-list': {
 			normalize(editor, { code, node, child }) {
+				console.log('todo-list', 456);
 				if (code) {
 					console.log('error', code);
 				}
@@ -60,14 +69,22 @@ const schema = {
 					match: [
 						{ object: 'text' },
 						{ type: 'image' },
-						{ type: 'list-item' },
+						// { type: 'list-item' },
+						{ type: 'code' },
 						{ type: 'paragraph' },
 						{ type: 'bulleted-list' },
 						{ type: 'ordered-list' },
 						{ type: 'todo-list' }
 					]
 				}
-			]
+			],
+			normalize(editor, { code, node, child }) {
+				console.log('TCL: normalize -> code', code, child);
+				if (code === 'last_child_type_invalid') {
+					console.log('last_child_type_invalid');
+					return editor;
+				}
+			}
 		}
 	},
 	document: {
@@ -96,16 +113,27 @@ const schema = {
 				min: 1
 			}
 		],
-		last: { type: 'paragraph' },
+		last: [
+			{ type: 'paragraph' },
+			{ type: 'list-item' },
+			{ type: 'heading1' },
+			{ type: 'heading1' },
+			{ type: 'heading2' },
+			{ type: 'heading3' },
+			{ type: 'heading4' },
+			{ type: 'heading5' },
+			{ type: 'heading6' }
+		],
 		normalize(editor, { code, node, child }) {
-			console.error(code);
+			console.log('TCL: normalize -> code', code, child);
 			if (code === 'last_child_type_invalid') {
-				console.log('last_child_type_invalid');
-				if (editor.value.startBlock.type === 'bulleted-list') {
-					console.log('anything need to do here');
-				}
 				const paragraph = Block.create('paragraph');
-				return editor.insertNodeByKey(node.key, node.nodes.size, paragraph);
+				editor.insertNodeByKey(node.key, node.nodes.size, paragraph);
+				if (editor.value.startBlock.text === '') {
+					if ([ 'bulleted-list', 'ordered-list', 'todo-list' ].includes(child.type))
+						editor.delete().removeNodeByKey(child.key);
+				}
+				return editor;
 			}
 		}
 	}

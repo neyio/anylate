@@ -15,7 +15,9 @@ const iconItems = [
 	{ text: '有序列表', icon: 'icon-editor-list-numbers', block: 'ordered', shortCut: '⌘+shift+l' },
 	{ text: '无序列表', icon: 'icon-editor-list-bulleted', block: 'bulleted', shortCut: '⌘+l' },
 	{ text: '任务列表', icon: 'icon--Todo-List', block: 'undo', shortCut: '⌘+shift+o' },
-	{ text: '公式', icon: 'icon-formula', block: 'math', shortCut: '' }
+	{ text: '公式块', icon: 'icon-formula', block: 'math', shortCut: '⌘+shift+f' },
+	{ text: '代码块', icon: 'icon-code', block: 'code', shortCut: '⌘+shift+c' },
+	{ text: '表格', icon: 'icon-table1', block: 'table', shortCut: '⌘+opt+t' }
 ];
 const WrapperBlock = ({ visible, wrapper, children }) => {
 	useEffect(() => {
@@ -35,27 +37,29 @@ const WrapperBlock = ({ visible, wrapper, children }) => {
 const DemoWrapper2 = ({ editor, node }) => {
 	const [ visible, setVisible ] = useState(false);
 	const triggerRef = useRef(null);
+	let listItemMark = false;
 	const handleClick = (e) => {
 		e.stopPropagation();
 		e.preventDefault();
 	};
 	let iconItem = iconItems.find((i) => i.block === node.type);
 	if (!iconItem) {
-		console.log(node.type);
 		switch (node.type) {
 			case 'todo-list':
 				iconItem = { icon: 'icon--Todo-List' };
+				listItemMark = true;
 				break;
 			case 'ordered-list':
 				iconItem = { icon: 'icon-editor-list-numbers' };
+				listItemMark = true;
 				break;
 			case 'bulleted-list':
 				iconItem = { icon: 'icon-editor-list-bulleted' };
+				listItemMark = true;
 				break;
 			default:
 		}
 	}
-	console.log('TCL: iconItem', iconItem);
 	return (
 		<div
 			contentEditable={false}
@@ -77,7 +81,20 @@ const DemoWrapper2 = ({ editor, node }) => {
 				destroyTooltipOnHide={true}
 				onVisibleChange={(v) => setVisible(v)}
 				trigger="click"
-				overlay={<List editor={editor} node={node} hiddenMenu={() => setVisible(false)} items={iconItems} />}
+				overlay={
+					<List
+						editor={editor}
+						node={node}
+						hiddenMenu={() => setVisible(false)}
+						items={
+							listItemMark ? (
+								iconItems.filter((i) => [ 'ordered', 'bulleted' ].includes(i.block))
+							) : (
+								iconItems
+							)
+						}
+					/>
+				}
 			>
 				<span
 					className={cx('iconfont', (iconItem && iconItem.icon) || '')}

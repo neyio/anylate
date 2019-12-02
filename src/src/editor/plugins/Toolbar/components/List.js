@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text } from 'slate';
 import { cx } from 'emotion';
 import './list.css';
 const List = (props) => {
@@ -8,6 +9,12 @@ const List = (props) => {
 		hiddenMenu();
 		if (item.block === 'math') {
 			return editor.focus().insertMathBlock();
+		}
+		if (item.block === 'code') {
+			return editor.focus().insertCodeBlock('js', '');
+		}
+		if (item.block === 'table') {
+			return editor.insertTable(3, 2, () => () => ({ nodes: [ Text.create('') ] }));
 		}
 		if ([ 'ordered', 'undo', 'finished', 'bulleted' ].includes(item.block)) {
 			console.log(item.block);

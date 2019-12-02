@@ -10,21 +10,19 @@ export default function onTab(event, editor, next) {
 	console.log('sibling', sibling);
 	const parent = editor.value.document.getParent(startBlock.key);
 	console.log('TCL: onTab -> parent', parent);
-
+	const text = startBlock.text;
 	editor.removeNodeByKey(startBlock.key);
-
 	if (!sibling) {
 		return next();
 	}
 	const lastChild = sibling.nodes.last();
 	console.log('lastChild', lastChild);
-
 	if ([ 'ordered-list', 'bulleted-list', 'todo-list' ].includes(lastChild.type)) {
 		const insertItem = Block.create({
 			type: 'list-item',
 			object: 'block',
 			data: {},
-			nodes: [ { object: 'text', text: ' ' } ]
+			nodes: [ { object: 'text', text: text } ]
 		});
 		editor.insertNodeByKey(lastChild.key, lastChild.nodes.size, insertItem).moveForward(1);
 	} else {
@@ -36,7 +34,7 @@ export default function onTab(event, editor, next) {
 					type: 'list-item',
 					object: 'block',
 					data: {},
-					nodes: [ { object: 'text', text: ' ' } ]
+					nodes: [ { object: 'text', text: text } ]
 				}
 			]
 		});

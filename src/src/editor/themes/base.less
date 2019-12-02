@@ -1,5 +1,6 @@
 @import './component.less';
 @import './dark.less';
+@import './slate_plugins.less';
 
 // fontSize
 @font-size-base:12px;
@@ -95,7 +96,6 @@ body,
     font-size: @font-size-normal;
     text-align: left;
     overflow: visible;
-    // min-height: @font-size-base*15;
     background: @theme-color-white;
     position: relative;
 
@@ -124,9 +124,7 @@ body,
       li{
         padding:0 @padding-tiny;
       }
-      & li+li{
-        margin-top: @margin-base;
-      }
+
     }
 
     .@{Code}{
@@ -151,6 +149,9 @@ body,
     }
 
     .@{BulletedList},.@{OrderedList}{
+      li+li{
+        margin-top: @margin-base;
+      }
       & .@{ListItem}{
         line-height: @font-size-normal*1.25;
         padding-left: @padding-small;
@@ -162,6 +163,9 @@ body,
 
     .@{ToDoList}{
       list-style: none;
+      li+li{
+        margin-top: @margin-base;
+      }
       & .@{ToDoItemCheckbox}{
         margin: 0 @margin-large 0 @margin-base;
         padding: 0;
@@ -195,7 +199,7 @@ body,
     }
     
     .@{ParagraphPlaceHolder}{
-      color:@theme-color-text-lighten;
+      color:@theme-color-title-lighten;
     }
     .@{H1}{
       font-size: @font-size-extra-large;
@@ -214,12 +218,12 @@ body,
       line-height: @font-size-normal*1.25;
     }
     .@{H5}{
-      font-size: @font-size-small + 4px;
-      line-height: @font-size-small*1.25;
+      font-size: @font-size-normal - 2px;
+      line-height: @font-size-normal*1.25;
     }
     .@{H6}{
-      font-size: @font-size-tiny + 4px;
-      line-height: @font-size-tiny*1.5;
+      font-size: @font-size-normal - 2px;
+      line-height: @font-size-normal*1.25;
     }
 
     .@{H1},.@{H2},.@{H3},.@{H4},.@{H5},.@{H6}{
@@ -269,7 +273,7 @@ body,
       background-color: @theme-color-light;
       font-style: italic;
       font-size: @font-size-normal;
-      border-radius: 2px; 
+      border-radius: 3px; 
       &-info{
         border-left: 4px solid @theme-color-primary;
       }

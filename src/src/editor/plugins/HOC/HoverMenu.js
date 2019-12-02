@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
 import ReactDOM from 'react-dom';
 import { css } from 'emotion';
+import Tooltip from 'rc-tooltip';
 import Button from './components/Button';
-import Menu from './components/Menu';
+
 import { ifHasLinks } from './link';
 
 const HoverMenu = ({ editor, visible }) => {
@@ -24,38 +25,97 @@ const HoverMenu = ({ editor, visible }) => {
 			menu.style.left = `${rect.left + window.pageXOffset - menu.offsetWidth / 2 + rect.width / 2}px`;
 		}
 	}
+
 	return ReactDOM.createPortal(
-		<Menu
+		<ul
 			ref={ref}
 			className={css`
-				padding: 8px 7px 6px;
+				padding: 6px 8px;
 				position: absolute;
 				z-index: 1;
 				top: -10000px;
 				left: -10000px;
 				margin-top: -6px;
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				min-width: 350px;
+				justify-content: space-around;
 				opacity: 0;
 				background-color: #222;
 				color: #fff;
 				border-radius: 4px;
 				transition: opacity 0.75s;
+				& > li {
+					display: flex;
+					height: 35px;
+					width: 35px;
+					flex-direction: row;
+					align-items: center;
+					justify-content: center;
+				}
 			`}
 		>
-			<Button editor={editor} type="bold" icon="icon-editor-bold" />
-			<Button editor={editor} type="italic" icon="icon-editor-italic" />
-			<Button editor={editor} type="deleted" icon="icon-editor-strikethrough" />
-			<Button editor={editor} type="underlined" icon="icon-editor-underline" />
-			<Button editor={editor} type="code" icon="icon-code" />
-			<Button editor={editor} type="clean" icon="icon-editor-clean" />
-			<span className={css`margin-left: 15px;`}>|</span>
+			<Tooltip placement="bottom" trigger={[ 'hover' ]} overlay={<span>粗体</span>} overlayClassName={'hello'}>
+				<li>
+					<Button editor={editor} type="bold" icon="icon-editor-bold" />
+				</li>
+			</Tooltip>
+			<Tooltip placement="bottom" trigger={[ 'hover' ]} overlay={<span>斜体</span>}>
+				<li>
+					<Button editor={editor} type="italic" icon="icon-editor-italic" />
+				</li>
+			</Tooltip>
+			<Tooltip placement="bottom" trigger={[ 'hover' ]} overlay={<span>删除线</span>}>
+				<li>
+					<Button editor={editor} type="deleted" icon="icon-editor-strikethrough" />
+				</li>
+			</Tooltip>
+			<Tooltip placement="bottom" trigger={[ 'hover' ]} overlay={<span>下划线</span>}>
+				<li>
+					<Button editor={editor} type="underlined" icon="icon-editor-underline" />
+				</li>
+			</Tooltip>
+			<Tooltip placement="bottom" trigger={[ 'hover' ]} overlay={<span>行内代码</span>}>
+				<li>
+					<Button editor={editor} type="code" icon="icon-code" />
+				</li>
+			</Tooltip>
+			<li>
+				<span
+					className={css`
+						line-height: 35px;
+						flex: 1;
+						height: 35px;
+						width: 35px;
+						display: flex;
+						flex-direction: row;
+						align-items: center;
+						justify-content: center;
+					`}
+				>
+					|
+				</span>
+			</li>
 			{ifHasLinks(editor) ? (
-				<Button editor={editor} type="unlink" icon="icon-editor-unlink" />
+				<Tooltip placement="bottom" trigger={[ 'hover' ]} overlay={<span>取消链接</span>}>
+					<li>
+						<Button editor={editor} type="unlink" icon="icon-editor-unlink" />
+					</li>
+				</Tooltip>
 			) : (
-				<Button editor={editor} type="link" icon="icon-editor-link" />
+				<Tooltip placement="bottom" trigger={[ 'hover' ]} overlay={<span>超链接</span>}>
+					<li>
+						<Button editor={editor} type="link" icon="icon-editor-link" />
+					</li>
+				</Tooltip>
 			)}
-			{/* <Button editor={editor} type="code" icon=".icon-editor-undo" />
-			<Button editor={editor} type="code" icon=".icon-editor-redo" /> */}
-		</Menu>,
+			<Tooltip placement="bottom" trigger={[ 'hover' ]} overlay={<span>清除格式</span>}>
+				<li>
+					<Button editor={editor} type="clean" icon="icon-editor-clean" />
+				</li>
+			</Tooltip>
+		</ul>,
 		root
 	);
 };
