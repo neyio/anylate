@@ -1,1 +1,1 @@
-{"version":3,"file":"slate-md-support.es.js","sources":[],"sourcesContent":[],"names":[],"mappings":""}
+{"version":3,"file":"slate-md-support.es.js","sources":["../src/index.js"],"sourcesContent":["export const hello2 = () => {\n  return 'hello world2';\n};\n"],"names":["hello2"],"mappings":"IAAaA,MAAM,GAAG,SAATA,MAAS,GAAM;SACnB,cAAP;CADK;;;;"}
