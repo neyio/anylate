@@ -8,7 +8,8 @@ import { Heading1, Heading2, Heading3, Heading4, Heading5, Heading6 } from '../.
 import Paragraph from '../../components/Paragraph';
 import { componentClassName } from '../../theme';
 
-export default function renderBlock(props, editor, next) {
+const renderBlock = (options = {}) => (props, editor, next) => {
+	const { upload } = options;
 	const { attributes } = props;
 
 	const hidden = props.node.data.get('hidden');
@@ -49,7 +50,7 @@ export default function renderBlock(props, editor, next) {
 		case 'horizontal-rule':
 			return <Hr {...attributes} isSelected={props.isSelected} />;
 		case 'image':
-			return <Image {...attributes} isSelected={props.isSelected} {...props} />;
+			return <Image {...attributes} isSelected={props.isSelected} {...props} upload={upload} />;
 		case 'link':
 			return <Link {...props} />;
 		case 'heading1':
@@ -67,4 +68,5 @@ export default function renderBlock(props, editor, next) {
 		default:
 			return next();
 	}
-}
+};
+export default renderBlock;

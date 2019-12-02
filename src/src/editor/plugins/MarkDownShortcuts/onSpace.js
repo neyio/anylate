@@ -49,7 +49,7 @@ export default function onSpace(event, editor, next) {
 					}
 					if (type === 'block' && wrap === 'image') {
 						event.preventDefault();
-						const [ , label, uri ] = /\[(\S*)\]\((\S+)\)/.exec(result[0]);
+						const [ , label, uri ] = /\[(\S*)\]\((\S*)\)/.exec(result[0]);
 						editor
 							.removeTextByKey(firstText.key, start, result[0].length)
 							.splitBlock()
