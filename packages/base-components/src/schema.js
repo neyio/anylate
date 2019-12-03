@@ -50,6 +50,7 @@ const schema = {
 				}
 			}
 		},
+
 		'todo-list': {
 			normalize(editor, { code, node, child }) {
 				console.log('todo-list', 456);
@@ -60,25 +61,12 @@ const schema = {
 		},
 		'list-item': {
 			parent: [ { type: 'bulleted-list' }, { type: 'ordered-list' }, { type: 'todo-list' } ],
-			nodes: [
-				{
-					match: [
-						{ object: 'text' },
-						{ type: 'image' },
-						// { type: 'list-item' },
-						{ type: 'code' },
-						{ type: 'paragraph' },
-						{ type: 'bulleted-list' },
-						{ type: 'ordered-list' },
-						{ type: 'todo-list' }
-					]
-				}
-			],
+			nodes: [ { match: [ { object: 'paragraph' } ] } ],
 			normalize(editor, { code, node, child }) {
 				console.log('TCL: normalize -> code', code, child);
 				if (code === 'last_child_type_invalid') {
 					console.log('last_child_type_invalid');
-					return editor;
+					return editor.insertBlock('paragraph');
 				}
 			}
 		}
@@ -112,6 +100,10 @@ const schema = {
 		],
 		last: [
 			{ type: 'paragraph' },
+			{ type: 'block-quote' },
+			{ type: 'code' },
+			{ type: 'math' },
+			{ type: 'embed' },
 			{ type: 'list-item' },
 			{ type: 'heading1' },
 			{ type: 'heading1' },

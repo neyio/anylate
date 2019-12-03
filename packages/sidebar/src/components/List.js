@@ -6,15 +6,10 @@ const List = (props) => {
 	const { items, editor, node, hiddenMenu } = props;
 	const clickHandler = (item) => {
 		console.log('clickHandler', editor, node);
+
 		hiddenMenu();
-		if (item.block === 'math') {
-			return editor.focus().insertMathBlock();
-		}
-		if (item.block === 'code') {
-			return editor.focus().insertCodeBlock('js', '');
-		}
-		if (item.block === 'table') {
-			return editor.insertTable(3, 2, () => () => ({ nodes: [ Text.create('') ] }));
+		if (item.handler) {
+			return item.handler(editor);
 		}
 		if ([ 'ordered', 'undo', 'finished', 'bulleted' ].includes(item.block)) {
 			console.log(item.block);

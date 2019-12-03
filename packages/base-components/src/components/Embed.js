@@ -44,6 +44,7 @@ class Embed extends React.Component {
 						display: flex;
 						flex-direction: row;
 						justify-content: center;
+						border-radius: 4px;
 					`
 				)}
 			>
@@ -64,6 +65,7 @@ class Embed extends React.Component {
 							max-height: 50vh;
 							padding-top: 50px;
 							background: #fff;
+							border-radius: 3px;
 						`}
 						style={{
 							border: isSelected

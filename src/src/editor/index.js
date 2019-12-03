@@ -3,13 +3,9 @@ import { Value } from 'slate';
 import { cx } from 'emotion';
 import React, { useState } from 'react';
 
+import { theme } from '@anylate/themes';
 import initialValueAsJson from './value.json';
 import plugins from './plugins';
-
-const theme = {
-	base: 'any-theme-base',
-	dark: 'any-theme-dark'
-};
 
 const initialValue = Value.fromJSON(initialValueAsJson);
 const AnySlate = (props) => {
