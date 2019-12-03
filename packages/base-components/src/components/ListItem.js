@@ -1,7 +1,6 @@
 import React from 'react';
+import { componentClassName } from '@anylate/themes';
 import TodoItem from './TodoItem';
-// import { cx, css } from 'emotion';
-import { componentClassName } from '../themeAdapter';
 const ListItem = React.forwardRef(({ children, node, attributes, ...props }, ref) => {
 	const checked = node.data.get('checked');
 	if (checked !== undefined) {

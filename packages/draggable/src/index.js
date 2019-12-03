@@ -2,7 +2,7 @@ import React from 'react';
 import Container from './Container';
 import CardHOC from './CardHOC';
 import Context from './Context';
-const DraggablePlugin = (options = {}) => {
+const DraggablePlugin = () => {
 	return {
 		renderEditor: (props, editor, next) => {
 			return (

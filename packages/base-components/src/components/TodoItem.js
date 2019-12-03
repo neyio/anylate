@@ -1,6 +1,6 @@
 import React from 'react';
 import { cx, css } from 'emotion';
-import { componentClassName } from '../themeAdapter';
+import { componentClassName } from '@anylate/themes';
 
 class CheckListItem extends React.Component {
 	constructor(props) {

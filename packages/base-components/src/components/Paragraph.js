@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { cx } from 'emotion';
-import { componentClassName } from '../themeAdapter';
+import { componentClassName } from '@anylate/themes';
 const Paragraph = React.forwardRef(({ children, placeholderVisible, ...attributes }, ref) => {
 	return (
 		<div

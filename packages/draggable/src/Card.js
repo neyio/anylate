@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useDrag } from 'react-dnd';
 import { cx } from 'emotion';
-import { componentClassName } from '../../theme';
+import { componentClassName } from '@anylate/themes';
 
 const Card = ({ id, children, dispatch, index, nodeKey, editor, state }) => {
 	const { hoverKey, dragKey } = state;

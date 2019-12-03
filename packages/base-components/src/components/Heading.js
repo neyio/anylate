@@ -1,5 +1,5 @@
 import React from 'react';
-import { componentClassName } from '../themeAdapter';
+import { componentClassName } from '@anylate/themes';
 
 const Heading = React.forwardRef((props, ref) => {
 	const { children, depth = 3, ...attributes } = props;

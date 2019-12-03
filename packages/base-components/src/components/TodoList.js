@@ -1,5 +1,5 @@
 import React from 'react';
-import { componentClassName } from '../themeAdapter';
+import { componentClassName } from '@anylate/themes';
 const TodoList = React.forwardRef((props, ref) => {
 	return (
 		<ul ref={ref} className={componentClassName.ToDoList}>
