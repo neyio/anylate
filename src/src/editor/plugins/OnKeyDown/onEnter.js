@@ -28,6 +28,7 @@ export default function onEnter(event, editor, next) {
 			return editor.splitBlock().moveToStartOfPreviousBlock().setBlocks('paragraph');
 		}
 	}
+	
 	if (startBlock.type === 'list-item' && startBlock.text.replace(' ', '').length === 0) {
 		//如果为空则unwrapBlock,此时需要查询它最亲近的父辈分是否 有 list类型，如果有则直接unwrap父辈
 		const startParent = editor.value.document.getClosest(startBlock.key, (i) => {

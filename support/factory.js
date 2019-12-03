@@ -14,7 +14,6 @@ import replace from '@rollup/plugin-replace';
 import resolve from 'rollup-plugin-node-resolve';
 import less from 'rollup-plugin-less';
 import { uglify } from 'rollup-plugin-uglify';
-import startCase from 'lodash.startcase';
 import { pkgPrefix } from '../buildInConfig';
 
 /**
@@ -28,7 +27,6 @@ import { pkgPrefix } from '../buildInConfig';
 
 function configure(pkg, env, target) {
 	const isProd = env === 'production';
-	const isUmd = target === 'umd';
 	const isModule = target === 'module';
 	const realPkgName = (pkgPrefix && pkg.name.replace(pkgPrefix, '')) || pkg.name;
 	const input = `packages/${realPkgName}/src/index.js`;
@@ -41,16 +39,16 @@ function configure(pkg, env, target) {
 			browser: true
 		}),
 
-		isUmd &&
-			commonjs({
-				exclude: [ `packages/${realPkgName}/src/**` ],
-				namedExports: {
-					esrever: [ 'reverse' ],
-					immutable: [ 'List', 'Map', 'Record', 'OrderedSet', 'Set', 'Stack', 'is' ],
-					'react-dom': [ 'findDOMNode' ],
-					'react-dom/server': [ 'renderToStaticMarkup' ]
-				}
-			}),
+		// isUmd &&
+		commonjs({
+			exclude: [ `packages/${realPkgName}/src/**` ],
+			namedExports: {
+				esrever: [ 'reverse' ],
+				immutable: [ 'List', 'Map', 'Record', 'OrderedSet', 'Set', 'Stack', 'is' ],
+				'react-dom': [ 'findDOMNode' ],
+				'react-dom/server': [ 'renderToStaticMarkup' ]
+			}
+		}),
 
 		json(),
 		less({
@@ -71,27 +69,12 @@ function configure(pkg, env, target) {
 		}),
 
 		// Register Node.js globals for browserify compatibility.
-		globals(),
+		globals()
 
 		// Only minify the output in production, since it is very slow. And only
 		// for UMD builds, since modules will be bundled by the consumer.
-		isUmd && isProd && uglify()
+		// isUmd && isProd && uglify()
 	].filter(Boolean);
-
-	if (isUmd) {
-		return {
-			plugins,
-			input,
-			output: {
-				format: 'umd',
-				file: `packages/${realPkgName}/${isProd ? pkg.umdMin : pkg.umd}`,
-				exports: 'named',
-				name: startCase(pkg.name).replace(/ /g, ''),
-				globals: pkg.umdGlobals
-			},
-			external: Object.keys(pkg.umdGlobals || {})
-		};
-	}
 
 	if (isModule) {
 		return {
@@ -122,14 +105,10 @@ function configure(pkg, env, target) {
 				chokidar: true
 			}
 		};
+	} else {
+		console.error('you need to view history and support umd or it will be down!');
 	}
 }
-
-/**
- * Return a Rollup configuration for a `pkg`.
- *
- * @return {Array}
- */
 
 function factory(pkg) {
 	// const isProd = process.env.NODE_ENV === 'production';
@@ -139,11 +118,5 @@ function factory(pkg) {
 		// isProd && configure(pkg, 'production', 'umd'),
 	].filter(Boolean);
 }
-
-/**
- * Export.
- *
- * @type {Function}
- */
 
 export default factory;

@@ -5,9 +5,16 @@
 */
 
 import factory from './factory';
-import slateBaseComponents from '../packages/slate-base-components/package.json';
-import slateUtils from '../packages/slate-md-support/package.json';
+import baseComponents from '../packages/base-components/package.json';
+import anylateThemes from '../packages/themes/package.json';
+import anylateMarkdown from '../packages/markdown-support/package.json';
+import anylateJumpOutBlock from '../packages/jump-out-block/package.json';
 
-const configurations = [...factory(slateUtils), ...factory(slateBaseComponents)];
+const configurations = [
+	...factory(anylateThemes),
+	...factory(baseComponents),
+	...factory(anylateMarkdown),
+	...factory(anylateJumpOutBlock)
+];
 
 export default configurations;
