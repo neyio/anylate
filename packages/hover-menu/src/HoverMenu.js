@@ -6,7 +6,7 @@ import Button from './components/Button';
 
 import { ifHasLinks } from './link';
 
-const HoverMenu = ({ editor, visible }) => {
+const HoverMenu = ({ editor }) => {
 	const ref = useRef(null);
 	const root =
 		window.document.getElementById('root') || window.document.getElementById('app') || window.document.body;

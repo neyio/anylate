@@ -21,7 +21,8 @@ export const componentClassName = {
 	DragContainer: 'any-drag-container',
 	DragHandler: 'any-drag-handler',
 	Link: 'any-link',
-	Code: 'any-code'
+	Code: 'any-code',
+	Embed: 'any-embed'
 };
 
 export const theme = {

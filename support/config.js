@@ -10,13 +10,17 @@ import anylateThemes from '../packages/themes/package.json';
 import anylateMarkdown from '../packages/markdown-support/package.json';
 import anylateJumpOutBlock from '../packages/jump-out-block/package.json';
 import draggable from '../packages/draggable/package.json';
+import hoverMenu from '../packages/hover-menu/package.json';
+import sidebar from '../packages/sidebar/package.json';
 
 const configurations = [
 	...factory(anylateThemes),
 	...factory(baseComponents),
 	...factory(anylateMarkdown),
 	...factory(anylateJumpOutBlock),
-	...factory(draggable)
+	...factory(draggable),
+	...factory(hoverMenu),
+	...factory(sidebar)
 ];
 
 export default configurations;

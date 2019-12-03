@@ -1,4 +1,5 @@
 import React from 'react';
+import { componentClassName } from '@anylate/themes';
 
 import Hr from './components/Hr';
 import Image from './components/Image';
@@ -7,7 +8,7 @@ import ListItem from './components/ListItem';
 import TodoList from './components/TodoList';
 import { Heading1, Heading2, Heading3, Heading4, Heading5, Heading6 } from './components/Heading';
 import Paragraph from './components/Paragraph';
-import { componentClassName } from '@anylate/themes';
+import Embed from './components/Embed';
 
 const renderBlock = (options = {}) => (props, editor, next) => {
 	const { upload } = options;
@@ -38,6 +39,8 @@ const renderBlock = (options = {}) => (props, editor, next) => {
 					{props.children}
 				</ul>
 			);
+		case 'embed':
+			return <Embed {...attributes} isSelected={isFocused || props.isSelected} {...props} />;
 		case 'ordered-list':
 			return (
 				<ol className={componentClassName.OrderedList} {...attributes}>
@@ -66,6 +69,7 @@ const renderBlock = (options = {}) => (props, editor, next) => {
 			return <Heading5 {...attributes}>{props.children}</Heading5>;
 		case 'heading6':
 			return <Heading6 {...attributes}>{props.children}</Heading6>;
+
 		default:
 			return next();
 	}

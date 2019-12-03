@@ -261,6 +261,21 @@
       "data": {},
       "nodes": [{
         "object": "text",
+        "text": "EMBED支持",
+        "marks": []
+      }]
+    }, {
+      "object": "block",
+      "type": "embed",
+      "data": {
+        "url": "https:///www.baidu.com"
+      }
+    }, {
+      "object": "block",
+      "type": "heading5",
+      "data": {},
+      "nodes": [{
+        "object": "text",
         "text": "表格支持",
         "marks": []
       }]

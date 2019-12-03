@@ -25,6 +25,9 @@ const schema = {
 		image: {
 			isVoid: true
 		},
+		embed: {
+			isVoid: true
+		},
 		link: {
 			nodes: [ { match: { object: 'text' } } ]
 		},
@@ -101,7 +104,8 @@ const schema = {
 					{ type: 'table' },
 					{ type: 'link' },
 					{ type: 'math' },
-					{ type: 'code' }
+					{ type: 'code' },
+					{ type: 'embed' }
 				],
 				min: 1
 			}

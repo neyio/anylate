@@ -1,4 +1,4 @@
-const onEnter = (options) => (event, editor, next) => {
+const onEnter = (options = []) => (event, editor, next) => {
 	const mixinOptions = [
 		{
 			blockType: 'list-item',
@@ -23,12 +23,10 @@ const onEnter = (options) => (event, editor, next) => {
 	[ 'bold', 'italic', 'deleted', 'underlined', 'code', 'inserted' ].forEach((mark) => {
 		editor.removeMark(mark);
 	});
-	console.log('JumpOutBlock reseted the marks', 'bold', 'italic', 'deleted', 'underlined', 'code', 'inserted');
 
 	return (
 		mixinOptions.some((option) => {
 			const regexp = RegExp(option.blockType);
-			console.log('TCL: onKeyDown -> blockType', regexp, blockType);
 			if (regexp.test(blockType) || option.blockType === blockType) {
 				console.log('REGTEST:PASSED', blockType);
 				if (option.onEmptyBlock) {
@@ -43,7 +41,9 @@ const onEnter = (options) => (event, editor, next) => {
 						console.log('is not empty , and jumpout');
 						//Special support for block-quote, to make 'enter' supported in block-quote ,otherwise it will insert a new block-quote block;
 						//reason : some editor is not support \n in block-quote, but anylate maybe support it for experience.
-						return onEnterInblockQuote(startBlock, { editor, event }) || editor.setBlocks(exitBlockType);
+						return (
+							onEnterInblockQuote(startBlock, { editor, event }) || editor.setBlocks(option.exitBlockType)
+						);
 					}
 				} else {
 					return editor.insertBlock(option.exitBlockType);

@@ -7,5 +7,5 @@
 ```
 const anylateThemes = require('anylate-themes');
 
-// TODO: DEMONSTRATE API
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1522760_l97frd2anw.css">
 ```

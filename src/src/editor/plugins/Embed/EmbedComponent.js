@@ -1,4 +1,6 @@
 import React from 'react';
+import {componentClassName}
+
 import UrlInput from './UrlInput';
 export default class EmbedComponent extends React.Component {
 	ref = React.createRef();
@@ -50,6 +52,7 @@ export default class EmbedComponent extends React.Component {
 			<div style={wrapperStyle}>
 				<div style={maskStyle} />
 				<iframe
+					
 					id="ytplayer"
 					type="text/html"
 					width="640"

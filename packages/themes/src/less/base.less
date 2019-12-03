@@ -47,8 +47,12 @@
 @theme-color-text-lighten:var(--theme-color-text-lighten,#66666680);
 @theme-color-text-disabled:var(--theme-color-text-disabled,#66666680);
 
+@theme-color-container-primary:var(--theme-color-container-primary,#eee);
+
 @theme-color-light:var(--theme-color-light,#f5f5f5);
 @theme-color-white:var(--theme-color-white,#fff);
+
+
 
 //fontWeight normal
 @font-weight-normal:normal;
@@ -76,6 +80,7 @@
 
   --theme-color-light:#f5f5f5;
   --theme-color-white:#fff;
+  --theme-color-container-primary:#eee;
 }
 
 body,
@@ -141,7 +146,7 @@ body,
     }
 
     iframe {
-      margin: @margin-extra-large;
+      margin: 0;
     }
     
     em {
@@ -286,6 +291,23 @@ body,
       &-success {
         border-left: 4px solid @theme-color-success;
       }
+    }
+    .@{Embed}{
+      &::before {
+        background: #fc625d;
+        border-radius: 50%;
+        box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+        content: ' ';
+        height: @font-size-base;
+        left: @font-size-base;
+        top:18px;
+        // margin-top: 0px - @margin-extra-large;
+        position: absolute;
+        width: @font-size-base;
+      }
+      border-radius: 3px;
+      background: @theme-color-light;
+      box-shadow: 0 10px 30px 0 @theme-color-light;
     }
   }
 }

@@ -26,5 +26,16 @@
   },
   "bugs": {
     "url": "https://github.com/neyio/anylate/issues"
+  },
+  "dependencies": {
+    "rc-tooltip": "^4.0.0-alpha.3",
+    "emotion": "^10.0.23",
+    "is-url": "^1.2.4"
+  },
+  "peerDependencies": {
+    "immutable": ">=3.8.2",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "slate": ">=0.47.8"
   }
 }
