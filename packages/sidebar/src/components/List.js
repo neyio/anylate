@@ -1,5 +1,4 @@
 import React from 'react';
-import { Text } from 'slate';
 import { cx } from 'emotion';
 import './list.css';
 const List = (props) => {

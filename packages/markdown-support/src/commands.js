@@ -1,4 +1,5 @@
-import { Block } from 'slate';
+import wrapInList from './list/wrapInList';
+
 const getSubType = (startBlock) => {
 	const regs = [
 		{ reg: /^\s*\d\./, type: 'ordered' },
@@ -17,63 +18,18 @@ export const ifHasLinks = (editor) => {
 
 export default {
 	insertListItem: (editor, forceSubType, forceSwitch) => {
-		const { startBlock } = editor.value;
+		const { startBlock, selection } = editor.value;
 		let subType = forceSubType || getSubType(startBlock);
 		if (!subType) {
-			console.warn('this subType is not included!');
 			return editor;
 		}
-		const isCurrentBlockListItem = startBlock.type === 'list-item';
+		// const isCurrentBlockListItem = startBlock.type === 'list-item';
+		const firstText = startBlock.getFirstText();
+		editor.removeTextByKey(firstText.key, 0, startBlock.text.slice(0, selection.start.offset).length);
 		const wrapType =
 			subType === 'ordered' ? 'ordered-list' : subType === 'bulleted' ? 'bulleted-list' : 'todo-list';
 		const data = wrapType === 'todo-list' ? { checked: subType === 'finished' ? true : false } : {};
-		if (isCurrentBlockListItem) {
-			if (forceSwitch) {
-				const parent = editor.value.document.getClosestBlock(editor.value.startBlock.key, (i) => {
-					return i.type === 'bulleted-list' || i.type === 'ordered-list' || i.type === 'todo-list';
-				});
-				editor.withoutNormalizing((editor) => {
-					editor.setNodeByKey(parent.key, { type: wrapType });
-					parent.nodes.forEach((node) => {
-						console.log('in forEach', node.key);
-						editor.setNodeByKey(node.key, { type: 'list-item', data });
-					});
-				});
-				return editor;
-			}
-
-			const ListItem = Block.create({
-				type: 'list-item',
-				object: 'block',
-				nodes: [
-					{
-						type: wrapType,
-						object: 'block',
-						nodes: [
-							{
-								object: 'block',
-								type: 'list-item',
-								data: data,
-								nodes: [
-									{
-										object: 'text',
-										text: ''
-									}
-								]
-							}
-						]
-					}
-				]
-			});
-
-			editor.removeNodeByKey(startBlock.key);
-			editor.insertBlock(ListItem);
-		} else {
-			const wrapType = subType === 'ordered' ? 'ordered-list' : 'bulleted-list';
-			editor.wrapBlock(wrapType);
-			editor.moveFocusToStartOfNode(startBlock).delete().setBlocks({ type: 'list-item', data });
-		}
-		return editor;
+		return wrapInList(editor, wrapType, data);
 	},
 	handlerShortCut: (editor, type) => {
 		const { startBlock } = editor.value;

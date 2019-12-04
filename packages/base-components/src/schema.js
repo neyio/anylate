@@ -1,4 +1,33 @@
 import { Block } from 'slate';
+
+function normalize(actions) {
+	return (editor, code, context) => {
+		console.log('TCL: normalize -> actions', actions);
+		const handler = actions[code];
+		if (handler) {
+			handler(editor, context);
+		}
+	};
+}
+
+function wrapInvalidListChildren(editor, node) {
+	editor.wrapBlockByKey(node.nodes.first().key, 'paragraph', {
+		normalize: false
+	});
+	const wrapper = editor.value.document.getDescendant(node.key).nodes.first();
+	node.nodes.rest().forEach((child, index) =>
+		editor.moveNodeByKey(child.key, wrapper.key, index + 1, {
+			normalize: false
+		})
+	);
+	return editor;
+}
+
+const normalizeInvalidListItemChild = (editor, { child }) =>
+	editor.wrapBlockByKey(child.key, 'list-item', {
+		normalize: false
+	});
+
 const schema = {
 	blocks: {
 		heading1: {
@@ -35,40 +64,34 @@ const schema = {
 			isVoid: true
 		},
 		'bulleted-list': {
-			normalize(editor, { code, node, child }) {
-				console.log('bulleted-list', 0);
-				if (code === 'child_type_invalid') {
-					console.log('bulleted-list child_type_invalid');
-				}
-			}
+			nodes: [ { types: [ 'list-item' ] } ],
+			normalize: normalize({
+				child_type_invalid: normalizeInvalidListItemChild
+			})
 		},
 		'ordered-list': {
-			normalize(editor, { code, node, child }) {
-				console.log('ordered-list', 123);
-				if (code === 'child_type_invalid') {
-					console.log('ordered-list child_type_invalid');
-				}
-			}
+			nodes: [ { types: [ 'list-item' ] } ],
+			normalize: normalize({
+				child_type_invalid: normalizeInvalidListItemChild
+			})
 		},
 
 		'todo-list': {
-			normalize(editor, { code, node, child }) {
-				console.log('todo-list', 456);
-				if (code) {
-					console.log('error', code);
-				}
-			}
+			nodes: [ { types: [ 'list-item' ] } ],
+			normalize: normalize({
+				child_type_invalid: normalizeInvalidListItemChild
+			})
 		},
 		'list-item': {
 			parent: [ { type: 'bulleted-list' }, { type: 'ordered-list' }, { type: 'todo-list' } ],
-			nodes: [ { match: [ { object: 'paragraph' } ] } ],
-			normalize(editor, { code, node, child }) {
-				console.log('TCL: normalize -> code', code, child);
-				if (code === 'last_child_type_invalid') {
-					console.log('last_child_type_invalid');
-					return editor.insertBlock('paragraph');
-				}
-			}
+			nodes: [ { objects: [ 'block' ] } ],
+			normalize: normalize({
+				parent_type_invalid: (editor, { node }) =>
+					editor.unwrapBlockByKey(node.key, {
+						normalize: false
+					}),
+				child_object_invalid: (editor, { node }) => wrapInvalidListChildren(editor, node)
+			})
 		}
 	},
 	document: {

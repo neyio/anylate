@@ -12,6 +12,7 @@ import anylateJumpOutBlock from '../packages/jump-out-block/package.json';
 import draggable from '../packages/draggable/package.json';
 import hoverMenu from '../packages/hover-menu/package.json';
 import sidebar from '../packages/sidebar/package.json';
+import editList from '../packages/edit-list/package.json';
 
 const configurations = [
 	...factory(anylateThemes),
@@ -20,6 +21,7 @@ const configurations = [
 	...factory(anylateJumpOutBlock),
 	...factory(draggable),
 	...factory(hoverMenu),
+	...factory(editList),
 	...factory(sidebar)
 ];
 

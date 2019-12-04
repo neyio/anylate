@@ -17,8 +17,8 @@ export default function onSpace(event, editor, next) {
 	const type = getType(chars); //计算类型
 	//判断类型是否符合处理类型的markdown组件
 	if (type) {
+		console.log('TCL: onSpace -> type', type);
 		//如果类型匹配为heading则址
-		console.log(chars, type);
 		if (type.match(/block-quote/)) {
 			event.preventDefault(); //防止添加开头空格
 		}
@@ -32,7 +32,9 @@ export default function onSpace(event, editor, next) {
 			}
 		}
 		if (type === 'list-item') {
-			return editor.insertListItem(); //不传入参数，则由正则判断，传入字符串，表示类型	 'ordered' ｜ 'undo'｜'finished'｜ 'bulleted'
+			if (startBlock.type !== 'list-item') {
+				return editor.insertListItem(); //不传入参数，则由正则判断，传入字符串，表示类型	 'ordered' ｜ 'undo'｜'finished'｜ 'bulleted'
+			} else return next(); //
 		}
 		if (startBlock.type !== 'list-item') return editor.moveFocusToStartOfNode(startBlock).delete().setBlocks(type);
 	}
