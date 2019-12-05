@@ -7,7 +7,7 @@ import onTab from './onTab';
 import commands from './commands';
 import ifFlow from './utils/flow';
 import markShortcuts from './markShortcuts';
-
+import queries from './queries';
 const MarkdownShortcuts = (options = {}) => {
 	const isShiftEnter = isHotkey('shift+enter');
 	const isEnter = isHotkey('enter');
@@ -35,7 +35,7 @@ const MarkdownShortcuts = (options = {}) => {
 	const saveToJson = isHotkey('mod+s');
 	const isInListItemOnEnter = (event, editor) => {
 		const { startBlock } = editor.value;
-		if (isShiftEnter(event) && startBlock.type === 'paragraph' && startBlock.text === '') {
+		if (isShiftEnter(event) && startBlock.type === 'paragraph') {
 			return false;
 		} else {
 			if (isEnter(event) && startBlock.type === 'paragraph') {
@@ -47,18 +47,9 @@ const MarkdownShortcuts = (options = {}) => {
 		}
 		return false;
 	};
-	const isInListItemEmpty = (event, editor) => {
-		const { startBlock } = editor.value;
-		if (isEnter(event) && startBlock.type === 'paragraph' && startBlock.text === '') {
-			const parent = editor.value.document.getParent(startBlock.key);
-			if (parent && parent.type === 'list-item') {
-				return true;
-			}
-		}
-		return false;
-	};
 	return {
 		commands,
+		queries,
 		onKeyDown(e, editor, next) {
 			const { value } = editor;
 			const { startBlock } = value;
@@ -70,16 +61,11 @@ const MarkdownShortcuts = (options = {}) => {
 					() => isInListItemOnEnter(event, editor),
 					() => {
 						event.preventDefault();
-						// const parent = editor.value.document.getParent(startBlock.key);
-						// const path = editor.value.document.getPath(parent);
-						editor.splitBlock(2);
-					}
-				],
-				[
-					() => isInListItemEmpty(event, editor),
-					() => {
-						console.log('empty p in li');
-						editor.unwrapBlock('list-item');
+						if (startBlock.text !== '') {
+							editor.splitBlock(2);
+						} else {
+							editor.descListItemDepth();
+						}
 					}
 				],
 				[ isDash, options.onDash || onDash ],
