@@ -1,5 +1,5 @@
-function getItemDepth(value) {
-	const { document, startBlock } = value;
+function getItemDepth(editor) {
+	const { document, startBlock } = editor.value;
 	let i = 0;
 	let currentNode = startBlock;
 	while (document !== currentNode) {

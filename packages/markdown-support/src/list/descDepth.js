@@ -10,7 +10,7 @@ function descListItemDepth(editor) {
 	}
 
 	const currentList = document.getParent(currentItem.key);
-	const depth = getItemDepth(value);
+	const depth = getItemDepth(editor);
 	if (depth == 1) {
 		// return editor;
 		return editor.unwrapBlock('list-item').unwrapBlock(currentList.type); //增补如果depth为1 直接跳出。

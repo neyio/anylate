@@ -1,7 +1,7 @@
 import { Block } from 'slate';
-import wrapInList from './list/wrapInList';
+// import wrapInList from './list/wrapInList';
 import descListItemDepth from './list/descDepth';
-
+import getItemDepth from './list/getItemDepth';
 const getSubType = (startBlock) => {
 	const regs = [
 		{ reg: /^\s*\d\./, type: 'ordered' },
@@ -17,9 +17,17 @@ export const ifHasLinks = (editor) => {
 	const { value } = editor;
 	return value.inlines.some((inline) => inline.type === 'link');
 };
+const wrapList = (editor, type, data) => {
+	const { value } = editor;
+	const { startBlock } = value;
+	editor.withoutNormalizing((editor) => {});
+	return editor;
+};
 
 export default {
 	descListItemDepth,
+	getItemDepth,
+	wrapList,
 	insertListItem: (editor, forceSubType, forceSwitch) => {
 		const { startBlock, selection, document } = editor.value;
 		let subType = forceSubType || getSubType(startBlock);
@@ -29,25 +37,12 @@ export default {
 
 		const firstText = startBlock.getFirstText();
 		editor.removeTextByKey(firstText.key, 0, startBlock.text.slice(0, selection.start.offset).length);
+		console.log(startBlock.getFirstText());
 		const wrapType =
 			subType === 'ordered' ? 'ordered-list' : subType === 'bulleted' ? 'bulleted-list' : 'todo-list';
 		const data = wrapType === 'todo-list' ? { checked: subType === 'finished' ? true : false } : {};
-
-		return wrapInList(editor, wrapType, data);
-	},
-	moveToParentList: (editor, block) => {
-		const { document } = editor.value;
-		const parent = document.getParent(block.key);
-		if (block.type === 'paragraph' && parent.type === 'list-item') {
-			const targetListItem = editor.getClosestListItem(parent.key);
-			if (targetListItem) {
-				descListItemDepth(editor);
-			} else {
-				const list = document.getParent(parent.key);
-				editor.unwrapBlock('list-item').unwrapBlock(list.type);
-			}
-		}
-		return editor;
+		// editor.insertBlock('paragraph').moveBackward(1);
+		return wrapList(editor, wrapType, data);
 	},
 	handlerShortCut: (editor, type) => {
 		const { startBlock } = editor.value;

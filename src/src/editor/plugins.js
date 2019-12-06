@@ -20,6 +20,7 @@ const zhujianshi = [ MathCode(), Code(), Table() ];
 
 export default [
 	...zhujianshi,
+
 	Draggable(),
 	HoverMenu(),
 	Sidebar(),
