@@ -1,6 +1,6 @@
 {
   "name": "@anylate/hover-menu",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "description": "> TODO: description",
   "author": "Neyio <neyioqian@gmail.com>",
   "homepage": "https://github.com/neyio/anylate/tree/master/packages/hover-menu#readme",
@@ -12,7 +12,8 @@
     "test": "__tests__"
   },
   "files": [
-    "lib", "src"
+    "lib",
+    "src"
   ],
   "publishConfig": {
     "access": "public"
@@ -28,9 +29,9 @@
     "url": "https://github.com/neyio/anylate/issues"
   },
   "dependencies": {
-    "rc-tooltip": "^4.0.0-alpha.3",
     "emotion": "^10.0.23",
-    "is-url": "^1.2.4"
+    "is-url": "^1.2.4",
+    "rc-tooltip": "^4.0.0-alpha.3"
   },
   "peerDependencies": {
     "immutable": ">=3.8.2",

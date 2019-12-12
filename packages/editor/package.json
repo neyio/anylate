@@ -1,6 +1,6 @@
 {
   "name": "@anylate/editor",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "description": "> TODO: description",
   "author": "ncqwer <zhujianshi123@gmail.com>",
   "homepage": "https://github.com/neyio/anylate/tree/master/packages/editor#readme",
@@ -30,12 +30,12 @@
     "url": "https://github.com/neyio/anylate/issues"
   },
   "dependencies": {
-    "@anylate/base-components": "^0.0.1-alpha.1",
-    "@anylate/draggable": "^0.0.1-alpha.1",
-    "@anylate/hover-menu": "^0.0.1-alpha.1",
-    "@anylate/jump-out-block": "^0.0.1-alpha.1",
-    "@anylate/markdown-support": "^0.0.1-alpha.1",
-    "@anylate/sidebar": "^0.0.1-alpha.1",
+    "@anylate/base-components": "^0.0.1-alpha.2",
+    "@anylate/draggable": "^0.0.1-alpha.2",
+    "@anylate/hover-menu": "^0.0.1-alpha.2",
+    "@anylate/jump-out-block": "^0.0.1-alpha.2",
+    "@anylate/markdown-support": "^0.0.1-alpha.2",
+    "@anylate/sidebar": "^0.0.1-alpha.2",
     "@zhujianshi/slate-code-base": "^0.0.1-alpha.7",
     "@zhujianshi/slate-code-math": "^0.0.1-alpha.7",
     "@zhujianshi/slate-list": "^0.0.1-alpha.7",

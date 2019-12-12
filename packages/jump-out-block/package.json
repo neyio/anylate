@@ -1,6 +1,6 @@
 {
   "name": "@anylate/jump-out-block",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.2",
   "description": "> TODO: description",
   "author": "Neyio <neyioqian@gmail.com>",
   "homepage": "https://github.com/neyio/anylate/tree/master/packages/jump-out-block#readme",
@@ -12,7 +12,8 @@
     "test": "__tests__"
   },
   "files": [
-    "lib", "src"
+    "lib",
+    "src"
   ],
   "publishConfig": {
     "access": "public"
