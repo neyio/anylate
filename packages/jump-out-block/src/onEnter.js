@@ -19,6 +19,7 @@ const onEnter = (options = []) => (event, editor, next) => {
 	];
 	const { startBlock } = editor.value;
 	const blockType = startBlock.type;
+	
 	const isBlockEmpty = startBlock.text === '' ? true : false;
 	[ 'bold', 'italic', 'deleted', 'underlined', 'code', 'inserted' ].forEach((mark) => {
 		editor.removeMark(mark);

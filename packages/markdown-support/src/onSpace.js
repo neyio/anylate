@@ -38,13 +38,7 @@ export default function onSpace(event, editor, next) {
 			// 	return editor.insertListItem(); //不传入参数，则由正则判断，传入字符串，表示类型	 'ordered' ｜ 'undo'｜'finished'｜ 'bulleted'
 			// } else return next(); //
 		}
-		// if (startBlock.type !== "list-item") {
-		// 	console.log("not here");
-		// 	return editor
-		// 		.moveFocusToStartOfNode(startBlock)
-		// 		.delete()
-		// 		.setBlocks(type);
-		// }
+		// if (startBlock.type !== 'list-item') return editor.moveFocusToStartOfNode(startBlock).delete().setBlocks(type);
 	}
 
 	editor.withoutNormalizing(editor => {

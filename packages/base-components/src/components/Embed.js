@@ -12,7 +12,6 @@ class Embed extends React.Component {
 	}
 
 	handleKeyDown = (e) => {
-		editor.focus();
 		if (e.key === 'Enter' || e.key === 'ArrowDown') {
 			e.preventDefault();
 			const { editor, node } = this.props;
