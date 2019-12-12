@@ -1863,8 +1863,8 @@
 
 "@zhujianshi/slate-code-math@^0.0.1-alpha.4":
   version "0.0.1-alpha.7"
-  resolved "https://registry.npm.taobao.org/@zhujianshi/slate-code-math/download/@zhujianshi/slate-code-math-0.0.1-alpha.7.tgz#46c5bf9d3a078bcbadd1145e48b6d2544d7e01c5"
-  integrity sha1-RsW/nToHi8ut0RReSLbSVE1+AcU=
+  resolved "https://registry.yarnpkg.com/@zhujianshi/slate-code-math/-/slate-code-math-0.0.1-alpha.7.tgz#46c5bf9d3a078bcbadd1145e48b6d2544d7e01c5"
+  integrity sha512-sBf5FUIURONPic1Yjm6DtvOUUJ2uHZ3BkcYcHPeaRjVgmVX4LxeWEdh6EvrZhVrKbPaUyDVdAAuU+ZsiVKzQ2Q==
   dependencies:
     "@zhujianshi/slate-code-base" "^0.0.1-alpha.7"
     "@zhujianshi/slate-plugin-utils" "^0.0.1-alpha.7"
@@ -1872,25 +1872,25 @@
     katex "^0.11.1"
 
 "@zhujianshi/slate-list@^0.0.1-alpha.7":
-  version "0.0.1-alpha.7"
-  resolved "https://registry.npm.taobao.org/@zhujianshi/slate-list/download/@zhujianshi/slate-list-0.0.1-alpha.7.tgz#cfccfe5f6f236e2f7ae16f709147f28419428e4d"
-  integrity sha1-z8z+X28jbi964W9wkUfyhBlCjk0=
+  version "0.0.1-alpha.8"
+  resolved "https://registry.yarnpkg.com/@zhujianshi/slate-list/-/slate-list-0.0.1-alpha.8.tgz#953143113bb7d8328180e0ec524b9eac594ab571"
+  integrity sha512-UCRdWM0LiTAkXtWPWdPlFBvmJynr/zV85ba4oBBQmt/s0Q1qy/kwiLrnTDs9OcATo7vPRb31QXUmqC72K0JgZw==
   dependencies:
     "@zhujianshi/slate-plugin-utils" "^0.0.1-alpha.7"
     is-hotkey "^0.1.6"
 
 "@zhujianshi/slate-plugin-utils@^0.0.1-alpha.7":
   version "0.0.1-alpha.7"
-  resolved "https://registry.npm.taobao.org/@zhujianshi/slate-plugin-utils/download/@zhujianshi/slate-plugin-utils-0.0.1-alpha.7.tgz#91608c4a49d15f408366973b545a994443950c3b"
-  integrity sha1-kWCMSknRX0CDZpc7VFqZREOVDDs=
+  resolved "https://registry.yarnpkg.com/@zhujianshi/slate-plugin-utils/-/slate-plugin-utils-0.0.1-alpha.7.tgz#91608c4a49d15f408366973b545a994443950c3b"
+  integrity sha512-euc9QpU7STQWqzZTtuJEkguJSTmhFiJ1TTafaM3nEP/ScLSf017CRgQNYWw68zji+DBw1b50E62cwVzyZy+unA==
   dependencies:
     rc-tooltip "^4.0.0-alpha.3"
     resize-observer-polyfill "^1.5.1"
 
 "@zhujianshi/slate-table@^0.0.1-alpha.5":
-  version "0.0.1-alpha.7"
-  resolved "https://registry.npm.taobao.org/@zhujianshi/slate-table/download/@zhujianshi/slate-table-0.0.1-alpha.7.tgz#d03f919feb37a4921540b654cde30cad509563e5"
-  integrity sha1-0D+Rn+s3pJIVQLZUzeMMrVCVY+U=
+  version "0.0.1-alpha.8"
+  resolved "https://registry.yarnpkg.com/@zhujianshi/slate-table/-/slate-table-0.0.1-alpha.8.tgz#a629d4915eae4d199c3196a1adebbf408f7c9242"
+  integrity sha512-i6R6CK3Z2NXhe3+8DIhqLPM0krSYSYUJTdN0gh6pF6DkUnuxmw6xPgan81/DA+EpoYRbQtLBbkfoZHE276X0Ow==
   dependencies:
     "@zhujianshi/slate-plugin-utils" "^0.0.1-alpha.7"
     is-hotkey "^0.1.6"
@@ -3177,8 +3177,8 @@ cli-width@^2.0.0:
 
 clipboard@^2.0.0:
   version "2.0.4"
-  resolved "https://registry.npm.taobao.org/clipboard/download/clipboard-2.0.4.tgz#836dafd66cf0fea5d71ce5d5b0bf6e958009112d"
-  integrity sha1-g22v1mzw/qXXHOXVsL9ulYAJES0=
+  resolved "https://registry.yarnpkg.com/clipboard/-/clipboard-2.0.4.tgz#836dafd66cf0fea5d71ce5d5b0bf6e958009112d"
+  integrity sha512-Vw26VSLRpJfBofiVaFb/I8PVfdI1OxKcYShe6fm0sP/DtmiWQNCjhM/okTvdCo0G+lMMm1rMYbk4IK4x1X+kgQ==
   dependencies:
     good-listener "^1.2.2"
     select "^1.1.2"
@@ -3509,8 +3509,8 @@ copy-descriptor@^0.1.0:
 
 copy-to-clipboard@^3.2.0:
   version "3.2.0"
-  resolved "https://registry.npm.taobao.org/copy-to-clipboard/download/copy-to-clipboard-3.2.0.tgz#d2724a3ccbfed89706fac8a894872c979ac74467"
-  integrity sha1-0nJKPMv+2JcG+siolIcsl5rHRGc=
+  resolved "https://registry.yarnpkg.com/copy-to-clipboard/-/copy-to-clipboard-3.2.0.tgz#d2724a3ccbfed89706fac8a894872c979ac74467"
+  integrity sha512-eOZERzvCmxS8HWzugj4Uxl8OJxa7T2k1Gi0X5qavwydHIfuSHq2dTD09LOg/XyGq4Zpb5IsR/2OJ5lbOegz78w==
   dependencies:
     toggle-selection "^1.0.6"
 
@@ -4093,8 +4093,8 @@ delayed-stream@~1.0.0:
 
 delegate@^3.1.2:
   version "3.2.0"
-  resolved "https://registry.npm.taobao.org/delegate/download/delegate-3.2.0.tgz#b66b71c3158522e8ab5744f720d8ca0c2af59166"
-  integrity sha1-tmtxwxWFIuirV0T3INjKDCr1kWY=
+  resolved "https://registry.yarnpkg.com/delegate/-/delegate-3.2.0.tgz#b66b71c3158522e8ab5744f720d8ca0c2af59166"
+  integrity sha512-IofjkYBZaZivn0V8nnsMJGBr4jVLxHDheKSW88PyxS5QC4Vo9ZbZVvhzlSxY87fVq3STR6r+4cGepyHkcWOQSw==
 
 delegates@^1.0.0:
   version "1.0.0"
@@ -4126,8 +4126,8 @@ detect-file@^1.0.0:
 
 detect-indent@^6.0.0:
   version "6.0.0"
-  resolved "https://registry.npm.taobao.org/detect-indent/download/detect-indent-6.0.0.tgz#0abd0f549f69fc6659a254fe96786186b6f528fd"
-  integrity sha1-Cr0PVJ9p/GZZolT+lnhhhrb1KP0=
+  resolved "https://registry.yarnpkg.com/detect-indent/-/detect-indent-6.0.0.tgz#0abd0f549f69fc6659a254fe96786186b6f528fd"
+  integrity sha512-oSyFlqaTHCItVRGK5RmrmjB+CmaMOW7IaNA/kdxqhoa6d17j/5ce9O9eWXmV/KEdRwqpQA+Vqe8a8Bsybu4YnA==
 
 detect-libc@^1.0.2:
   version "1.0.3"
@@ -5606,7 +5606,7 @@ globby@^6.1.0:
 
 good-listener@^1.2.2:
   version "1.2.2"
-  resolved "https://registry.npm.taobao.org/good-listener/download/good-listener-1.2.2.tgz#d53b30cdf9313dffb7dc9a0d477096aa6d145c50"
+  resolved "https://registry.yarnpkg.com/good-listener/-/good-listener-1.2.2.tgz#d53b30cdf9313dffb7dc9a0d477096aa6d145c50"
   integrity sha1-1TswzfkxPf+33JoNR3CWqm0UXFA=
   dependencies:
     delegate "^3.1.2"
@@ -7302,8 +7302,8 @@ jszip@^3.1.5:
 
 katex@^0.11.1:
   version "0.11.1"
-  resolved "https://registry.npm.taobao.org/katex/download/katex-0.11.1.tgz#df30ca40c565c9df01a466a00d53e079e84ffaa2"
-  integrity sha1-3zDKQMVlyd8BpGagDVPgeehP+qI=
+  resolved "https://registry.yarnpkg.com/katex/-/katex-0.11.1.tgz#df30ca40c565c9df01a466a00d53e079e84ffaa2"
+  integrity sha512-5oANDICCTX0NqYIyAiFCCwjQ7ERu3DQG2JFHLbYOf+fXaMoH8eg/zOq5WSYJsKMi/QebW+Eh3gSM+oss1H/bww==
   dependencies:
     commander "^2.19.0"
 
@@ -9664,8 +9664,8 @@ pretty-format@^24.9.0:
 
 prismjs@^1.17.1:
   version "1.17.1"
-  resolved "https://registry.npm.taobao.org/prismjs/download/prismjs-1.17.1.tgz?cache=0&sync_timestamp=1571670286328&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fprismjs%2Fdownload%2Fprismjs-1.17.1.tgz#e669fcbd4cdd873c35102881c33b14d0d68519be"
-  integrity sha1-5mn8vUzdhzw1ECiBwzsU0NaFGb4=
+  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.17.1.tgz#e669fcbd4cdd873c35102881c33b14d0d68519be"
+  integrity sha512-PrEDJAFdUGbOP6xK/UsfkC5ghJsPJviKgnQOoxaDbBjwc8op68Quupwt1DeAFoG8GImPhiKXAvvsH7wDSLsu1Q==
   optionalDependencies:
     clipboard "^2.0.0"
 
@@ -10781,8 +10781,8 @@ requires-port@^1.0.0:
 
 resize-observer-polyfill@^1.5.0, resize-observer-polyfill@^1.5.1:
   version "1.5.1"
-  resolved "https://registry.npm.taobao.org/resize-observer-polyfill/download/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
-  integrity sha1-DpAg3T0hAkRY1OvSfiPkAmmBBGQ=
+  resolved "https://registry.yarnpkg.com/resize-observer-polyfill/-/resize-observer-polyfill-1.5.1.tgz#0e9020dd3d21024458d4ebd27e23e40269810464"
+  integrity sha512-LwZrotdHOo12nQuZlHEmtuXdqGoOD0OhaxopaNFxWzInpEgaLWoVuAMbTzixuosCx2nEG58ngzW3vxdWoxIgdg==
 
 resolve-cwd@^2.0.0:
   version "2.0.0"
@@ -11050,7 +11050,7 @@ select-hose@^2.0.0:
 
 select@^1.1.2:
   version "1.1.2"
-  resolved "https://registry.npm.taobao.org/select/download/select-1.1.2.tgz#0e7350acdec80b1108528786ec1d4418d11b396d"
+  resolved "https://registry.yarnpkg.com/select/-/select-1.1.2.tgz#0e7350acdec80b1108528786ec1d4418d11b396d"
   integrity sha1-DnNQrN7ICxEIUoeG7B1EGNEbOW0=
 
 selfsigned@^1.10.7:
@@ -12225,8 +12225,8 @@ timsort@^0.3.0:
 
 tiny-emitter@^2.0.0:
   version "2.1.0"
-  resolved "https://registry.npm.taobao.org/tiny-emitter/download/tiny-emitter-2.1.0.tgz#1d1a56edfc51c43e863cbb5382a72330e3555423"
-  integrity sha1-HRpW7fxRxD6GPLtTgqcjMONVVCM=
+  resolved "https://registry.yarnpkg.com/tiny-emitter/-/tiny-emitter-2.1.0.tgz#1d1a56edfc51c43e863cbb5382a72330e3555423"
+  integrity sha512-NB6Dk1A9xgQPMoGqC5CVXn123gWyte215ONT5Pp5a0yt4nlEoO1ZWeCwpncaekPHXO60i47ihFnZPiRPjRMq4Q==
 
 tinycolor2@^1.4.1:
   version "1.4.1"
@@ -12289,7 +12289,7 @@ to-regex@^3.0.1, to-regex@^3.0.2:
 
 toggle-selection@^1.0.6:
   version "1.0.6"
-  resolved "https://registry.npm.taobao.org/toggle-selection/download/toggle-selection-1.0.6.tgz#6e45b1263f2017fa0acc7d89d78b15b8bf77da32"
+  resolved "https://registry.yarnpkg.com/toggle-selection/-/toggle-selection-1.0.6.tgz#6e45b1263f2017fa0acc7d89d78b15b8bf77da32"
   integrity sha1-bkWxJj8gF/oKzH2J14sVuL932jI=
 
 toidentifier@1.0.0:
