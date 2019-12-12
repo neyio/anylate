@@ -1,15 +1,17 @@
-import { Editor } from 'slate-react';
-import { Value } from 'slate';
-import { cx } from 'emotion';
-import React, { useState } from 'react';
+// import { Editor } from "slate-react";
+import { Value } from "slate";
+import { cx } from "emotion";
+import React, { useState } from "react";
 
-import { theme } from '@anylate/themes';
-import initialValueAsJson from './value.json';
-import plugins from './plugins';
+import { theme } from "@anylate/themes";
+import initialValueAsJson from "./value.json";
+// import plugins from "./plugins";
+
+import Anylate from "@anylate/editor";
 
 const initialValue = Value.fromJSON(initialValueAsJson);
-const AnySlate = (props) => {
-	const [ currentTheme, setTheme ] = useState(theme.base);
+const AnySlate = props => {
+	const [currentTheme, setTheme] = useState(theme.base);
 	return (
 		<React.Fragment>
 			<button
@@ -26,9 +28,9 @@ const AnySlate = (props) => {
 			>
 				light
 			</button>
-			<Editor
+			<Anylate
 				className={cx(theme.base, currentTheme)} //any-theme-base any-theme-dark
-				plugins={plugins}
+				// plugins={plugins}
 				placeholder="Write the code , change the world..."
 				defaultValue={initialValue}
 			/>

@@ -27,6 +27,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "chokidar": "^3.3.0",
     "cross-env": "^6.0.3",
     "eslint": "^6.6.0",
     "eslint-config-prettier": "^6.5.0",
@@ -50,7 +51,9 @@
     "rollup-plugin-uglify": "^6.0.3",
     "slate": "^0.47.9",
     "slate-react": "^0.22.10",
-    "chokidar": "^3.3.0"
+    "slate-drop-or-paste-images": "^0.9.1",
+    "slate-html-serializer": "^0.8.11",
+    "slate-md-serializer": "^5.4.4"
   },
   "scripts": {
     "start": " cd ./src && node scripts/start.js",

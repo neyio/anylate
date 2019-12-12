@@ -1,3 +1,5 @@
+import React from "react";
+import { Editor } from "slate-react";
 import BaseComponents from "@anylate/base-components";
 import Draggable from "@anylate/draggable";
 import MarkdownSupport from "@anylate/markdown-support";
@@ -12,8 +14,8 @@ import Table from "@zhujianshi/slate-table";
 import List from "@zhujianshi/slate-list";
 import "@zhujianshi/slate-code-math/lib/index.css";
 
-import MarkDownPaste from "./plugins/Paste/MarkDownPaste";
-import HtmlPaste from "./plugins/Paste/HtmlPaste";
+import MarkDownPaste from "./plugins/MarkDownPaste";
+import HtmlPaste from "./plugins/HtmlPaste";
 
 const zhujianshi = [
   MathCode(),
@@ -28,7 +30,7 @@ const zhujianshi = [
   })
 ];
 
-export default [
+const plugins = [
   Draggable(),
   ...zhujianshi,
   List({ blockName: "any-list-block" }),
@@ -40,3 +42,10 @@ export default [
   MarkDownPaste(),
   BaseComponents()
 ];
+
+const AnySlate = ({ plugins: customPlugins, ...others }) => {
+  const allPlugins = plugins.concat(customPlugins || []);
+  return <Editor plugins={allPlugins} {...others} />;
+};
+
+export default AnySlate;
