@@ -1,6 +1,6 @@
 {
   "name": "@anylate/draggable",
-  "version": "0.0.1-alpha.2",
+  "version": "0.0.1-alpha.3",
   "description": "> TODO: description",
   "author": "Neyio <neyioqian@gmail.com>",
   "homepage": "https://github.com/neyio/anylate/tree/master/packages/draggable#readme",
@@ -36,7 +36,7 @@
     "slate": ">=0.47.8"
   },
   "dependencies": {
-    "@anylate/themes": "^0.0.1-alpha.2",
+    "@anylate/themes": "^0.0.1-alpha.3",
     "emotion": "^10.0.23",
     "lodash": "^4.17.15",
     "react-dnd": "^9.4.0",
