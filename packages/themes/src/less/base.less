@@ -1,6 +1,6 @@
-@import "./component.less";
-@import "./dark.less";
-////////////////////////////////////
+@import './component.less';
+@import './dark.less';
+///////////////////////////////////////////////
 // fontSize
 @font-size-base: 12px;
 @font-size-tiny: 12px;
@@ -30,10 +30,7 @@
 
 //color
 @theme-color-primary: var(--theme-color-primary, #2275ff);
-@theme-color-primary-lighten: var(
-  --theme-color,
-  #2275ff80
-); //lighten(@theme-color-primary,40%);
+@theme-color-primary-lighten: var(--theme-color, #2275ff80); //lighten(@theme-color-primary,40%);
 @theme-color-helper: var(--theme-color-helper, #6c6c6c);
 @theme-color-helper-lighten: var(--theme-color-helper, #6c6c6c80);
 
@@ -83,7 +80,7 @@
   --theme-color-container-primary: #eee;
 }
 
-@import "./slate_plugins.less";
+@import './slate_plugins.less';
 
 body,
 #root,
@@ -91,9 +88,8 @@ body,
   position: relative;
   background: @theme-color-light;
   font-size: @font-size-small;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -144,8 +140,8 @@ body,
       &,
       & pre {
         background-color: @theme-color-light;
-        font-family: source-code-pro, Roboto Mono, Monaco, courier, Consolas,
-          "Courier New", monospace;
+        font-family: source-code-pro, Roboto Mono, Monaco, courier, Consolas, 'Courier New',
+          monospace;
         border-radius: 2px;
         color: @theme-color-danger;
         font-size: @font-size-normal;
@@ -314,7 +310,7 @@ body,
         background: #fc625d;
         border-radius: 50%;
         box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
-        content: " ";
+        content: ' ';
         height: @font-size-base;
         left: @font-size-base;
         top: 18px;

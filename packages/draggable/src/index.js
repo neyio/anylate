@@ -1,7 +1,7 @@
-import React from "react";
-import Container from "./Container";
-import CardHOC from "./CardHOC";
-import Context from "./Context";
+import React from 'react';
+import Container from './Container';
+import CardHOC from './CardHOC';
+import Context from './Context';
 
 const DraggablePlugin = () => {
   return {
@@ -21,7 +21,7 @@ const DraggablePlugin = () => {
           <Context.Consumer>
             {({ state, dispatch }) => (
               <CardHOC
-                key={"hoc-" + props.node.key}
+                key={`hoc-${props.node.key}`}
                 node={props.node}
                 state={state}
                 dispatch={dispatch}
@@ -33,7 +33,11 @@ const DraggablePlugin = () => {
           </Context.Consumer>
         );
       } else return <React.Fragment>{children}</React.Fragment>;
-    }
+    },
+    onDrop(event, editor, next) {
+      // event.preventDefault();
+      return false;
+    },
   };
 };
 

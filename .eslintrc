@@ -1,8 +1,18 @@
 {
-  "extends": ["prettier", "prettier/react"],
-  "plugins": ["import", "react", "prettier",  "react-hooks"],
+  "extends": [
+    "prettier",
+    "prettier/react"
+  ],
+  "plugins": [
+    "import",
+    "react",
+    "prettier",
+    "react-hooks"
+  ],
   "settings": {
-    "import/extensions": [".js"]
+    "import/extensions": [
+      ".js"
+    ]
   },
   "parser": "babel-eslint",
   "parserOptions": {
@@ -17,7 +27,12 @@
   },
   "rules": {
     "constructor-super": "error",
-    "dot-notation": ["error", { "allowKeywords": true }],
+    "dot-notation": [
+      "error",
+      {
+        "allowKeywords": true
+      }
+    ],
     "import/default": "error",
     "import/export": "error",
     "import/first": "error",
@@ -27,7 +42,9 @@
     "import/no-deprecated": "error",
     "import/no-extraneous-dependencies": [
       "error",
-      { "peerDependencies": true }
+      {
+        "peerDependencies": true
+      }
     ],
     "import/no-mutable-exports": "error",
     "import/no-named-as-default": "error",
@@ -46,7 +63,7 @@
     ],
     "no-array-constructor": "error",
     "no-class-assign": "error",
-    "no-console": "error",
+    "no-console": "off",
     "no-const-assign": "error",
     "no-debugger": "error",
     "no-dupe-args": "error",
@@ -87,7 +104,7 @@
       "Text"
     ],
     "no-sequences": "error",
-    "no-shadow": "error",
+    "no-shadow": "off",
     "no-shadow-restricted-names": "error",
     "no-tabs": "error",
     "no-this-before-super": "error",
@@ -98,7 +115,13 @@
     "no-unsafe-finally": "error",
     "no-unsafe-negation": "error",
     "no-unused-expressions": "error",
-    "no-unused-vars": ["warn", { "vars": "all", "args": "none" }],
+    "no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "args": "none"
+      }
+    ],
     "no-useless-call": "error",
     "no-useless-computed-key": "error",
     "no-useless-constructor": "error",
@@ -106,20 +129,29 @@
     "no-var": "error",
     "no-void": "error",
     "no-with": "error",
-    "object-shorthand": ["error", "always"],
+    "object-shorthand": [
+      "error",
+      "always"
+    ],
     "prefer-arrow-callback": "error",
     "prefer-const": [
       "error",
-      { "destructuring": "all", "ignoreReadBeforeAssign": true }
+      {
+        "destructuring": "all",
+        "ignoreReadBeforeAssign": true
+      }
     ],
     "prefer-rest-params": "error",
     "prefer-spread": "error",
     "prefer-template": "error",
     "prettier/prettier": "error",
     "radix": "error",
-    "react-hooks/rules-of-hooks": "error", 
-    "react-hooks/exhaustive-deps": "warn" ,
-    "react/jsx-boolean-value": ["error", "never"],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-boolean-value": [
+      "error",
+      "never"
+    ],
     "react/jsx-key": "error",
     "react/jsx-no-duplicate-props": "error",
     "react/jsx-no-target-blank": "error",
@@ -135,15 +167,34 @@
     "react/react-in-jsx-scope": "error",
     "react/self-closing-comp": "warn",
     "react/sort-prop-types": "error",
-    "spaced-comment": ["error", "always", { "exceptions": ["-"] }],
+    "spaced-comment": [
+      "error",
+      "always",
+      {
+        "exceptions": [
+          "-"
+        ]
+      }
+    ],
     "use-isnan": "error",
     "valid-jsdoc": [
       "error",
-      { "prefer": { "return": "returns" }, "requireReturn": false }
+      {
+        "prefer": {
+          "return": "returns"
+        },
+        "requireReturn": false
+      }
     ],
     "valid-typeof": "error",
-    "yield-star-spacing": ["error", "after"],
-    "yoda": ["error", "never"]
+    "yield-star-spacing": [
+      "error",
+      "after"
+    ],
+    "yoda": [
+      "error",
+      "never"
+    ]
   },
   "overrides": [
     {

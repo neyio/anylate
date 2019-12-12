@@ -4,17 +4,17 @@
   and add some custom changes
 */
 
-import babel from "rollup-plugin-babel";
-import builtins from "rollup-plugin-node-builtins";
-import commonjs from "rollup-plugin-commonjs";
-import globals from "rollup-plugin-node-globals";
+import babel from 'rollup-plugin-babel';
+import builtins from 'rollup-plugin-node-builtins';
+import commonjs from 'rollup-plugin-commonjs';
+import globals from 'rollup-plugin-node-globals';
 /* eslint-disable import/no-unresolved*/
-import json from "@rollup/plugin-json";
-import replace from "@rollup/plugin-replace";
-import resolve from "rollup-plugin-node-resolve";
-import less from "rollup-plugin-less";
-import { uglify } from "rollup-plugin-uglify";
-import { pkgPrefix } from "../buildInConfig";
+import json from '@rollup/plugin-json';
+import replace from '@rollup/plugin-replace';
+import resolve from 'rollup-plugin-node-resolve';
+import less from 'rollup-plugin-less';
+// import { uglify } from 'rollup-plugin-uglify';
+import { pkgPrefix } from '../buildInConfig';
 
 /**
  * Return a Rollup configuration for a `pkg` with `env` and `target`.
@@ -26,10 +26,9 @@ import { pkgPrefix } from "../buildInConfig";
  */
 
 function configure(pkg, env, target) {
-  const isProd = env === "production";
-  const isModule = target === "module";
-  const realPkgName =
-    (pkgPrefix && pkg.name.replace(pkgPrefix, "")) || pkg.name;
+  // const isProd = env === 'production';
+  const isModule = target === 'module';
+  const realPkgName = (pkgPrefix && pkg.name.replace(pkgPrefix, '')) || pkg.name;
   const input = `packages/${realPkgName}/src/index.js`;
   const deps = []
     .concat(pkg.dependencies ? Object.keys(pkg.dependencies) : [])
@@ -37,34 +36,26 @@ function configure(pkg, env, target) {
 
   const plugins = [
     resolve({
-      browser: true
+      browser: true,
     }),
 
     // isUmd &&
     commonjs({
       exclude: [`packages/${realPkgName}/src/**`],
       namedExports: {
-        esrever: ["reverse"],
-        immutable: [
-          "List",
-          "Map",
-          "Record",
-          "OrderedSet",
-          "Set",
-          "Stack",
-          "is"
-        ],
-        "react-dom": ["findDOMNode"],
-        "react-dom/server": ["renderToStaticMarkup"]
-      }
+        esrever: ['reverse'],
+        immutable: ['List', 'Map', 'Record', 'OrderedSet', 'Set', 'Stack', 'is'],
+        'react-dom': ['findDOMNode'],
+        'react-dom/server': ['renderToStaticMarkup'],
+      },
     }),
 
     json(),
     less({
-      output: `./packages/${realPkgName}/lib/index.css`
+      output: `./packages/${realPkgName}/lib/index.css`,
     }),
     replace({
-      "process.env.NODE_ENV": JSON.stringify(env)
+      'process.env.NODE_ENV': JSON.stringify(env),
     }),
     // Register Node.js builtins for browserify compatibility.
     builtins(),
@@ -73,15 +64,12 @@ function configure(pkg, env, target) {
     babel({
       include: [`packages/${realPkgName}/src/**`],
       babelrc: false,
-      presets: [
-        ["@babel/preset-env", { modules: false }],
-        "@babel/preset-react"
-      ],
-      plugins: ["transform-class-properties"].filter(Boolean)
+      presets: [['@babel/preset-env', { modules: false }], '@babel/preset-react'],
+      plugins: ['transform-class-properties'].filter(Boolean),
     }),
 
     // Register Node.js globals for browserify compatibility.
-    globals()
+    globals(),
 
     // Only minify the output in production, since it is very slow. And only
     // for UMD builds, since modules will be bundled by the consumer.
@@ -95,15 +83,15 @@ function configure(pkg, env, target) {
       output: [
         {
           file: `packages/${realPkgName}/${pkg.module}`,
-          format: "es",
-          sourcemap: true
+          format: 'es',
+          sourcemap: true,
         },
         {
           file: `packages/${realPkgName}/${pkg.main}`,
-          format: "cjs",
-          exports: "named",
-          sourcemap: true
-        }
+          format: 'cjs',
+          exports: 'named',
+          sourcemap: true,
+        },
       ],
       // We need to explicitly state which modules are external, meaning that
       // they are present at runtime. In the case of non-UMD configs, this means
@@ -114,20 +102,18 @@ function configure(pkg, env, target) {
       watch: {
         include: `packages/${realPkgName}/src/**`,
         clearScreen: true,
-        chokidar: true
-      }
+        chokidar: true,
+      },
     };
   } else {
-    console.error(
-      "you need to view history and support umd or it will be down!"
-    );
+    console.error('you need to view history and support umd or it will be down!');
   }
 }
 
 function factory(pkg) {
   // const isProd = process.env.NODE_ENV === 'production';
   return [
-    configure(pkg, "development", "module")
+    configure(pkg, 'development', 'module'),
     // isProd && configure(pkg, 'development', 'modules'),
     // isProd && configure(pkg, 'production', 'umd'),
   ].filter(Boolean);
