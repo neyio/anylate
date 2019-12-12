@@ -16,7 +16,8 @@
     "src"
   ],
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "repository": {
     "type": "git",
@@ -40,5 +41,6 @@
     "lodash": "^4.17.15",
     "react-dnd": "^9.4.0",
     "react-dnd-html5-backend": "^9.4.0"
-  }
+  },
+  "gitHead": "9d2706321316a3bbc1bdf860617c1e414c78ab08"
 }

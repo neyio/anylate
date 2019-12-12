@@ -49,5 +49,6 @@
     "react-dom": "^16.11.0",
     "slate": ">=0.47.8",
     "slate-react": ">=0.22.9"
-  }
+  },
+  "gitHead": "9d2706321316a3bbc1bdf860617c1e414c78ab08"
 }

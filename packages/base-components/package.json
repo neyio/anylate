@@ -15,6 +15,10 @@
     "lib",
     "src"
   ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/neyio/anylate.git"
@@ -31,5 +35,6 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "slate": ">=0.47.8"
-  }
+  },
+  "gitHead": "9d2706321316a3bbc1bdf860617c1e414c78ab08"
 }
