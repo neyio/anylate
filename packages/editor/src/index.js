@@ -48,4 +48,5 @@ const AnySlate = ({ plugins: customPlugins = [], ...rest }) => {
   return <Editor plugins={allPlugins} {...rest} />;
 };
 
-export default AnySlate;
+export * from 'slate';
+export { AnySlate as default };

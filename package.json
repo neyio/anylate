@@ -50,16 +50,17 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-uglify": "^6.0.3",
     "slate": "^0.47.9",
-    "slate-react": "^0.22.10",
     "slate-drop-or-paste-images": "^0.9.1",
     "slate-html-serializer": "^0.8.11",
-    "slate-md-serializer": "^5.4.4"
+    "slate-md-serializer": "^5.4.4",
+    "slate-react": "^0.22.10"
   },
   "scripts": {
     "start": " cd ./src && node scripts/start.js",
     "pkg-create": "lerna create",
     "pkg-add": "lerna add",
     "root-dev-add": "yarn add -D --ignore-workspace-root-check",
+    "build": "rollup --config ./support/config.js && cd src && yarn && yarn build",
     "build:rollup": "rollup --config ./support/config.js",
     "build:production": "cross-env NODE_ENV=production yarn build:rollup",
     "build:watch": "rollup --watch --config ./support/config.js",
