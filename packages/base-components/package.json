@@ -1,6 +1,6 @@
 {
   "name": "@anylate/base-components",
-  "version": "0.0.1-alpha.4",
+  "version": "0.0.1-alpha.5",
   "description": "The base components(Blocks) like p,heading,paragraph and so on.",
   "author": "Neyio <neyioqian@gmail.com>",
   "homepage": "https://github.com/neyio/anylate/tree/master/packages/base-components#readme",
@@ -27,7 +27,7 @@
     "url": "https://github.com/neyio/anylate/issues"
   },
   "dependencies": {
-    "@anylate/themes": "^0.0.1-alpha.4",
+    "@anylate/themes": "^0.0.1-alpha.5",
     "emotion": "^10.0.23"
   },
   "peerDependencies": {
