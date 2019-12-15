@@ -1,8 +1,8 @@
 const commands = {
 	wrapLink(editor, href) {
-		if (!editor.isLinkActive()) {
-			editor.wrapInline({ type: 'link', data: { href } });
-		}
+		// if (!editor.isLinkActive()) {
+		editor.wrapInline({ type: 'link', data: { href } });
+		// }
 	},
 
 	unwrapLink(editor) {

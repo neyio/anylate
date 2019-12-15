@@ -1,0 +1,43 @@
+{
+  "name": "@anylate/markdown-support",
+  "version": "0.0.1-alpha.3",
+  "description": "> TODO: description",
+  "author": "Neyio <neyioqian@gmail.com>",
+  "homepage": "https://github.com/neyio/anylate/tree/master/packages/@anylate/markdown-support#readme",
+  "license": "MIT",
+  "main": "lib/markdown-support.js",
+  "module": "lib/markdown-support.es.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib",
+    "src"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neyio/anylate.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/neyio/anylate/issues"
+  },
+  "dependencies": {
+    "is-hotkey": "^0.1.6"
+  },
+  "peerDependencies": {
+    "immutable": ">=3.8.2",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "slate": ">=0.47.8",
+    "slate-react": ">=0.22.9"
+  },
+  "gitHead": "9d2706321316a3bbc1bdf860617c1e414c78ab08"
+}

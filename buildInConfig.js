@@ -1,1 +1,1 @@
-// export const pkgPrefix = '';
+export const pkgPrefix = '@anylate';
