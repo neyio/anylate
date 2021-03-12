@@ -59,7 +59,7 @@
     "rc-tooltip": "^4.0.0-alpha.3",
     "react-app-polyfill": "^1.0.4",
     "react-autosize-textarea": "^7.0.0",
-    "react-dev-utils": "^9.1.0",
+    "react-dev-utils": "^11.0.4",
     "react-dnd": "^9.4.0",
     "react-dnd-html5-backend": "^9.4.0",
     "resolve": "1.12.0",
